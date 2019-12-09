@@ -2,13 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+;;; ========== Settings for Golang Development ==========
 (use-package go-mode
-  :defer t
   :mode (("\\.go'" . go-mode))
-  :hook (progn
-	  (go-mode . lsp)
-	  (go-mode . yas-minor-mode)
-	  )
+  :hook ((go-mode . lsp-deferred)
+	 (go-mode . flycheck-mode))
+  :commands (lsp company-lsp)
   )
 
 ;; Set up before-save hooks to format buffer and add/delete imports.

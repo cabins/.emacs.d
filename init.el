@@ -22,8 +22,11 @@
 (require 'init-misc)
 
 ;;; ============ Programming Settings ============
-;;; Settings for lsp
+;;; Settings for lsp (include golang & python)
 (require 'init-lsp)
 (require 'init-golang)
+(require 'init-python)
+;;; Settings for web mode
+(require 'init-web)
 
 ;;; init.el ends here
