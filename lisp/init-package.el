@@ -94,6 +94,7 @@
 
 ;;; Settings for magit
 (use-package magit
+  :defer t
   :bind ("C-x g" . magit-status)
   )
 
@@ -106,7 +107,8 @@
   :config
   (yas-reload-all)
   (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
-  (use-package yasnippet-snippets)
+  (use-package yasnippet-snippets
+    :defer t)
   )
 
 ;;; Settings for projectile
@@ -120,7 +122,6 @@
     ))
 
 (use-package flycheck
-  :ensure t
   :defer nil
   :init (global-flycheck-mode)
   :bind (
@@ -130,13 +131,13 @@
 
 ;;; Settings for jump windows, use M-NUM to switch
 (use-package window-numbering
-  :defer nil
+  :defer t
   :config
   (window-numbering-mode t))
 
 ;;; Settings for highlight parentheses
 (use-package highlight-parentheses
-  :defer nil
+  :defer t
   :config
   (add-hook 'prog-mode-hook 'highlight-parentheses-mode)
   )

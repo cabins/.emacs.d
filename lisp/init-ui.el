@@ -10,7 +10,7 @@
       (tool-bar-mode -1)
       ;;; Init GUI size
       (setq default-frame-alist
-	    '((width . 180) (height . 50))
+	    '((width . 150) (height . 35))
 	    )
       )
   )
@@ -33,6 +33,12 @@
 
 ;;; Settings for electric-pair
 (add-hook 'prog-mode-hook 'electric-pair-mode)
+
+;;; Settings for UI theme
+(use-package spacemacs-theme
+  :defer t
+  :init
+  (load-theme 'spacemacs-dark t))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
