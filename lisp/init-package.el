@@ -148,6 +148,13 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-mode))
 
+;;; drag-stuff - move lines up/down
+(use-package drag-stuff
+  :bind (
+	 ("<M-up>". drag-stuff-up)
+	 ("<M-down>" . drag-stuff-down))
+  )
+
 (provide 'init-package)
 
 ;;; init-package.el ends here.
