@@ -86,10 +86,10 @@
   )
 
 ;;; Settings for which-key - suggest next key
-;; (use-package which-key
-;;   :config
-;;   (which-key-mode +1)
-;;   )
+(use-package which-key
+  :config
+  (which-key-mode +1)
+  )
 
 
 ;;; Settings for magit
@@ -142,27 +142,11 @@
   (add-hook 'prog-mode-hook 'highlight-parentheses-mode)
   )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ;;; Settings for rainbow mode
 (use-package rainbow-mode
   :defer t
   :config
   (add-hook 'prog-mode-hook 'rainbow-mode))
-
-
-
 
 (provide 'init-package)
 

@@ -23,13 +23,13 @@
 (global-display-line-numbers-mode t)
 
 ;;; Setting English Font
-(set-face-attribute 'default nil :font "Source Code Pro 10")
+(set-face-attribute 'default nil :font "Ubuntu Mono 10")
 
 ;; Setting Chinese Font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
 		    charset
-		    (font-spec :family "Microsoft Yahei" :size 13)))
+		    (font-spec :family "Microsoft Yahei" :size 12)))
 
 ;;; Settings for electric-pair
 (add-hook 'prog-mode-hook 'electric-pair-mode)
