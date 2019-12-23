@@ -14,7 +14,9 @@
 
 (use-package company-lsp
   :after lsp-mode
-  :commands company-lsp)
+  :commands company-lsp
+  :config
+  (push 'company-lsp company-backends))
 
 (provide 'init-lsp)
 
