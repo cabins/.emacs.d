@@ -13,9 +13,8 @@
   :commands lsp-ui-mode)
 
 (use-package company-lsp
-  :after lsp-mode
-  :commands company-lsp
-  :config
+  :after company lsp-mode
+  :init
   (push 'company-lsp company-backends))
 
 (provide 'init-lsp)

@@ -85,12 +85,25 @@
   :hook ((after-init . global-company-mode))
   )
 
+;;; Settings for lsp-mode
+(use-package lsp-mode
+  :commands (lsp lsp-deferred))
+
+;; Optionally
+(use-package lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode)
+
+(use-package company-lsp
+  :after company lsp-mode
+  :init
+  (push 'company-lsp company-backends))
+
 ;;; Settings for which-key - suggest next key
 (use-package which-key
   :config
   (which-key-mode +1)
   )
-
 
 ;;; Settings for magit
 (use-package magit
@@ -105,7 +118,7 @@
   :init
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
-  (yas-reload-all)
+  ;; (yas-reload-all)
   (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
   (use-package yasnippet-snippets
     :defer t)
