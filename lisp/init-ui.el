@@ -12,6 +12,15 @@
       (setq default-frame-alist
 	    '((width . 150) (height . 35))
 	    )
+
+       ;;; Setting English Font
+      (set-face-attribute 'default nil :font "Ubuntu Mono 11")
+
+      ;; Setting Chinese Font
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+	(set-fontset-font (frame-parameter nil 'font)
+			  charset
+			  (font-spec :family "Microsoft Yahei" :size 12)))
       )
   )
 
@@ -21,15 +30,6 @@
 ;;; Settings for line number
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
-
-;;; Setting English Font
-(set-face-attribute 'default nil :font "Ubuntu Mono 10")
-
-;; Setting Chinese Font
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-		    charset
-		    (font-spec :family "Microsoft Yahei" :size 12)))
 
 ;;; Settings for electric-pair
 (add-hook 'prog-mode-hook 'electric-pair-mode)
