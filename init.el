@@ -23,8 +23,9 @@
 
 ;;; ============ Programming Settings ============
 ;;; Settings for lsp (include golang & python)
-(require 'init-golang)
-(require 'init-python)
+;;(require 'init-golang)
+;;(require 'init-python)
+(require 'init-program)
 ;;; Settings for web mode
 (require 'init-web)
 
