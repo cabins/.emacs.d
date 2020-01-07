@@ -123,6 +123,13 @@
     :defer t)
   )
 
+(use-package auto-yasnippet
+  :init
+  (global-set-key (kbd "C-o") #'aya-open-line)
+  (global-set-key (kbd "H-w") #'aya-create)
+  (global-set-key (kbd "H-y") #'aya-expand)
+  )
+
 ;;; Settings for projectile
 (use-package projectile
   :defer t
@@ -143,7 +150,7 @@
 
 ;;; Settings for jump windows, use M-NUM to switch
 (use-package window-numbering
-  :defer t
+  :defer nil
   :config
   (window-numbering-mode t))
 

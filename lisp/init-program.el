@@ -6,13 +6,16 @@
 ;;;                          Common LSP settings
 ;;; ================================================================================
 (use-package lsp-mode
-  :hook (prog-mode . lsp-deferred)
+  :hook (prog-mode . lsp)
   :commands (lsp lsp-deferred)
   )
 
 ;;; Optionally: lsp-ui, company-lsp
 (use-package lsp-ui
   :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-flycheck-enable t)
   :commands lsp-ui-mode)
 
 (use-package company-lsp
@@ -20,6 +23,10 @@
   :init
   (push 'company-lsp company-backends))
 
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list)
+
+(use-package dap-mode)
 
 
 
@@ -35,6 +42,7 @@
 ;; export GO111MODULE=on; go get -v golang.org/x/tools/gopls@latest
 (use-package go-mode
   :mode (("\\.go'" . go-mode))
+  :hook (go-mode . lsp)
   )
 
 ;; Set up before-save hooks to format buffer and add/delete imports.
@@ -57,6 +65,7 @@
   (setq indent-tabs-mode t)
   (setq tab-width 4)
   (setq python-indent-offset 4)
+  (setq lsp-clients-python-command "/opt/python38/bin/pyls")
   )
 
 
