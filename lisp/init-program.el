@@ -30,19 +30,22 @@
 
 
 
-
 ;;; ================================================================================
 ;;;                   Settings for Programming Languages
 ;;; ================================================================================
 
-
-
+(eldoc-mode -1)
+(global-eldoc-mode -1)
+(setq lsp-pyls-server-command "python3.8")
 
 ;;; ------------------------------ Go ------------------------------
 ;; export GO111MODULE=on; go get -v golang.org/x/tools/gopls@latest
 (use-package go-mode
   :mode (("\\.go'" . go-mode))
   :hook (go-mode . lsp)
+  :config
+  (setq indent-tabs-mode t)
+  (setq tab-width 4)
   )
 
 ;; Set up before-save hooks to format buffer and add/delete imports.
@@ -62,10 +65,13 @@
 (use-package python-mode
   :mode (("\\.py'" . python-mode))
   :config
+  (setq python-shell-interpreter "python3.8")
   (setq indent-tabs-mode t)
   (setq tab-width 4)
   (setq python-indent-offset 4)
   (setq lsp-clients-python-command "/opt/python38/bin/pyls")
+  (add-hook 'python-mode-hook
+	    '(lambda () (eldoc-mode -1)) t)
   )
 
 
