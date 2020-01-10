@@ -8,6 +8,11 @@
 (use-package lsp-mode
   :hook (prog-mode . lsp)
   :commands (lsp lsp-deferred)
+  :config
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-eldoc-hook nil)
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-signature-auto-activate nil)
   )
 
 ;;; Optionally: lsp-ui, company-lsp
@@ -65,13 +70,12 @@
 (use-package python-mode
   :mode (("\\.py'" . python-mode))
   :config
-  (setq python-shell-interpreter "python3.8")
+  (setq python-shell-interpreter "python3")
   (setq indent-tabs-mode t)
   (setq tab-width 4)
   (setq python-indent-offset 4)
-  (setq lsp-clients-python-command "/opt/python38/bin/pyls")
-  (add-hook 'python-mode-hook
-	    '(lambda () (eldoc-mode -1)) t)
+  (setq lsp-clients-python-command "pyls")
+  (defun py-help-at-point nil)
   )
 
 
