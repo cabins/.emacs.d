@@ -6,42 +6,29 @@
 ;;;                          Common LSP settings
 ;;; ================================================================================
 (use-package lsp-mode
+  ;; add prog-mode to lsp instead of adding one by one
   :hook (prog-mode . lsp)
   :commands (lsp lsp-deferred)
-  :config
-  (setq lsp-prefer-flymake nil)
-  (setq lsp-eldoc-hook nil)
-  (setq lsp-enable-symbol-highlighting nil)
-  (setq lsp-signature-auto-activate nil)
+  :config (setq lsp-prefer-flymake nil)
   )
 
 ;;; Optionally: lsp-ui, company-lsp
 (use-package lsp-ui
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (setq lsp-ui-flycheck-enable t)
-  :commands lsp-ui-mode)
+  :config (setq lsp-ui-flycheck-enable t)
+  :commands lsp-ui-mode
+  )
 
 (use-package company-lsp
   :after company lsp-mode
-  :init
-  (push 'company-lsp company-backends))
+  :init (push 'company-lsp company-backends)
+  )
 
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)
 
 (use-package dap-mode)
-
-
-
-;;; ================================================================================
-;;;                   Settings for Programming Languages
-;;; ================================================================================
-
-(eldoc-mode -1)
-(global-eldoc-mode -1)
-(setq lsp-pyls-server-command "python3.8")
 
 ;;; ------------------------------ Go ------------------------------
 ;; export GO111MODULE=on; go get -v golang.org/x/tools/gopls@latest
@@ -59,26 +46,6 @@
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
-
-
-;;; ------------------------------ Python ------------------------------
-;; pip install python-language-server[all]
-;; pip install pyls-mypy
-;; pip install pyls-isort
-;; pip install pyls-black
-(use-package python-mode
-  :mode (("\\.py'" . python-mode))
-  :config
-  (setq python-shell-interpreter "python3")
-  (setq indent-tabs-mode t)
-  (setq tab-width 4)
-  (setq python-indent-offset 4)
-  (setq lsp-clients-python-command "pyls")
-  (defun py-help-at-point nil)
-  )
-
-
 
 (provide 'init-program)
 
