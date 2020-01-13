@@ -84,20 +84,6 @@
   :hook ((after-init . global-company-mode))
   )
 
-;;; Settings for lsp-mode
-(use-package lsp-mode
-  :commands (lsp lsp-deferred))
-
-;; Optionally
-(use-package lsp-ui
-  :after lsp-mode
-  :commands lsp-ui-mode)
-
-(use-package company-lsp
-  :after company lsp-mode
-  :init
-  (push 'company-lsp company-backends))
-
 ;;; Settings for which-key - suggest next key
 (use-package which-key
   :config
@@ -174,6 +160,14 @@
 	 ("<M-down>" . drag-stuff-down))
   )
 
-(provide 'init-package)
+;;; Settings for treemacs
+(use-package treemacs
+  :defer t
+  :bind (("C-c t" . treemacs)))
+(use-package treemacs-projectile
+  :after treemacs projectile)
+(use-package treemacs-magit
+  :after treemacs magit)
 
-;;; init-package.el ends here.
+(provide 'init-package)
+;;; init-package.el ends here
