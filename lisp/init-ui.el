@@ -9,9 +9,10 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       ;;; Init GUI size
-      (setq default-frame-alist
-	    '((width . 150) (height . 35))
-	    )
+      ;; (setq default-frame-alist
+	    ;; '((width . 150) (height . 35))
+      ;; )
+      (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
        ;;; Setting English Font
       (set-face-attribute 'default nil :font "Ubuntu Mono 11")
