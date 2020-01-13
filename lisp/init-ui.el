@@ -12,6 +12,8 @@
       ;; (setq default-frame-alist
 	    ;; '((width . 150) (height . 35))
       ;; )
+
+      ;; Init GUI size as maximized mode
       (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
        ;;; Setting English Font
