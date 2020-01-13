@@ -28,7 +28,8 @@
   )
 
 ;;; Settings for startup
-(setq inhibit-startup-screen t)
+(setq inhibit-startup-screen t
+      initial-buffer-choice nil)
 
 ;;; Settings for line number
 (setq display-line-numbers-type 'relative)

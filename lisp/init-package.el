@@ -163,7 +163,8 @@
 ;;; Settings for treemacs
 (use-package treemacs
   :defer t
-  :bind (("C-c t" . treemacs)))
+  :bind (("C-c t" . treemacs))
+  )
 (use-package treemacs-projectile
   :after treemacs projectile)
 (use-package treemacs-magit
