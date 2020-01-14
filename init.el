@@ -25,7 +25,7 @@
 (require 'init-program)
 
 ;;; Settings for web mode
-(require 'init-web)
+;; (require 'init-web)
 
 ;;; Settings for customize functions
 (require 'init-funcs)
