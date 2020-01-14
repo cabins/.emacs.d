@@ -3,7 +3,10 @@
 ;;; Code:
 
 ;;; Package initialize
-(package-initialize)
+(when (< emacs-major-version 27)
+  (package-initialize)
+  )
+
 (unless package-archive-contents
   (package-refresh-contents))
 
