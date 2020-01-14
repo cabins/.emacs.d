@@ -27,4 +27,4 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'init-startup)
-;;; init-startup.el ends here.
+;;; init-startup.el ends here
