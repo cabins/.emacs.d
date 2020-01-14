@@ -6,6 +6,12 @@
 (setq indent-tabs-mode t)
 (setq tab-width 4)
 
+;; Settings for markdown
+(use-package markdown-mode)
+
+;; Settings for REST Client
+(use-package restclient)
+
 ;;; ================================================================================
 ;;;                          Common LSP settings
 ;;; ================================================================================
