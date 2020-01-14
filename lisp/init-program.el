@@ -10,7 +10,9 @@
 (use-package markdown-mode)
 
 ;; Settings for REST Client
-(use-package restclient)
+(use-package restclient
+  :init
+  (add-to-list 'auto-mode-alist '("\\.http" . restclient-mode)))
 
 ;;; ================================================================================
 ;;;                          Common LSP settings
