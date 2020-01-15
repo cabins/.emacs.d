@@ -11,6 +11,9 @@
 (global-set-key (kbd "M-/") 'comment-line)
 (global-set-key (kbd "M-?") 'comment-or-uncomment-region)
 
+;; Settings for kill one whole line
+(global-set-key (kbd "C-c C-k") 'crux-kill-whole-line)
+
 ;; Settings for macOS key: Use command as the Meta key
 (defconst *is-a-mac* (eq system-type 'darwin))
 (when *is-a-mac*
