@@ -9,7 +9,7 @@
   (find-file user-init-file)
   )
 
-(global-set-key (kbd "C-c i") 'cabins/open-emacs-init-file)
+(global-set-key (kbd "C-c ,") 'cabins/open-emacs-init-file)
 
 
 

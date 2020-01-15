@@ -2,6 +2,14 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'package)
+;; (setq package-enable-at-startup t)
+
+;;; Settings for package archives
+(setq package-archives '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			 ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+
 ;;; Package initialize
 (when (< emacs-major-version 27)
   (package-initialize)

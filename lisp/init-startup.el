@@ -13,15 +13,6 @@
 ;;; Settings for backup files
 (setq make-backup-files nil)
 
-(require 'package)
-;; (setq package-enable-at-startup t)
-
-;;; Settings for package archives
-(setq package-archives '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
-
-
 ;; Adjust garbage collection thresholds during startup, and thereafter -from purcell config
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
       (init-gc-cons-threshold (* 128 1024 1024)))
