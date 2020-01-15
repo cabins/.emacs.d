@@ -6,8 +6,6 @@
 ;;; Settings for GUI mode
 (if (display-graphic-p)
     (progn
-      (scroll-bar-mode -1)
-      (tool-bar-mode -1)
       ;;; Init GUI size
       ;; (setq default-frame-alist
       ;; '((width . 150) (height . 35))
@@ -33,10 +31,6 @@
 
       )
   )
-
-;;; Settings for startup
-(setq inhibit-startup-screen t
-      initial-buffer-choice nil)
 
 ;;; Settings for line number
 (setq display-line-numbers-type 'relative)
