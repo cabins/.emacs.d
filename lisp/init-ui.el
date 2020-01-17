@@ -4,15 +4,15 @@
 ;;; Code:
 
 ;;; Settings for GUI mode
-(if (display-graphic-p)
+(when (display-graphic-p)
     (progn
       ;;; Init GUI size
-      ;; (setq default-frame-alist
-      ;; '((width . 150) (height . 35))
-      ;; )
+      (setq default-frame-alist
+      '((width . 150) (height . 35))
+      )
 
       ;; Init GUI size as maximized mode
-      (add-to-list 'default-frame-alist '(fullscreen . maximized))
+      ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
        ;;; Setting English Font
       (set-face-attribute 'default nil :font "Ubuntu Mono 11")
