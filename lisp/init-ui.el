@@ -14,6 +14,9 @@
       ;; Init GUI size as maximized mode
       ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+      ;; The next line works on macOS
+      (set-frame-parameter nil 'fullscreen 'maximized)
+
        ;;; Setting English Font
       (set-face-attribute 'default nil :font "Ubuntu Mono 11")
 
