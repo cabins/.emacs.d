@@ -12,8 +12,7 @@
 
 ;;; Package initialize
 (when (< emacs-major-version 27)
-  (package-initialize)
-  )
+  (package-initialize))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -154,8 +153,8 @@
 ;;; Settings for highlight parentheses
 (use-package highlight-parentheses
   :defer t
-  :config
-  (add-hook 'prog-mode-hook 'highlight-parentheses-mode)
+  :hook
+  (prog-mode . highlight-parentheses-mode)
   )
 
 ;;; Settings for rainbow mode
@@ -180,6 +179,11 @@
   :after treemacs projectile)
 (use-package treemacs-magit
   :after treemacs magit)
+
+;;; Settings for smooth scrolling
+(use-package smooth-scrolling
+  :init (setq smooth-scrolling-margin 3)
+  :config (smooth-scrolling-mode t))
 
 (provide 'init-package)
 ;;; init-package.el ends here

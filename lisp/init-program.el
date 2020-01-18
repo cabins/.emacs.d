@@ -19,9 +19,22 @@
 ;;; ================================================================================
 (use-package lsp-mode
   ;; add prog-mode to lsp instead of adding one by one
-  :hook (prog-mode . lsp)
+  :hook (prog-mode .
+		   (lambda ()
+		     (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
+		       (lsp-deferred))))
   :commands (lsp lsp-deferred)
-  :config (setq lsp-prefer-flymake nil)
+  :init (setq lsp-prefer-flymake nil
+	      lsp-auto-guess-root t)
+  :config
+  ;; Configure LSP Clients
+  (use-package lsp-clients
+    :functions (lsp-format-buffer lsp-organize-imports)
+    :hook (go-mode . (lambda ()
+		       "Format buffer and auto-import packages"
+		       (add-hook 'before-save-hook #'lsp-format-buffer t t)
+		       (add-hook 'before-save-hook #'lsp-organize-imports t t)))
+    )
   )
 
 ;;; Optionally: lsp-ui, company-lsp
@@ -34,22 +47,18 @@
 
 (use-package company-lsp
   :after company lsp-mode
-  :init (push 'company-lsp company-backends)
-  )
+  :init (push 'company-lsp company-backends))
 
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)
 
-(use-package dap-mode)
-
-;;; ------------------------------ Go ------------------------------
-;; export GO111MODULE=on; go get -v golang.org/x/tools/gopls@latest
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-
-(use-package go-mode
-  :hook (go-mode . lsp-go-install-save-hooks))
+(use-package dap-mode
+  :diminish
+  :hook ((after-init . dap-mode)
+	 (dap-mode . dap-ui-mode)
+	 (python-mode . (lambda() (require 'dap-python)))
+	 (go-mode . (lambda() (require 'dap-go)))
+	 (java-mode . (lambda() (require 'dap-java)))))
 
 ;;; ----------------------------- Java -----------------------------
 (use-package lsp-java)
