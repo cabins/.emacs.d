@@ -2,10 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; Basic Programming Style
-(setq indent-tabs-mode t)
-(setq tab-width 4)
-
 ;; Settings for markdown
 (use-package markdown-mode)
 
@@ -21,8 +17,11 @@
   ;; add prog-mode to lsp instead of adding one by one
   :hook (prog-mode .
 		   (lambda ()
-		     (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
-		       (lsp-deferred))))
+		     (progn
+		       (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
+			 (lsp-deferred))
+		       (setq indent-tabs-mode t)
+		       (setq tab-width 4))))
   :commands (lsp lsp-deferred)
   :init (setq lsp-prefer-flymake nil
 	      lsp-auto-guess-root t)
