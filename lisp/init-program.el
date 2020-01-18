@@ -29,6 +29,7 @@
   :config
   ;; Configure LSP Clients
   (use-package lsp-clients
+    :ensure nil
     :functions (lsp-format-buffer lsp-organize-imports)
     :hook (go-mode . (lambda ()
 		       "Format buffer and auto-import packages"
