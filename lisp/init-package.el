@@ -33,23 +33,19 @@
 
 ;;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
-  :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize))
-  )
+  :config (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 ;;; Settings for C-a behavior
 (use-package crux
   :defer t
-  :bind (("C-a" . crux-move-beginning-of-line))
-  )
+  :bind (("C-a" . crux-move-beginning-of-line)))
 
 ;;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
   :defer nil
   :bind (("C-c DEL" . hungry-delete-backward))
-  :bind (("C-c d" . hungry-delete-forward))
-  )
+  :bind (("C-c d" . hungry-delete-forward)))
 
 
 ;;; Settings for ivy & counsel & swiper
@@ -79,13 +75,14 @@
     (global-set-key (kbd "C-x l") 'counsel-locate)
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-    (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
-    )
-  )
+    (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))))
+
 (use-package counsel
   :defer 1
   :after (ivy))
-(use-package swiper :defer 1)
+
+(use-package swiper
+  :defer 1)
 
 ;;; Settings for company
 (use-package company
@@ -102,27 +99,23 @@
 ;;; Settings for which-key - suggest next key
 (use-package which-key
   :config
-  (which-key-mode +1)
-  )
+  (which-key-mode +1))
 
 ;;; Settings for magit
 (use-package magit
   :defer t
-  :bind ("C-x g" . magit-status)
-  )
+  :bind ("C-x g" . magit-status))
 
 ;;; Settings for yasnippet - not sure if works fine
 (use-package yasnippet
   :defer t
   :diminish yas-minor-mode
-  :init
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  :init (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
   ;; (yas-reload-all)
   (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
   (use-package yasnippet-snippets
-    :defer t)
-  )
+    :defer t))
 
 (use-package auto-yasnippet
   :init
@@ -138,16 +131,14 @@
   (progn
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
     (global-set-key (kbd "C-c C-p") 'find-file-in-project)
-    (projectile-mode +1)
-    ))
+    (projectile-mode +1)))
 
 (use-package flycheck
   :defer nil
   :init (global-flycheck-mode)
   :bind (
 	 ("M-n" . 'flycheck-next-error)
-	 ("M-p" . 'flycheck-previous-error))
-  )
+	 ("M-p" . 'flycheck-previous-error)))
 
 ;;; Settings for jump windows, use M-NUM to switch
 (use-package ace-window
@@ -156,30 +147,26 @@
 ;;; Settings for highlight parentheses
 (use-package highlight-parentheses
   :defer t
-  :hook
-  (prog-mode . highlight-parentheses-mode)
-  )
+  :hook (prog-mode . highlight-parentheses-mode))
 
 ;;; Settings for rainbow mode
 (use-package rainbow-mode
   :defer t
-  :config
-  (add-hook 'prog-mode-hook 'rainbow-mode))
+  :config (add-hook 'prog-mode-hook 'rainbow-mode))
 
 ;;; drag-stuff - move lines up/down
 (use-package drag-stuff
-  :bind (
-	 ("<M-up>". drag-stuff-up)
-	 ("<M-down>" . drag-stuff-down))
-  )
+  :bind (("<M-up>". drag-stuff-up)
+	 ("<M-down>" . drag-stuff-down)))
 
 ;;; Settings for treemacs
 (use-package treemacs
   :defer t
-  :bind (("C-c t" . treemacs))
-  )
+  :bind (("C-c t" . treemacs)))
+
 (use-package treemacs-projectile
   :after treemacs projectile)
+
 (use-package treemacs-magit
   :after treemacs magit)
 

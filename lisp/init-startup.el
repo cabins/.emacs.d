@@ -12,6 +12,7 @@
 
 ;;; Settings for backup files
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; Adjust garbage collection thresholds during startup, and thereafter -from purcell config
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
@@ -20,7 +21,7 @@
   (add-hook 'emacs-startup-hook
 	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
-(if (display-graphic-p)
+(when (display-graphic-p)
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)

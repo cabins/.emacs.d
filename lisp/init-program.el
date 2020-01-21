@@ -6,22 +6,22 @@
 (use-package markdown-mode)
 
 ;; Settings for REST Client
-(use-package restclient
-  :init
-  (add-to-list 'auto-mode-alist '("\\.http" . restclient-mode)))
+(use-package restclient :mode ("\\.http\\'" . restclient-mode))
 
-;;; ================================================================================
-;;;                          Common LSP settings
-;;; ================================================================================
+;;; ================================================================================ ;;;
+;;;                          Common LSP settings                                     ;;;
+;;; ================================================================================ ;;;
+
 (use-package lsp-mode
   :defer t
   ;; add prog-mode to lsp instead of adding one by one
-  :hook (prog-mode .
-		   (lambda ()
-		     (progn
-		       (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
-                 (lsp-deferred))
-			   (setq indent-tabs-mode nil))))
+  ;; :hook (prog-mode . (lsp-deferred))
+  :hook ((python-mode . lsp)
+         (go-mode . lsp)
+         (js-mode . lsp)
+         (web-mode . lsp)
+         (html-mode . lsp)
+         )
   :commands (lsp lsp-deferred)
   :init (setq lsp-prefer-flymake nil
 	      lsp-auto-guess-root t)
@@ -42,8 +42,7 @@
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode)
   :config (setq lsp-ui-flycheck-enable t)
-  :commands lsp-ui-mode
-  )
+  :commands lsp-ui-mode)
 
 (use-package company-lsp
   :after company lsp-mode
@@ -61,7 +60,7 @@
 	 (java-mode . (lambda() (require 'dap-java)))))
 
 ;;; ----------------------------- Java -----------------------------
-(use-package lsp-java)
+;; (use-package lsp-java)
 
 (provide 'init-program)
 ;;; init-program.el ends here

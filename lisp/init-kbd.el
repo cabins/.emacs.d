@@ -21,4 +21,4 @@
   (setq mac-option-modifier 'none))
 
 (provide 'init-kbd)
-;;; init-kbd.el ends here.
+;;; init-kbd.el ends here
