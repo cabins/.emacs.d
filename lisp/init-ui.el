@@ -28,8 +28,5 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
-;; Settings for electric-pair
-(add-hook 'prog-mode-hook 'electric-pair-mode)
-
 (provide 'init-ui)
 ;;; init-ui.el ends here

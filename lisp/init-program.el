@@ -4,9 +4,10 @@
 
 ;; Settings for markdown
 (use-package markdown-mode)
-
 ;; Settings for REST Client
 (use-package restclient :mode ("\\.http\\'" . restclient-mode))
+;; Settings for YAML mode
+(use-package yaml-mode)
 
 ;;; ================================================================================ ;;;
 ;;;                          Common LSP settings                                     ;;;

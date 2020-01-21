@@ -72,44 +72,41 @@
   :defer 1
   :demand
   :config
-  (progn
-    (setq ivy-use-virtual-buffers t
-	  ivy-count-format "%d / %d ")
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq enable-recursive-minibuffers t)
-    (global-set-key "\C-s" 'swiper)
-    (global-set-key (kbd "C-c C-r") 'ivy-resume)
-    (global-set-key (kbd "<f6>") 'ivy-resume)
-    (global-set-key (kbd "M-x") 'counsel-M-x)
-    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-    (global-set-key (kbd "<f1> l") 'counsel-find-library)
-    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-    (global-set-key (kbd "C-c g") 'counsel-git)
-    (global-set-key (kbd "C-c j") 'counsel-git-grep)
-    (global-set-key (kbd "C-c k") 'counsel-ag)
-    (global-set-key (kbd "C-x l") 'counsel-locate)
-    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-    (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))))
+  (setq ivy-use-virtual-buffers t
+	ivy-initial-inputs-alist nil
+	ivy-count-format "%d/%d "
+	enable-recursive-minibuffers t
+	ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+  :hook (after-init . ivy-mode))
 
 (use-package counsel
-  :defer 1
-  :after (ivy))
+  :after (ivy)
+  :bind (("M-x" . counsel-M-x)
+	 ("C-x C-f" . counsel-find-file)
+	 ("C-c g" . counsel-git)))
 
-(use-package swiper :defer 1)
+(use-package swiper
+  :after ivy
+  :config (setq swiper-action-recenter t
+		swiper-include-line-number-in-search t)
+  :bind ("C-s" . swiper))
 
 ;;; Settings for company
 (use-package company
   :config
+  (setq company-dabbrev-code-everywhere t)
+  (setq company-dabbrev-code-modes t)
+  (setq company-dabbrev-code-other-buffers 'all)
+  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-ignore-case t)
+  (setq company-dabbrev-other-buffers 'all)
+  (setq company-require-match nil)
   (setq company-minimum-prefix-length 3)
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)
   (setq company-idle-delay .3)
   (setq company-echo-delay 0)
+  (setq company-tooltip-offset-display 'scrollbar)
   (setq company-begin-commands '(self-insert-command))
   :hook ((after-init . global-company-mode)))
 
