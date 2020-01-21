@@ -25,7 +25,7 @@
 			              charset (font-spec :family "Microsoft Yahei" :size 9))))
 
 
-      ;;; Settings for UI theme
+    ;;; Settings for UI theme
     (use-package spacemacs-theme
 	  :defer t
 	  :init (load-theme 'spacemacs-dark t))))
