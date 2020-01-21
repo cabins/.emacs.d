@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Settings for GoLang
+(use-package go-mode)
 ;; Settings for markdown
 (use-package markdown-mode)
 ;; Settings for REST Client
