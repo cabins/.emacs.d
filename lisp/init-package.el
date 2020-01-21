@@ -167,15 +167,15 @@
 	 ("<M-down>" . drag-stuff-down)))
 
 ;;; Settings for treemacs
-(use-package treemacs
-  :defer t
-  :bind (("C-c t" . treemacs)))
+;; (use-package treemacs
+  ;; :defer t
+  ;; :bind (("C-c t" . treemacs)))
 
-(use-package treemacs-projectile
-  :after treemacs projectile)
+;; (use-package treemacs-projectile
+  ;; :after treemacs projectile)
 
-(use-package treemacs-magit
-  :after treemacs magit)
+;; (use-package treemacs-magit
+  ;; :after treemacs magit)
 
 ;;; Settings for smooth scrolling
 (use-package smooth-scrolling
