@@ -29,7 +29,7 @@
   (tool-bar-mode -1))
 
 ;; I want display menu bar on macOS when in GUI mode
-(unless (and (display-graphic-p) *is-a-mac*)
+(unless (and (display-graphic-p) *is-mac*)
   (menu-bar-mode -1))
 
 ;; Settings for line number

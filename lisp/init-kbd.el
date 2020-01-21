@@ -13,7 +13,7 @@
 (global-set-key (kbd "C-c C-k") 'crux-kill-whole-line)
 
 ;; Settings for macOS key: Use command as the Meta key
-(when *is-a-mac*
+(when *is-mac*
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'none))
 

@@ -3,7 +3,9 @@
 ;;; Code:
 
 ;; Settings for macOS key: Use command as the Meta key
-(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-mac* (eq system-type 'darwin))
+(defconst *is-linux* (eq system-type 'gnu/linux))
+(defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
 
 (provide 'init-consts)
 ;;; init-consts.el ends here
