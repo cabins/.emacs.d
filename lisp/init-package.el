@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(setq package-check-signature nil)
+
 (require 'package)
 (setq package-enable-at-startup t)
 
@@ -43,6 +45,7 @@
 
 ;;; Settings for org mode and load config from org file
 (use-package org
+  :defer t
   :config
   (setq org-startup-indented t)
   (when (display-graphic-p)
@@ -131,6 +134,7 @@
     :defer t))
 
 (use-package auto-yasnippet
+  :defer t
   :init
   (global-set-key (kbd "C-o") #'aya-open-line)
   (global-set-key (kbd "H-w") #'aya-create)
