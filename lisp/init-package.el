@@ -3,7 +3,7 @@
 ;;; Code:
 
 (require 'package)
-;; (setq package-enable-at-startup t)
+(setq package-enable-at-startup t)
 
 ;;; Settings for package archives
 (setq package-archives '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
