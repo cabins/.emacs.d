@@ -26,6 +26,11 @@
 (setq use-package-always-ensure t)
 (setq use-package-verbose t)
 
+;;; Settings for benchmark package
+(use-package benchmark-init
+  :init (benchmark-init/activate)
+  :hook (after-init . benchmark-init/deactivate))
+
 ;;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
   :config
@@ -145,10 +150,8 @@
   )
 
 ;;; Settings for jump windows, use M-NUM to switch
-(use-package window-numbering
-  :defer nil
-  :config
-  (window-numbering-mode t))
+(use-package ace-window
+  :bind (("M-o" . 'ace-window)))
 
 ;;; Settings for highlight parentheses
 (use-package highlight-parentheses
