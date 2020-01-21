@@ -1,7 +1,5 @@
 ;;; init-kbd.el --- Summary
 ;;; Commentary:
-
-
 ;;; Code:
 
 ;; Replace yes/no answer with y/n
@@ -15,7 +13,6 @@
 (global-set-key (kbd "C-c C-k") 'crux-kill-whole-line)
 
 ;; Settings for macOS key: Use command as the Meta key
-(defconst *is-a-mac* (eq system-type 'darwin))
 (when *is-a-mac*
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'none))

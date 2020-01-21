@@ -11,29 +11,49 @@
 			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 ;;; Package initialize
-(when (< emacs-major-version 27)
+;; (when (< emacs-major-version 27)
+  ;; (package-initialize))
+
+;;; Initialize the packages, avoiding a re-initialization
+(unless (bound-and-true-p package--initialized)
   (package-initialize))
 
 (unless package-archive-contents
   (package-refresh-contents))
 
-
 ;;; Settings for use-package package
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
-(setq use-package-verbose t)
+;;; Configure use-package prior to loading it
+(eval-and-compile
+  (setq use-package-always-ensure t)
+  (setq use-package-always-defer nil)
+  (setq use-package-always-demand nil)
+  (setq use-package-verbose t))
+
+(eval-and-compile
+  (require 'use-package))
 
 ;;; Settings for benchmark package
 (use-package benchmark-init
   :init (benchmark-init/activate)
   :hook (after-init . benchmark-init/deactivate))
 
+;;; Settings for org mode and load config from org file
+(use-package org
+  :config
+  (setq org-startup-indented t)
+  (when (display-graphic-p)
+    (use-package org-bullets
+    :hook (org-mode . (lambda() (org-bullets-mode 1))))))
+;; (org-babel-load-file (expand-file-name "~/.emacs.d/emacs-init.org"))
+
 ;;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
-  :config (when (memq window-system '(mac ns x))
+  :config
+  (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
 ;;; Settings for C-a behavior
@@ -46,7 +66,6 @@
   :defer nil
   :bind (("C-c DEL" . hungry-delete-backward))
   :bind (("C-c d" . hungry-delete-forward)))
-
 
 ;;; Settings for ivy & counsel & swiper
 (use-package ivy
@@ -81,8 +100,7 @@
   :defer 1
   :after (ivy))
 
-(use-package swiper
-  :defer 1)
+(use-package swiper :defer 1)
 
 ;;; Settings for company
 (use-package company
@@ -93,13 +111,11 @@
   (setq company-idle-delay .3)
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
-  :hook ((after-init . global-company-mode))
-  )
+  :hook ((after-init . global-company-mode)))
 
 ;;; Settings for which-key - suggest next key
 (use-package which-key
-  :config
-  (which-key-mode +1))
+  :config (which-key-mode +1))
 
 ;;; Settings for magit
 (use-package magit
@@ -121,23 +137,17 @@
   :init
   (global-set-key (kbd "C-o") #'aya-open-line)
   (global-set-key (kbd "H-w") #'aya-create)
-  (global-set-key (kbd "H-y") #'aya-expand)
-  )
+  (global-set-key (kbd "H-y") #'aya-expand))
 
 ;;; Settings for projectile
 (use-package projectile
-  :defer t
-  :config
-  (progn
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-    (global-set-key (kbd "C-c C-p") 'find-file-in-project)
-    (projectile-mode +1)))
+  :hook (after-init . projectile-mode)
+  :config (setq-default projectile-mode-line-prefix " Proj")
+  :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
-  :defer nil
   :init (global-flycheck-mode)
-  :bind (
-	 ("M-n" . 'flycheck-next-error)
+  :bind (("M-n" . 'flycheck-next-error)
 	 ("M-p" . 'flycheck-previous-error)))
 
 ;;; Settings for jump windows, use M-NUM to switch
@@ -152,7 +162,7 @@
 ;;; Settings for rainbow mode
 (use-package rainbow-mode
   :defer t
-  :config (add-hook 'prog-mode-hook 'rainbow-mode))
+  :hook (prog-mode . rainbow-mode))
 
 ;;; drag-stuff - move lines up/down
 (use-package drag-stuff

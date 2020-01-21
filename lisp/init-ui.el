@@ -1,9 +1,8 @@
 ;;; init-ui.el --- Summary
 ;;; Commentary:
-
 ;;; Code:
 
-;;; Settings for GUI mode
+;; Settings for GUI mode
 (when (display-graphic-p)
     (progn
       ;;; Init GUI size
@@ -25,11 +24,11 @@
 	:defer t
 	:init (load-theme 'spacemacs-dark t))))
 
-;;; Settings for line number
+;; Settings for line number
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
-;;; Settings for electric-pair
+;; Settings for electric-pair
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
 (provide 'init-ui)
