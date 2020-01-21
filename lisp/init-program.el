@@ -19,9 +19,8 @@
 		   (lambda ()
 		     (progn
 		       (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
-			 (lsp-deferred))
-		       (setq indent-tabs-mode t)
-		       (setq tab-width 4))))
+                 (lsp-deferred))
+			   (setq indent-tabs-mode nil))))
   :commands (lsp lsp-deferred)
   :init (setq lsp-prefer-flymake nil
 	      lsp-auto-guess-root t)

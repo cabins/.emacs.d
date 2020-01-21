@@ -43,7 +43,7 @@
 (use-package hungry-delete
   :defer nil
   :bind (("C-c DEL" . hungry-delete-backward))
-  :bind (("C-c C-d" . hungry-delete-forward))
+  :bind (("C-c d" . hungry-delete-forward))
   )
 
 
