@@ -22,7 +22,7 @@
     (when *is-windows*
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
 	    (set-fontset-font (frame-parameter nil 'font)
-			              charset (font-spec :family "Microsoft Yahei" :size 9))))
+			              charset (font-spec :family "STKaiti" :size 14))))
 
 
     ;;; Settings for UI theme
