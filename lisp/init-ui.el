@@ -12,7 +12,11 @@
     (set-frame-parameter nil 'fullscreen 'maximized)
 
     ;; Setting English Font
-    (set-face-attribute 'default nil :font "Ubuntu Mono 11")
+    (when *is-windows*
+      (set-face-attribute 'default nil :font "Source Code Pro 11"))
+
+    (when *is-mac*
+      (set-face-attribute 'default nil :font "Ubuntu Mono 11"))
 
     ;; Setting Chinese Font on Windows
     (when *is-windows*
