@@ -13,7 +13,7 @@
 
     ;; Setting English Font
     (when *is-windows*
-      (set-face-attribute 'default nil :font "Source Code Pro 11"))
+      (set-face-attribute 'default nil :font "Source Code Pro 10"))
 
     (when *is-mac*
       (set-face-attribute 'default nil :font "Ubuntu Mono 11"))
@@ -22,7 +22,7 @@
     (when *is-windows*
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
 	    (set-fontset-font (frame-parameter nil 'font)
-			              charset (font-spec :family "Microsoft Yahei" :size 12))))
+			              charset (font-spec :family "Microsoft Yahei" :size 10))))
 
 
       ;;; Settings for UI theme
