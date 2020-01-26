@@ -16,7 +16,7 @@
       (set-face-attribute 'default nil :font "Source Code Pro 9"))
 
     (when *is-mac*
-      (set-face-attribute 'default nil :font "Ubuntu Mono 11"))
+      (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11"))
 
     ;; Setting Chinese Font on Windows
     (when *is-windows*
