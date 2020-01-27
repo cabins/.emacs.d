@@ -28,4 +28,4 @@ This project is tested on macOS(10.14.6) and Fedora Linux(version 31), it should
 
 ## About bugs
 
-Any issue would be welcomed, just give me an issue if you find something not good for your usage.
+Any issue would be welcomed, just give me an issue if you find something not friendly to your usage.
