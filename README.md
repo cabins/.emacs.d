@@ -12,11 +12,11 @@ I mainly use Python & Go in my work.  So I set up the programming environments f
 
 Launch a terminal, such as:
 
-- Terminal App or iTerm2 on macOS
-- GNOME Terminal or Konsole on GNU/Linux
-- CMD or PowerShell on Windows 10
+- `Terminal` App or `iTerm2` on macOS
+- `GNOME Terminal` or `Konsole` on GNU/Linux
+- `CMD` or `PowerShell` on Windows 10
 
-Run the code below, and launch your Emacs, enjoy it.
+Run the code below, and then launch your Emacs, enjoy it.
 
 ```bash
 git clone https://github.com/cabins/.emacs.d ~/.emacs.d
