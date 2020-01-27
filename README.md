@@ -24,7 +24,7 @@ git clone https://github.com/cabins/.emacs.d ~/.emacs.d
 
 ## Testing
 
-This project is tested on macOS(10.14.6) and Fedora Linux(version 31), it should run on other platform, please note that.
+This project is tested on macOS(10.14.6) and Fedora Linux(version 31), it should run on other platforms, please note that.
 
 ## About bugs
 
