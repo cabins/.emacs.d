@@ -12,7 +12,7 @@ I mainly use Python & Go in my work.  So I set up the programming environments f
 
 Launch a terminal, such as:
 
-- Terminal App on macOS
+- Terminal App or iTerm2 on macOS
 - GNOME Terminal or Konsole on GNU/Linux
 - CMD or PowerShell on Windows 10
 
@@ -24,7 +24,7 @@ git clone https://github.com/cabins/.emacs.d ~/.emacs.d
 
 ## Testing
 
-This project is tested on macOS(10.14.6) and Fedora Linux(version 31), it should run on other platforms, please note that.
+This project is tested on macOS(10.14.6, GUI mode) and Fedora Linux(version 31), it should run on other platforms, please note that.
 
 ## About bugs
 
