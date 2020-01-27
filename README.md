@@ -4,9 +4,9 @@ This is NOT a part of GNU/Emacs.  This is just a personal configuration project 
 
 This project belongs to Cabins, a test-dev engineer from China.
 
-## About Peogramming language
+## About Programming language
 
-I mainly use Python & Go in my work.  So I set up the program environments for this two languages with LSP - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
+I mainly use Python & Go in my work.  So I set up the programming environments for this two languages with LSP - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
 
 ## Installation
 
