@@ -2,7 +2,7 @@
 
 This is NOT a part of GNU/Emacs.  This is just a personal configuration project to make Emacs, the most powerful text editor, more convenient to me.
 
-This project belongs to Cabins, a test-dev engineer from China.
+This project belongs to Cabins, an SDET(Software Developer Engineer in Test) from China.
 
 ## About Programming language
 
