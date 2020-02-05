@@ -9,12 +9,12 @@
 
 ;;; Settings for package archives
 (setq package-archives '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+                         ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 ;;; Package initialize
 ;; (when (< emacs-major-version 27)
-  ;; (package-initialize))
+;; (package-initialize))
 
 ;;; Initialize the packages, avoiding a re-initialization
 (unless (bound-and-true-p package--initialized)
@@ -50,7 +50,7 @@
   (setq org-startup-indented t)
   (when (display-graphic-p)
     (use-package org-bullets
-    :hook (org-mode . (lambda() (org-bullets-mode 1))))))
+      :hook (org-mode . (lambda() (org-bullets-mode 1))))))
 ;; (org-babel-load-file (expand-file-name "~/.emacs.d/emacs-init.org"))
 
 ;;; Settings for exec-path-from-shell
@@ -77,22 +77,22 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
-	ivy-initial-inputs-alist nil
-	ivy-count-format "%d/%d "
-	enable-recursive-minibuffers t
-	ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+        ivy-initial-inputs-alist nil
+        ivy-count-format "%d/%d "
+        enable-recursive-minibuffers t
+        ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   :hook (after-init . ivy-mode))
 
 (use-package counsel
   :after (ivy)
   :bind (("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file)
-	 ("C-c g" . counsel-git)))
+         ("C-x C-f" . counsel-find-file)
+         ("C-c g" . counsel-git)))
 
 (use-package swiper
   :after ivy
   :config (setq swiper-action-recenter t
-		swiper-include-line-number-in-search t)
+                swiper-include-line-number-in-search t)
   :bind ("C-s" . swiper))
 
 ;;; Settings for company
@@ -143,6 +143,7 @@
 
 ;;; Settings for projectile
 (use-package projectile
+  :defer t
   :hook (after-init . projectile-mode)
   :config (setq-default projectile-mode-line-prefix " Proj")
   :bind-keymap ("C-c p" . projectile-command-map))
@@ -150,7 +151,7 @@
 (use-package flycheck
   :init (global-flycheck-mode)
   :bind (("M-n" . 'flycheck-next-error)
-	 ("M-p" . 'flycheck-previous-error)))
+         ("M-p" . 'flycheck-previous-error)))
 
 ;;; Settings for jump windows, use M-NUM to switch
 (use-package ace-window
@@ -169,18 +170,18 @@
 ;;; drag-stuff - move lines up/down
 (use-package drag-stuff
   :bind (("<M-up>". drag-stuff-up)
-	 ("<M-down>" . drag-stuff-down)))
+         ("<M-down>" . drag-stuff-down)))
 
 ;;; Settings for treemacs
 ;; (use-package treemacs
-  ;; :defer t
-  ;; :bind (("C-c t" . treemacs)))
+;; :defer t
+;; :bind (("C-c t" . treemacs)))
 
 ;; (use-package treemacs-projectile
-  ;; :after treemacs projectile)
+;; :after treemacs projectile)
 
 ;; (use-package treemacs-magit
-  ;; :after treemacs magit)
+;; :after treemacs magit)
 
 ;;; Settings for smooth scrolling
 (use-package smooth-scrolling
