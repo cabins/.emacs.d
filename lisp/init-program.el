@@ -25,22 +25,19 @@
          (go-mode . lsp)
          (js-mode . lsp)
          (web-mode . lsp)
-         (html-mode . lsp)
-         )
+         (html-mode . lsp))
   :commands (lsp lsp-deferred)
   :init (setq lsp-prefer-flymake nil
-	      lsp-auto-guess-root t)
+              lsp-auto-guess-root t)
   :config
   ;; Configure LSP Clients
   (use-package lsp-clients
     :ensure nil
     :functions (lsp-format-buffer lsp-organize-imports)
     :hook (go-mode . (lambda ()
-		       "Format buffer and auto-import packages"
-		       (add-hook 'before-save-hook #'lsp-format-buffer t t)
-		       (add-hook 'before-save-hook #'lsp-organize-imports t t)))
-    )
-  )
+                       "Format buffer and auto-import packages"
+                       (add-hook 'before-save-hook #'lsp-format-buffer t t)
+                       (add-hook 'before-save-hook #'lsp-organize-imports t t)))))
 
 ;;; Optionally: lsp-ui, company-lsp
 (use-package lsp-ui
@@ -60,10 +57,10 @@
 (use-package dap-mode
   :diminish
   :hook ((after-init . dap-mode)
-	 (dap-mode . dap-ui-mode)
-	 (python-mode . (lambda() (require 'dap-python)))
-	 (go-mode . (lambda() (require 'dap-go)))
-	 (java-mode . (lambda() (require 'dap-java)))))
+         (dap-mode . dap-ui-mode)
+         (python-mode . (lambda() (require 'dap-python)))
+         (go-mode . (lambda() (require 'dap-go)))
+         (java-mode . (lambda() (require 'dap-java)))))
 
 ;;; ----------------------------- Java -----------------------------
 ;; (use-package lsp-java)
