@@ -3,13 +3,15 @@
 ;;; Code:
 
 ;; Settings for GoLang
-(use-package go-mode)
+(use-package go-mode :defer t)
 ;; Settings for markdown
-(use-package markdown-mode)
+(use-package markdown-mode :defer t)
 ;; Settings for REST Client
-(use-package restclient :mode ("\\.http\\'" . restclient-mode))
+(use-package restclient
+  :defer t
+  :mode ("\\.http\\'" . restclient-mode))
 ;; Settings for YAML mode
-(use-package yaml-mode)
+(use-package yaml-mode :defer t)
 
 ;;; ================================================================================ ;;;
 ;;;                          Common LSP settings                                     ;;;
@@ -52,6 +54,7 @@
   :init (push 'company-lsp company-backends))
 
 (use-package lsp-treemacs
+  :defer t
   :commands lsp-treemacs-errors-list)
 
 (use-package dap-mode
