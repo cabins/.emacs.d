@@ -2,20 +2,17 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Settings for GoLang
+;; (use-package lsp-java :defer t)
 (use-package go-mode :defer t)
-;; Settings for markdown
 (use-package markdown-mode :defer t)
-;; Settings for REST Client
 (use-package restclient
   :defer t
   :mode ("\\.http\\'" . restclient-mode))
-;; Settings for YAML mode
 (use-package yaml-mode :defer t)
 
-;;; ================================================================================ ;;;
-;;;                          Common LSP settings                                     ;;;
-;;; ================================================================================ ;;;
+;;; ================================================================================
+;;;                          Common LSP settings                                 ;;;
+;;; ================================================================================
 
 (use-package lsp-mode
   :defer t
@@ -61,9 +58,6 @@
          (python-mode . (lambda() (require 'dap-python)))
          (go-mode . (lambda() (require 'dap-go)))
          (java-mode . (lambda() (require 'dap-java)))))
-
-;;; ----------------------------- Java -----------------------------
-;; (use-package lsp-java)
 
 (provide 'init-program)
 ;;; init-program.el ends here
