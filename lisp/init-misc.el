@@ -5,6 +5,7 @@
 ;; Settings for delete multi line spaces
 (use-package emacs
   :config
+  (defalias 'yes-or-no-p 'y-or-n-p)
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
   :hook ((before-save . delete-trailing-whitespace)

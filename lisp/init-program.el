@@ -15,7 +15,6 @@
 ;;; ================================================================================
 
 (use-package lsp-mode
-  :defer t
   ;; add prog-mode to lsp instead of adding one by one
   ;; :hook (prog-mode . (lsp-deferred))
   :hook ((python-mode . lsp)
