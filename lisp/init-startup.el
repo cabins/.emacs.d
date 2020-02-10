@@ -18,7 +18,7 @@
 
 ;; Settings for GUI misc
 (setq inhibit-startup-screen t
-	    initial-buffer-choice nil)
+      initial-buffer-choice nil)
 
 (when (display-graphic-p)
   (scroll-bar-mode -1)
