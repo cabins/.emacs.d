@@ -97,14 +97,14 @@
 (use-package ivy
   :defer 1
   :demand
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t
-        ivy-initial-inputs-alist nil
-        ivy-count-format "%d/%d "
-        enable-recursive-minibuffers t
-        ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   :hook (after-init . ivy-mode))
+:config
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t
+      ivy-initial-inputs-alist nil
+      ivy-count-format "%d/%d "
+      enable-recursive-minibuffers t
+      ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
 
 (use-package counsel
   :after (ivy)
@@ -114,9 +114,9 @@
 
 (use-package swiper
   :after ivy
-  :config (setq swiper-action-recenter t
-                swiper-include-line-number-in-search t)
   :bind ("C-s" . swiper))
+:config (setq swiper-action-recenter t
+              swiper-include-line-number-in-search t)
 
 
 
@@ -144,10 +144,9 @@
 
 (use-package auto-yasnippet
   :defer t
-  :init
-  (global-set-key (kbd "C-o") #'aya-open-line)
-  (global-set-key (kbd "H-w") #'aya-create)
-  (global-set-key (kbd "H-y") #'aya-expand))
+  :bind (("C-o" . aya-open-line)
+         ("H-w" . aya-create)
+         ("H-y" . aya-expand)))
 
 ;; Settings for projectile
 (use-package projectile
