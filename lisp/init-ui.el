@@ -14,7 +14,7 @@
 
     ;; Setting English Font
     (when *is-windows*
-      (set-face-attribute 'default nil :font "Source Code Pro 9"))
+      (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9"))
     (when *is-mac*
       (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11"))
 
@@ -22,7 +22,7 @@
     (when *is-windows*
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
 	    (set-fontset-font (frame-parameter nil 'font)
-			              charset (font-spec :family "STKaiti" :size 14))))
+			              charset (font-spec :family "Microsoft Yahei Mono" :size 9))))
 
     ;; Settings for UI theme
     (use-package spacemacs-theme
