@@ -61,12 +61,13 @@
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
-  :defer nil
+  :defer t
   :bind (("C-c DEL" . hungry-delete-backward))
   :bind (("C-c d" . hungry-delete-forward)))
 
 ;; drag-stuff - move lines up/down
 (use-package drag-stuff
+  :defer t
   :bind (("<M-up>". drag-stuff-up)
          ("<M-down>" . drag-stuff-down)))
 
@@ -124,6 +125,7 @@
 ;; ******************** PART5 basic development ********************
 ;; Settings for which-key - suggest next key
 (use-package which-key
+  :defer t
   :config (which-key-mode +1))
 
 ;; Settings for magit
@@ -156,6 +158,7 @@
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
+  :defer t
   :init (global-flycheck-mode)
   :bind (("M-n" . 'flycheck-next-error)
          ("M-p" . 'flycheck-previous-error)))

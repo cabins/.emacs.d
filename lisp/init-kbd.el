@@ -2,10 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Settings for comment/uncomment
-(global-set-key (kbd "M-/") 'comment-line)
-(global-set-key (kbd "M-?") 'comment-or-uncomment-region)
-
 ;; Settings for macOS key: Use command as the Meta key
 (when *is-mac*
   (setq mac-command-modifier 'meta)

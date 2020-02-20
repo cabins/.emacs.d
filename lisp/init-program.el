@@ -15,13 +15,14 @@
 ;;; ================================================================================
 
 (use-package lsp-mode
+  :defer t
   ;; add prog-mode to lsp instead of adding one by one
   ;; :hook (prog-mode . (lsp-deferred))
-  :hook ((python-mode . lsp)
-         (go-mode . lsp)
-         (js-mode . lsp)
-         (web-mode . lsp)
-         (html-mode . lsp))
+  :hook ((python-mode . lsp-deferred)
+         (go-mode . lsp-deferred)
+         (js-mode . lsp-deferred)
+         (web-mode . lsp-deferred)
+         (html-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :init (setq lsp-prefer-flymake nil
               lsp-auto-guess-root t)
@@ -50,13 +51,13 @@
   :defer t
   :commands lsp-treemacs-errors-list)
 
-(use-package dap-mode
-  :diminish
-  :hook ((after-init . dap-mode)
-         (dap-mode . dap-ui-mode)
-         (python-mode . (lambda() (require 'dap-python)))
-         (go-mode . (lambda() (require 'dap-go)))
-         (java-mode . (lambda() (require 'dap-java)))))
+;; (use-package dap-mode
+;;   :diminish
+;;   :hook ((after-init . dap-mode)
+;;          (dap-mode . dap-ui-mode)
+;;          (python-mode . (lambda() (require 'dap-python)))
+;;          (go-mode . (lambda() (require 'dap-go)))
+;;          (java-mode . (lambda() (require 'dap-java)))))
 
 (provide 'init-program)
 ;;; init-program.el ends here

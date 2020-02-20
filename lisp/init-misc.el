@@ -13,7 +13,9 @@
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode t)
   :hook ((before-save . delete-trailing-whitespace)
-	     (after-init . delete-selection-mode)))
+	     (after-init . delete-selection-mode))
+  :bind (("M-/" . comment-line)
+         ("M-?" . comment-or-uncomment-region)))
 
 ;; Show parentheses
 (use-package paren
