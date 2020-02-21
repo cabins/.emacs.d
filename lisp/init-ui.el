@@ -13,7 +13,7 @@
   ;; (setq default-frame-alist '((width . 150) (height . 35)))
   (use-package smart-mode-line-powerline-theme))
 
-(when *is-mac*
+(when (or *is-mac* *is-linux*)
   (progn
     ;; Font settings
     (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")
