@@ -3,9 +3,7 @@
 ;;; Code:
 
 (setq package-check-signature nil)
-
 (require 'package)
-(setq package-enable-at-startup t)
 
 ;;; Settings for package archives
 (setq package-archives '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
@@ -17,7 +15,8 @@
 ;; (package-initialize))
 
 ;;; Initialize the packages, avoiding a re-initialization
-(unless (bound-and-true-p package--initialized)
+(unless (bound-and-true-p package--initialized) ;; To avoid warnings on 27
+  (setq package-enable-at-startup nil) ;; To prevent initializing twice
   (package-initialize))
 
 (unless package-archive-contents

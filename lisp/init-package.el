@@ -13,8 +13,9 @@
 ;; Configure use-package prior to loading it
 (eval-and-compile
   (setq use-package-always-ensure t)
-  (setq use-package-always-defer nil)
+  (setq use-package-always-defer t)
   (setq use-package-always-demand nil)
+  (setq use-package-expand-minimally t)
   (setq use-package-verbose t))
 
 (eval-and-compile
@@ -35,7 +36,6 @@
 ;; ******************** PART2 shell & environments ********************
 ;; Settings for org mode and load config from org file
 (use-package org
-  :defer t
   :config
   (setq org-startup-indented t)
   (when (display-graphic-p)
@@ -55,19 +55,16 @@
 ;; ******************** PART3 editing ********************
 ;; Settings for C-a behavior
 (use-package crux
-  :defer t
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c C-k" . crux-kill-whole-line)))
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
-  :defer t
   :bind (("C-c DEL" . hungry-delete-backward))
   :bind (("C-c d" . hungry-delete-forward)))
 
 ;; drag-stuff - move lines up/down
 (use-package drag-stuff
-  :defer t
   :bind (("<M-up>". drag-stuff-up)
          ("<M-down>" . drag-stuff-down)))
 
@@ -81,10 +78,10 @@
   (setq company-dabbrev-ignore-case t)
   (setq company-dabbrev-other-buffers 'all)
   (setq company-require-match nil)
-  (setq company-minimum-prefix-length 3)
+  (setq company-minimum-prefix-length 2)
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)
-  (setq company-idle-delay .3)
+  (setq company-idle-delay 0)
   (setq company-echo-delay 0)
   (setq company-tooltip-offset-display 'scrollbar)
   (setq company-begin-commands '(self-insert-command))
@@ -115,9 +112,10 @@
 
 (use-package swiper
   :after ivy
-  :bind ("C-s" . swiper))
-:config (setq swiper-action-recenter t
-              swiper-include-line-number-in-search t)
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper-isearch-backward))
+  :config (setq swiper-action-recenter t
+                swiper-include-line-number-in-search t))
 
 
 
@@ -125,17 +123,14 @@
 ;; ******************** PART5 basic development ********************
 ;; Settings for which-key - suggest next key
 (use-package which-key
-  :defer t
   :config (which-key-mode +1))
 
 ;; Settings for magit
 (use-package magit
-  :defer t
   :bind ("C-x g" . magit-status))
 
 ;; Settings for yasnippet - not sure if works fine
 (use-package yasnippet
-  :defer t
   :diminish yas-minor-mode
   :init (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
@@ -145,32 +140,27 @@
     :defer t))
 
 (use-package auto-yasnippet
-  :defer t
   :bind (("C-o" . aya-open-line)
          ("H-w" . aya-create)
          ("H-y" . aya-expand)))
 
 ;; Settings for projectile
 (use-package projectile
-  :defer t
   :hook (after-init . projectile-mode)
   :config (setq-default projectile-mode-line-prefix " Proj")
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
-  :defer t
   :init (global-flycheck-mode)
   :bind (("M-n" . 'flycheck-next-error)
          ("M-p" . 'flycheck-previous-error)))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses
-  :defer t
   :hook (prog-mode . highlight-parentheses-mode))
 
 ;; Settings for rainbow mode
 (use-package rainbow-mode
-  :defer t
   :hook (prog-mode . rainbow-mode))
 
 
@@ -188,7 +178,6 @@
 
 ;; Settings for treemacs
 ;; (use-package treemacs
-;; :defer t
 ;; :bind (("C-c t" . treemacs)))
 
 ;; (use-package treemacs-projectile

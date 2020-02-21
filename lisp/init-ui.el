@@ -11,14 +11,7 @@
     (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")
     ;; Settings for UI theme
     (use-package spacemacs-theme
-      :defer t
-      :init (load-theme 'spacemacs-dark t))
-    (use-package smart-mode-line-powerline-theme)
-    (use-package smart-mode-line
-      :init
-      (setq sml/no-confirm-load-theme t)
-      (setq sml/theme 'powerline)
-      (sml/setup))))
+      :init (load-theme 'spacemacs-dark t))))
 
 (when *is-windows*
   (progn
@@ -33,6 +26,12 @@
   (set-frame-parameter nil 'fullscreen 'maximized)
     ;;; If you don't want maximized window, you can use the next line to define a customized size
   ;; (setq default-frame-alist '((width . 150) (height . 35)))
+  (use-package smart-mode-line-powerline-theme)
+  (use-package smart-mode-line
+    :init
+    (setq sml/no-confirm-load-theme t)
+    (setq sml/theme 'powerline)
+    (sml/setup))
   )
 
 (use-package emacs
