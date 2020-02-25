@@ -17,7 +17,9 @@
 ;;; Initialize the packages, avoiding a re-initialization
 (unless (bound-and-true-p package--initialized) ;; To avoid warnings on 27
   (setq package-enable-at-startup nil) ;; To prevent initializing twice
-  (package-initialize))
+  (when (version< emacs-version "27.0")
+    (package-initialize))
+  )
 
 (unless package-archive-contents
   (package-refresh-contents))
