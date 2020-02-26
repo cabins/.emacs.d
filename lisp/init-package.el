@@ -126,8 +126,11 @@
   :config (which-key-mode +1))
 
 ;; Settings for magit
-(use-package magit
-  :bind ("C-x g" . magit-status))
+;; I quit using magit on windows, 'cause its performance sucks
+;; I use emacs builtin vc on windows instead
+(when (not *is-windows*)
+  (use-package magit
+    :bind ("C-x g" . magit-status)))
 
 ;; Settings for yasnippet - not sure if works fine
 (use-package yasnippet
