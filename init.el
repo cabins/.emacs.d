@@ -28,7 +28,6 @@
 (require 'init-kbd)
 (require 'init-misc)
 (require 'init-program)
-;; (require 'init-web)
 (require 'init-funcs)
 
 ;;; init.el ends here

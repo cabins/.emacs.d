@@ -42,16 +42,16 @@
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode)
   :init (setq lsp-ui-doc-enable t
-                 lsp-ui-doc-use-webkit nil
-                 lsp-ui-doc-delay 0.2
-                 lsp-ui-doc-include-signature t
-                 lsp-ui-doc-position 'at-point
-                 lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
+              lsp-ui-doc-use-webkit nil
+              lsp-ui-doc-delay 0.2
+              lsp-ui-doc-include-signature t
+              lsp-ui-doc-position 'at-point
+              lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
 
-                 lsp-ui-sideline-enable t
-                 lsp-ui-sideline-show-hover nil
-                 lsp-ui-sideline-show-diagnostics nil
-                 lsp-ui-sideline-ignore-duplicate t)
+              lsp-ui-sideline-enable t
+              lsp-ui-sideline-show-hover nil
+              lsp-ui-sideline-show-diagnostics nil
+              lsp-ui-sideline-ignore-duplicate t)
   :config (setq lsp-ui-flycheck-enable t)
   :commands lsp-ui-mode)
 
@@ -69,6 +69,26 @@
 ;;          (python-mode . (lambda() (require 'dap-python)))
 ;;          (go-mode . (lambda() (require 'dap-go)))
 ;;          (java-mode . (lambda() (require 'dap-java)))))
+
+
+;; ==========================================================
+;;                      Web Mode settings
+;; ==========================================================
+(use-package web-mode
+  :mode ("\\.html\\'")
+  :config
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-enable-current-element-highlight t
+        web-mode-enable-css-colorization t)
+  (use-package company-web
+    :config
+    (add-to-list 'company-backends 'company-web-html)
+    (add-to-list 'company-backends 'company-css))
+  )
+(use-package emmet-mode
+  :hook (web-mode css-mode))
 
 (provide 'init-program)
 ;;; init-program.el ends here
