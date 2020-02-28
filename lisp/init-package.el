@@ -123,7 +123,8 @@
 ;; ******************** PART5 basic development ********************
 ;; Settings for which-key - suggest next key
 (use-package which-key
-  :config (which-key-mode +1))
+  :defer nil
+  :config (which-key-mode))
 
 ;; Settings for magit
 ;; I quit using magit on windows, 'cause its performance sucks
