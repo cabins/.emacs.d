@@ -18,6 +18,7 @@
   ;; :hook (prog-mode . (lsp-deferred))
   :hook ((python-mode . lsp-deferred)
          (go-mode . lsp-deferred)
+         (java-mode . lsp-deferred)
          (js-mode . lsp-deferred)
          (web-mode . lsp-deferred)
          (html-mode . lsp-deferred))

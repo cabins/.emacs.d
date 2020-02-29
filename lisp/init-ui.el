@@ -35,9 +35,20 @@
                   sml/theme 'light-powerline)
       (sml/setup))))
 
+;; Display time on right-bottom corner
 (use-package emacs
   :config
   (display-time-mode 1))
+
+;; Setting initial-scratch-message
+(setq initial-scratch-message
+      (concat ";; Happy hacking, " user-login-name "! Welcome to use the configs from Cabins.\n"
+              "\n"
+              ";; Please create issues if you find any bugs.\n"
+              ";; https://github.com/cabins/.emacs.d\n"
+              "\n"
+              ";; Emacs loves you!"))
+
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
