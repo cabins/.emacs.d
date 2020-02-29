@@ -95,14 +95,22 @@
 (use-package ivy
   :defer 1
   :demand
-  :hook (after-init . ivy-mode))
-:config
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t
-      ivy-initial-inputs-alist nil
-      ivy-count-format "%d/%d "
-      enable-recursive-minibuffers t
-      ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+  :hook (after-init . ivy-mode)
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-initial-inputs-alist nil
+        ivy-count-format "%d/%d "
+        enable-recursive-minibuffers t
+        ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+  (use-package ivy-posframe
+    :init
+    (setq ivy-posframe-display-functions-alist
+          '((swiper          . ivy-posframe-display-at-point)
+            (complete-symbol . ivy-posframe-display-at-point)
+            (counsel-M-x     . ivy-posframe-display-at-window-center)
+            (t               . ivy-posframe-display)))
+    (ivy-posframe-enable)))
 
 (use-package counsel
   :after (ivy)
