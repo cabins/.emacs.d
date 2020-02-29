@@ -27,7 +27,8 @@
               lsp-keep-workspace-alive nil ;; Auto kill LSP server
               lsp-enable-indentation nil
               lsp-enable-on-type-formatting nil
-              lsp-auto-guess-root t)
+              lsp-auto-guess-root nil
+              lsp-enable-snippet t)
   :config
   ;; Configure LSP Clients
   (use-package lsp-clients
