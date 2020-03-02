@@ -5,6 +5,19 @@
 
 ;;; Code:
 
+;; Settings for UI theme
+(use-package spacemacs-theme
+  :unless *is-windows*
+  :init (load-theme 'spacemacs-dark t))
+(use-package smart-mode-line-powerline-theme)
+(use-package smart-mode-line
+  :init
+  (setq sml/no-confirm-load-theme t)
+  (if *is-windows*
+      (setq sml/theme 'light-powerline)
+    (setq sml/theme 'powerline))
+  (sml/setup))
+
 (use-package emacs
   :config
   ;; GUI misc
@@ -13,8 +26,6 @@
         initial-scratch-message (concat ";; Happy hacking, " user-login-name "! Welcome to use the configs from Cabins.\n\n"
                                         ";; Please create issues if you find any bugs. https://github.com/cabins/.emacs.d\n\n"))
   (when (display-graphic-p)
-    (set-frame-parameter nil 'fullscreen 'maximized)
-    ;; (setq default-frame-alist '((width . 150) (height . 35))
     (scroll-bar-mode -1)
     (tool-bar-mode -1)
     ;; Display menu bar on macOS with GUI mode (Global Menu)
@@ -29,20 +40,9 @@
             (set-fontset-font (frame-parameter nil 'font)
                               charset (font-spec :family "Microsoft Yahei Mono" :size 9))))
       (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")
-      )))
-
-;; Settings for UI theme
-(use-package spacemacs-theme
-  :unless *is-windows*
-  :init (load-theme 'spacemacs-dark t))
-(use-package smart-mode-line-powerline-theme)
-(use-package smart-mode-line
-  :init
-  (setq sml/no-confirm-load-theme t)
-  (if *is-windows*
-      (setq sml/theme 'light-powerline)
-    (setq sml/theme 'powerline))
-  (sml/setup))
+      )
+    ;; (setq default-frame-alist '((width . 150) (height . 35))
+    (set-frame-parameter nil 'fullscreen 'maximized)))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
