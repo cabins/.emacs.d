@@ -12,6 +12,7 @@
   ;; Settings for line number
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode t)
+  (display-time-mode 1)
   :hook ((before-save . delete-trailing-whitespace)
 	     (after-init . delete-selection-mode))
   :bind (("M-/" . comment-line)
