@@ -110,6 +110,7 @@
             (complete-symbol   . ivy-posframe-display-at-point)
             (counsel-M-x       . ivy-posframe-display-at-frame-center)
             (counsel-find-file . ivy-posframe-display-at-frame-center)
+            (ivy-switch-buffer . ivy-posframe-display-at-frame-center)
             (t                 . ivy-posframe-display)))
     (ivy-posframe-enable)))
 
