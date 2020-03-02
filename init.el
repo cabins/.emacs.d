@@ -15,10 +15,12 @@
 (require 'init-startup)
 (require 'init-elpa)
 (require 'init-package)
-(require 'init-ui)
 (require 'init-kbd)
 (require 'init-misc)
 (require 'init-program)
 (require 'init-funcs)
+
+;; Init ui
+(require 'init-ui)
 
 ;;; init.el ends here
