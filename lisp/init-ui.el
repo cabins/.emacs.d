@@ -6,16 +6,16 @@
 ;;; Code:
 
 ;; Settings for UI theme
-(use-package spacemacs-theme
+(use-package dracula-theme
   :unless *is-windows*
-  :init (load-theme 'spacemacs-dark t))
-(use-package smart-mode-line-powerline-theme)
+  :init (load-theme 'dracula t))
+;; (use-package smart-mode-line-powerline-theme)
 (use-package smart-mode-line
   :init
   (setq sml/no-confirm-load-theme t)
-  ;; (setq sml/theme 'respectful)
+  (setq sml/theme 'respectful)
   ;; (if *is-windows*
-  (setq sml/theme 'powerline)
+  ;; (setq sml/theme 'powerline)
   ;; (setq sml/theme 'powerline))
   (sml/setup))
 
