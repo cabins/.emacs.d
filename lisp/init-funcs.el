@@ -1,5 +1,5 @@
 ;;; init-funcs.el --- Init some functions here
-;;; Commentary:
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 (defun cabins/open-emacs-init-file ()

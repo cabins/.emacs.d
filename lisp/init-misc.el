@@ -6,17 +6,19 @@
 (use-package emacs
   :config
   (defalias 'yes-or-no-p 'y-or-n-p)
+
   ;; Settings for the TAB behavior
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
+
   ;; Settings for line number
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode t)
+
+  ;; Display time at the right bottom corner
   (display-time-mode 1)
   :hook ((before-save . delete-trailing-whitespace)
-	     (after-init . delete-selection-mode))
-  :bind (("M-/" . comment-line)
-         ("M-?" . comment-or-uncomment-region)))
+	     (after-init . delete-selection-mode)))
 
 ;; Show parentheses
 (use-package paren

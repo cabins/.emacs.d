@@ -92,5 +92,8 @@
 (use-package emmet-mode
   :hook (web-mode css-mode))
 
+(use-package emacs
+  :hook (prog-mode . electric-pair-mode))
+
 (provide 'init-program)
 ;;; init-program.el ends here

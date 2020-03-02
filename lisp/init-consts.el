@@ -1,5 +1,5 @@
 ;;; init-consts.el --- Define some consts used in the context
-;;; Commentary:
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; Settings for macOS key: Use command as the Meta key
