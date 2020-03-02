@@ -13,18 +13,17 @@
 (use-package smart-mode-line
   :init
   (setq sml/no-confirm-load-theme t)
-  (if *is-windows*
-      (setq sml/theme 'light-powerline)
-    (setq sml/theme 'powerline))
+  ;; (setq sml/theme 'respectful)
+  ;; (if *is-windows*
+  (setq sml/theme 'powerline)
+  ;; (setq sml/theme 'powerline))
   (sml/setup))
 
 (use-package emacs
   :config
   ;; GUI misc
-  (setq inhibit-startup-screen t
-        initial-buffer-choice nil
-        initial-scratch-message (concat ";; Happy hacking, " user-login-name "! Welcome to use the configs from Cabins.\n\n"
-                                        ";; Please create issues if you find any bugs. https://github.com/cabins/.emacs.d\n\n"))
+  (setq inhibit-splash-screen t
+        initial-buffer-choice nil)
   (when (display-graphic-p)
     (scroll-bar-mode -1)
     (tool-bar-mode -1)
