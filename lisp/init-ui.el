@@ -5,24 +5,10 @@
 
 ;;; Code:
 
-;; Settings for UI theme
-(use-package dracula-theme
-  :unless *is-windows*
-  :init (load-theme 'dracula t))
-;; (use-package smart-mode-line-powerline-theme)
-(use-package smart-mode-line
-  :init
-  (setq sml/no-confirm-load-theme t)
-  (setq sml/theme 'respectful)
-  ;; (if *is-windows*
-  ;; (setq sml/theme 'powerline)
-  ;; (setq sml/theme 'powerline))
-  (sml/setup))
-
 (use-package emacs
   :config
   ;; GUI misc
-  (setq inhibit-splash-screen t
+  (setq inhibit-startup-screen t
         initial-buffer-choice nil)
   (when (display-graphic-p)
     (scroll-bar-mode -1)
@@ -42,6 +28,22 @@
       )
     ;; (setq default-frame-alist '((width . 150) (height . 35))
     (set-frame-parameter nil 'fullscreen 'maximized)))
+
+;; Settings for UI theme
+(use-package dracula-theme
+  :unless *is-windows*
+  :init (load-theme 'dracula t))
+;; (use-package smart-mode-line-powerline-theme)
+(use-package smart-mode-line
+  :init
+  (setq sml/no-confirm-load-theme t)
+  (setq sml/theme 'respectful)
+  ;; (if *is-windows*
+  ;; (setq sml/theme 'powerline)
+  ;; (setq sml/theme 'powerline))
+  (sml/setup))
+
+
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
