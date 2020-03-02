@@ -1,5 +1,8 @@
 ;;; init-startup.el --- Works when startup Emacs
-;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
+
+;;; Commentary:
+;;; (c) Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
 ;; Settings for system encoding
@@ -10,8 +13,8 @@
 (setq default-buffer-file-coding-system 'utf-8)
 
 ;; Settings for backup files
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+(setq make-backup-files nil
+      auto-save-default nil)
 
 ;; Adjust garbage collection thresholds during startup
 (setq gc-cons-threshold most-positive-fixnum)

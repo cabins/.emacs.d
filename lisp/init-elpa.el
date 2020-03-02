@@ -1,5 +1,8 @@
 ;;; init-elpa --- initialize elpa repository
+
 ;;; Commentary:
+;;; (c)Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
 (setq package-check-signature nil)

@@ -1,5 +1,8 @@
 ;;; init-kbd.el --- Summary
+
 ;;; Commentary:
+;;; (c)Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
 ;; Settings for macOS key: Use command as the Meta key

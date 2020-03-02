@@ -1,17 +1,18 @@
 ;;; init-program.el --- Initialize Programming language with LSP mode
+
 ;;; Commentary:
+;;; (c) Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
-;; (use-package lsp-java :defer t)
 (use-package go-mode)
+
 (use-package markdown-mode)
+
 (use-package restclient
   :mode ("\\.http\\'" . restclient-mode))
-(use-package yaml-mode)
 
-;;; ================================================================================
-;;;                          Common LSP settings                                 ;;;
-;;; ================================================================================
+(use-package yaml-mode)
 
 (use-package lsp-mode
   ;; add prog-mode to lsp instead of adding one by one
@@ -49,7 +50,6 @@
               lsp-ui-doc-include-signature t
               lsp-ui-doc-position 'at-point
               lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
-
               lsp-ui-sideline-enable t
               lsp-ui-sideline-show-hover nil
               lsp-ui-sideline-show-diagnostics nil
@@ -72,10 +72,6 @@
 ;;          (go-mode . (lambda() (require 'dap-go)))
 ;;          (java-mode . (lambda() (require 'dap-java)))))
 
-
-;; ==========================================================
-;;                      Web Mode settings
-;; ==========================================================
 (use-package web-mode
   :mode ("\\.html\\'")
   :config
@@ -89,6 +85,7 @@
     (add-to-list 'company-backends 'company-web-html)
     (add-to-list 'company-backends 'company-css))
   )
+
 (use-package emmet-mode
   :hook (web-mode css-mode))
 

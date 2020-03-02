@@ -1,9 +1,12 @@
 ;;; init-funcs.el --- Init some functions here
-;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
+
+;;; Commentary:
+;;; (c) Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
 (defun cabins/open-emacs-init-file ()
-  "Open the emacs config file"
+  "Open Emacs init config file."
   (interactive)
   (find-file user-init-file))
 

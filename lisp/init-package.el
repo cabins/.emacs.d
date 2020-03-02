@@ -1,5 +1,8 @@
 ;;; init-package --- initialize the plugins
+
 ;;; Commentary:
+;;; (c)Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
 

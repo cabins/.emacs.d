@@ -1,5 +1,8 @@
 ;;; init-misc.el --- Summary
+
 ;;; Commentary:
+;;; (c) Cabins, github.com/cabins/.emacs.d
+
 ;;; Code:
 
 ;; Settings for delete multi line spaces
