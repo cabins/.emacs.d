@@ -138,10 +138,10 @@
 
 ;; Settings for magit
 ;; I quit using magit on windows, 'cause its performance sucks
-;; I use emacs builtin vc on windows instead
-(when (not *is-windows*)
-  (use-package magit
-    :bind ("C-x g" . magit-status)))
+;; I use emacs builtin vc & cli-git on windows instead
+(use-package magit
+  :unless *is-windows*
+  :bind ("C-x g" . magit-status))
 
 ;; Settings for yasnippet - not sure if works fine
 (use-package yasnippet
@@ -174,9 +174,10 @@
   :hook (prog-mode . highlight-parentheses-mode))
 
 ;; Settings for rainbow mode
-(use-package rainbow-mode
-  :hook (prog-mode . rainbow-mode))
-
+;; (use-package rainbow-mode
+;; :hook (prog-mode . rainbow-mode))
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 
 
@@ -189,16 +190,6 @@
 (use-package smooth-scrolling
   :init (setq smooth-scrolling-margin 3)
   :config (smooth-scrolling-mode t))
-
-;; Settings for treemacs
-;; (use-package treemacs
-;; :bind (("C-c t" . treemacs)))
-
-;; (use-package treemacs-projectile
-;; :after treemacs projectile)
-
-;; (use-package treemacs-magit
-;; :after treemacs magit)
 
 (provide 'init-package)
 ;;; init-package.el ends here

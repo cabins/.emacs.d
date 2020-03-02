@@ -10,16 +10,11 @@
                          ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
-;;; Package initialize
-;; (when (< emacs-major-version 27)
-;; (package-initialize))
-
 ;;; Initialize the packages, avoiding a re-initialization
 (unless (bound-and-true-p package--initialized) ;; To avoid warnings on 27
   (setq package-enable-at-startup nil) ;; To prevent initializing twice
   (when (version< emacs-version "27.0")
-    (package-initialize))
-  )
+    (package-initialize)))
 
 (unless package-archive-contents
   (package-refresh-contents))
