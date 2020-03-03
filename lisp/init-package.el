@@ -146,7 +146,6 @@
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
-  :defer t
   :hook (prog-mode . flycheck-mode)
   :bind ("C-c e" . flycheck-list-errors))
 
