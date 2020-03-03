@@ -5,9 +5,6 @@
 
 ;;; Code:
 
-;; (setq default-frame-alist '((width . 150) (height . 35))
-(set-frame-parameter nil 'fullscreen 'maximized)
-
 ;; Consts to check operating system
 (defconst *is-mac* (eq system-type 'darwin))
 (defconst *is-linux* (eq system-type 'gnu/linux))
