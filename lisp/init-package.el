@@ -127,7 +127,7 @@
 ;; Settings for yasnippet - not sure if works fine
 (use-package yasnippet
   :diminish yas-minor-mode
-  :init (add-hook 'prog-mode-hook #'yas-minor-mode)
+  :hook (prog-mode . yas-minor-mode)
   :config
   ;; (yas-reload-all)
   (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
@@ -168,7 +168,7 @@
 
 ;; Settings for smooth scrolling
 (use-package smooth-scrolling
-  :init (setq smooth-scrolling-margin 3)
+  :init (setq smooth-scrolling-margin 2)
   :config (smooth-scrolling-mode t))
 
 (provide 'init-package)
