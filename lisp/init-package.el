@@ -5,28 +5,6 @@
 
 ;;; Code:
 
-
-
-;; ******************** PART0 use-package ********************
-;; Settings for use-package package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; Configure use-package prior to loading it
-(eval-and-compile
-  (setq use-package-always-ensure t)
-  (setq use-package-always-defer t)
-  (setq use-package-always-demand nil)
-  (setq use-package-expand-minimally t)
-  (setq use-package-verbose t))
-
-(eval-and-compile
-  (require 'use-package))
-
-
-
-
 ;; ******************** PART1 benchmark(Optional) ********************
 ;; Settings for benchmark package
 (use-package benchmark-init
@@ -168,9 +146,9 @@
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
-  :init (global-flycheck-mode)
-  :bind (("M-n" . 'flycheck-next-error)
-         ("M-p" . 'flycheck-previous-error)))
+  :defer t
+  :hook (prog-mode . flycheck-mode)
+  :bind ("C-c e" . flycheck-list-errors))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses

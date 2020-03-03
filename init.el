@@ -10,15 +10,15 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-(require 'init-consts)
+(require 'init-before-start)
 (require 'init-startup)
 (require 'init-elpa)
 (require 'init-package)
-(require 'init-ui)
 (require 'init-kbd)
 (require 'init-misc)
 (require 'init-program)
 (require 'init-funcs)
 
+(require 'init-ui)
 
 ;;; init.el ends here

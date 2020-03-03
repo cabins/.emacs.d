@@ -6,28 +6,16 @@
 ;;; Code:
 
 (use-package emacs
+  :if (display-graphic-p)
   :config
-  ;; GUI misc
-  (setq inhibit-startup-screen t
-        initial-buffer-choice nil)
-  (when (display-graphic-p)
-    (scroll-bar-mode -1)
-    (tool-bar-mode -1)
-    ;; Display menu bar on macOS with GUI mode (Global Menu)
-    (unless *is-mac*
-      (menu-bar-mode -1))
-
-    ;; Font settings
-    (if *is-windows*
-        (progn
-          (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
-          (dolist (charset '(kana han symbol cjk-misc bopomofo))
-            (set-fontset-font (frame-parameter nil 'font)
-                              charset (font-spec :family "Microsoft Yahei Mono" :size 9))))
-      (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")
-      )
-    ;; (setq default-frame-alist '((width . 150) (height . 35))
-    (set-frame-parameter nil 'fullscreen 'maximized)))
+  ;; Font settings
+  (if *is-windows*
+      (progn
+        (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
+        (dolist (charset '(kana han symbol cjk-misc bopomofo))
+          (set-fontset-font (frame-parameter nil 'font)
+                            charset (font-spec :family "Microsoft Yahei Mono" :size 9))))
+    (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")))
 
 ;; Settings for UI theme
 (use-package dracula-theme
@@ -42,8 +30,6 @@
   ;; (setq sml/theme 'powerline)
   ;; (setq sml/theme 'powerline))
   (sml/setup))
-
-
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
