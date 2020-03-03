@@ -19,7 +19,7 @@
 
 ;; Settings for UI theme
 (use-package dracula-theme
-  :unless *is-windows*
+  ;; :unless *is-windows*
   :init (load-theme 'dracula t))
 ;; (use-package smart-mode-line-powerline-theme)
 (use-package smart-mode-line

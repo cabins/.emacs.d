@@ -85,6 +85,7 @@
         enable-recursive-minibuffers t
         ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   (use-package ivy-posframe
+    :delight
     :init
     (setq ivy-posframe-display-functions-alist
           '((swiper            . ivy-posframe-display-at-frame-center)
