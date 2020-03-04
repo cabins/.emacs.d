@@ -94,7 +94,7 @@
             (counsel-find-file . ivy-posframe-display-at-frame-center)
             (ivy-switch-buffer . ivy-posframe-display-at-frame-center)
             (t                 . ivy-posframe-display-at-frame-center)))
-    (ivy-posframe-enable)))
+    (ivy-posframe-mode 1)))
 
 (use-package counsel
   :after (ivy)
