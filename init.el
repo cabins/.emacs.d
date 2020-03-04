@@ -6,9 +6,8 @@
 
 ;;; Code:
 
-;; Settings for the lisp config path
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load-file (concat (file-name-directory user-emacs-directory)
+                   "lisp/core/core-load-paths.el"))
 
 (require 'init-before-start)
 (require 'init-startup)
