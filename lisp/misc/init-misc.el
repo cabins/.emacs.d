@@ -21,6 +21,10 @@
   ;; Display time at the right bottom corner
   (setq display-time-24hr-format t)
   (display-time-mode 1)
+
+  ;; Display 'lambda' as 'λ' (just for fun)
+  (global-prettify-symbols-mode 1)
+
   :hook ((before-save . delete-trailing-whitespace)
 	     (after-init . delete-selection-mode)))
 
