@@ -19,6 +19,7 @@
   (global-display-line-numbers-mode t)
 
   ;; Display time at the right bottom corner
+  (setq display-time-24hr-format t)
   (display-time-mode 1)
   :hook ((before-save . delete-trailing-whitespace)
 	     (after-init . delete-selection-mode)))

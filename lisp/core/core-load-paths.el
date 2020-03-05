@@ -43,4 +43,7 @@
 	,lisp-ui-folder
 	,lisp-misc-folder))
 
+(when (file-exists-p custom-file)
+  (load-file custom-file))
+
 ;;; core-load-paths.el ends here
