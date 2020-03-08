@@ -7,8 +7,9 @@
 
 (use-package lsp-mode
   ;; add prog-mode to lsp instead of adding one by one
-  ;; :hook (prog-mode . (lsp-deferred))
+  :hook (prog-mode . (lsp-deferred))
   :hook ((python-mode . lsp-deferred)
+         (c-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (java-mode . lsp-deferred)
          (js-mode . lsp-deferred)
