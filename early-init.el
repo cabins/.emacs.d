@@ -11,7 +11,4 @@
 ;; initialization, so we must prevent Emacs from doing it early!
 (setq package-enable-at-startup nil)
 
-;; Do not initialize the package manager, which is done in 'init.el'
-(setq package-enable-at-startup nil)
-
 ;;; early-init.el ends here
