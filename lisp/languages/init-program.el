@@ -5,12 +5,14 @@
 
 ;;; Code:
 
-(require 'init-lsp)
 (require 'init-go)
 (require 'init-markdown)
 (require 'init-restclient)
-(require 'init-yaml)
+(require 'init-vue)
 (require 'init-web)
+(require 'init-yaml)
+
+(require 'init-lsp)
 
 (provide 'init-program)
 ;;; init-program.el ends here
