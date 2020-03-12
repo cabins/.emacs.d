@@ -71,7 +71,7 @@
   # For macOS:
   #     homebrew install llvm
   # For Fedora
-  #     sudo dnf install clang-extra-tools
+  #     sudo dnf install clang-tools-extra
 
   # For golang
   export GO111MODULE=on; go get golang.org/x/tools/gopls@latest
