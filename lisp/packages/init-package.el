@@ -38,7 +38,8 @@
 ;; Settings for C-a behavior
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
-         ("C-c C-k" . crux-kill-whole-line)))
+         ("C-c ^" . crux-top-join-line)
+         ("C-c k" . crux-smart-kill-line)))
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
@@ -70,7 +71,7 @@
   :hook ((after-init . global-company-mode)))
 
 ;; (use-package company-box
-  ;; :hook (company-mode . company-box-mode))
+;; :hook (company-mode . company-box-mode))
 
 
 
@@ -103,7 +104,7 @@
   :after (ivy)
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-x c f" . counsel-recentf)
+         ("C-c f" . counsel-recentf)
          ("C-c g" . counsel-git)))
 
 (use-package swiper
@@ -151,8 +152,7 @@
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
-  :hook (prog-mode . flycheck-mode)
-  :bind ("C-c e" . flycheck-list-errors))
+  :hook (prog-mode . flycheck-mode))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses
