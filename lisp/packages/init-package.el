@@ -70,7 +70,7 @@
   :hook ((after-init . global-company-mode)))
 
 ;; (use-package company-box
-  ;; :hook (company-mode . company-box-mode))
+;; :hook (company-mode . company-box-mode))
 
 
 
@@ -151,8 +151,7 @@
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
-  :hook (prog-mode . flycheck-mode)
-  :bind ("C-c e" . flycheck-list-errors))
+  :hook (prog-mode . flycheck-mode))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses
