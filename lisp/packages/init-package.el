@@ -174,7 +174,7 @@
 ;; Settings for smooth scrolling
 (use-package smooth-scrolling
   :defer nil
-  :init (setq smooth-scrolling-margin 5)
+  :init (setq smooth-scrolling-margin 2)
   :config (smooth-scrolling-mode t))
 
 ;; Restart emacs

@@ -11,12 +11,14 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   ;; Settings for the TAB behavior
-  (setq-default tab-width 4)
-  (setq-default indent-tabs-mode nil)
+  ;; (setq-default tab-width 4)
+  ;; (setq-default indent-tabs-mode nil)
 
   ;; Settings for line number
-  (setq display-line-numbers-type 'relative)
-  (global-display-line-numbers-mode t)
+  ;; Drop the global-display-line-numbers-mode on Windows platform, 'cause it make the window splash on Windows
+  (unless *is-windows*
+    (setq display-line-numbers-type 'relative) ;relative, visual
+    (global-display-line-numbers-mode t))
 
   ;; Display time at the right bottom corner
   (setq display-time-24hr-format t)
