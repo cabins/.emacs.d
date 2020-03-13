@@ -38,7 +38,8 @@
 ;; Settings for C-a behavior
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
-         ("C-c C-k" . crux-kill-whole-line)))
+         ("C-c ^" . crux-top-join-line)
+         ("C-c k" . crux-smart-kill-line)))
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
@@ -103,7 +104,7 @@
   :after (ivy)
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-x c f" . counsel-recentf)
+         ("C-c f" . counsel-recentf)
          ("C-c g" . counsel-git)))
 
 (use-package swiper
