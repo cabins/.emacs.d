@@ -7,10 +7,11 @@
 
 
 ;; Settings for UI theme
-(use-package dracula-theme
+(use-package gruvbox-theme
   ;; :unless *is-windows*
-  :init (load-theme 'dracula t))
+  :init (load-theme 'gruvbox-dark-soft t))
 ;; (use-package smart-mode-line-powerline-theme)
+
 (use-package smart-mode-line
   :init
   (setq sml/no-confirm-load-theme t)
