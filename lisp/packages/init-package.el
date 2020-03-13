@@ -69,6 +69,8 @@
   (setq company-begin-commands '(self-insert-command))
   :hook ((after-init . global-company-mode)))
 
+;; (use-package company-box
+  ;; :hook (company-mode . company-box-mode))
 
 
 
@@ -171,8 +173,20 @@
 
 ;; Settings for smooth scrolling
 (use-package smooth-scrolling
-  :init (setq smooth-scrolling-margin 2)
+  :defer nil
+  :init (setq smooth-scrolling-margin 5)
   :config (smooth-scrolling-mode t))
+
+;; Restart emacs
+(use-package restart-emacs)
+
+;; Google translate
+(use-package google-translate
+  :init (setq google-translate--tkk-url "https://translate.google.cn"
+              google-translate-default-source-language "en"
+              google-translate-default-target-language "zh-CN")
+  :bind (("C-c t" . google-translate-at-point)
+         ("C-c T" . google-translate-query-translate)))
 
 (provide 'init-package)
 ;;; init-package.el ends here

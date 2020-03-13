@@ -6,6 +6,7 @@
 ;;; Code:
 
 (require 'init-go)
+(require 'init-json)
 (require 'init-markdown)
 (require 'init-restclient)
 (require 'init-vue)
