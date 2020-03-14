@@ -16,7 +16,6 @@
 (require 'init-kbd)
 (require 'init-misc)
 (require 'init-program)
-(require 'init-funcs)
 
 (require 'init-ui)
 

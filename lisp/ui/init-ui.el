@@ -30,7 +30,7 @@
         (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
         (dolist (charset '(kana han symbol cjk-misc bopomofo))
           (set-fontset-font (frame-parameter nil 'font)
-                            charset (font-spec :family "Microsoft Yahei Mono" :size 9))))
+                            charset (font-spec :family "Microsoft Yahei Mono" :size 12))))
     (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11"))
   ;; (setq default-frame-alist '((width . 150) (height . 35))
   (set-frame-parameter nil 'fullscreen 'maximized))

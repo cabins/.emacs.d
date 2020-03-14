@@ -39,6 +39,7 @@
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c ^" . crux-top-join-line)
+	 ("C-c ," . crux-find-user-init-file)
          ("C-c k" . crux-smart-kill-line)))
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
