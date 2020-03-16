@@ -8,7 +8,7 @@
 
 ;; Settings for UI theme
 (use-package gruvbox-theme
-  ;; :unless *is-windows*
+  :unless *is-windows*
   :init (load-theme 'gruvbox-dark-soft t))
 ;; (use-package smart-mode-line-powerline-theme)
 

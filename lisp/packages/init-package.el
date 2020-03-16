@@ -55,25 +55,30 @@
 ;; Settings for company
 (use-package company
   :config
-  (setq company-dabbrev-code-everywhere t)
-  (setq company-dabbrev-code-modes t)
-  (setq company-dabbrev-code-other-buffers 'all)
-  (setq company-dabbrev-downcase nil)
-  (setq company-dabbrev-ignore-case t)
-  (setq company-dabbrev-other-buffers 'all)
-  (setq company-require-match nil)
-  (setq company-minimum-prefix-length 2)
-  (setq company-show-numbers t)
-  (setq company-tooltip-limit 20)
-  (setq company-idle-delay 0)
-  (setq company-echo-delay 0)
-  (setq company-tooltip-offset-display 'scrollbar)
-  (setq company-begin-commands '(self-insert-command))
+  (setq company-dabbrev-code-everywhere t
+	company-dabbrev-code-modes t
+	company-dabbrev-code-other-buffers 'all
+	company-dabbrev-downcase nil
+	company-dabbrev-ignore-case t
+	company-dabbrev-other-buffers 'all
+	company-require-match nil
+	company-minimum-prefix-length 2
+	company-show-numbers t
+	company-tooltip-limit 20
+	company-idle-delay 0
+	company-echo-delay 0
+	company-tooltip-offset-display 'scrollbar
+	company-begin-commands '(self-insert-command))
+  (push '(company-semantic :with company-yasnippet) company-backends)
   :hook ((after-init . global-company-mode)))
 
 ;; (use-package company-box
+;; :config (setq company-box-enable-icon nil)
 ;; :hook (company-mode . company-box-mode))
 
+(use-package company-quickhelp
+  :hook (global-company-mode . company-quickhelp-mode)
+  :init (setq company-quickhelp-delay 0))
 
 
 ;; ******************** PART4 searching ********************

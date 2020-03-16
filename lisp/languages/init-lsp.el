@@ -35,7 +35,7 @@
   :hook (lsp-mode . lsp-ui-mode)
   :init (setq lsp-ui-doc-enable t
               lsp-ui-doc-use-webkit nil
-              lsp-ui-doc-delay 0.2
+              lsp-ui-doc-delay 0
               lsp-ui-doc-include-signature t
               lsp-ui-doc-position 'at-point
               lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
@@ -48,18 +48,20 @@
 
 (use-package company-lsp
   :after company lsp-mode
+  :config (setq company-lsp-enable-snippet t)
   :init (push 'company-lsp company-backends))
 
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)
 
-;; (use-package dap-mode
-;;   :diminish
-;;   :hook ((after-init . dap-mode)
-;;          (dap-mode . dap-ui-mode)
-;;          (python-mode . (lambda() (require 'dap-python)))
-;;          (go-mode . (lambda() (require 'dap-go)))
-;;          (java-mode . (lambda() (require 'dap-java)))))
+(use-package dap-mode
+  :diminish
+  :hook ((after-init . dap-mode)
+         (dap-mode . dap-ui-mode)
+	 (dap-mode . dap-tooltip-mode)
+         (python-mode . (lambda() (require 'dap-python)))
+         (go-mode . (lambda() (require 'dap-go)))
+         (java-mode . (lambda() (require 'dap-java)))))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
