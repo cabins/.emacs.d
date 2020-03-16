@@ -137,13 +137,10 @@
 
 ;; Settings for yasnippet - not sure if works fine
 (use-package yasnippet
-  :diminish yas-minor-mode
   :hook (prog-mode . yas-minor-mode)
   :config
-  ;; (yas-reload-all)
-  (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
-  (use-package yasnippet-snippets
-    :defer t))
+  (add-to-list 'yas-snippet-dirs (cons user-emacs-directory "snippets"))
+  (use-package yasnippet-snippets))
 
 (use-package auto-yasnippet
   :bind (("C-o" . aya-open-line)
