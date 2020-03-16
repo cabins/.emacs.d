@@ -3,7 +3,7 @@
 ;;; Commentary:
 ;;; (c)Cabins, github.com/cabins/.emacs.d
 
-;;; Code:
+;;; CODE:
 
 (use-package lsp-mode
   ;; add prog-mode to lsp instead of adding one by one
