@@ -54,7 +54,6 @@
 
 ;; Settings for company
 (use-package company
-  :diminish "Comp"
   :config
   (setq company-dabbrev-code-everywhere t
 	company-dabbrev-code-modes t
@@ -78,7 +77,7 @@
 ;; :hook (company-mode . company-box-mode))
 
 (use-package company-quickhelp
-  :hook (global-company-mode . company-quickhelp-mode)
+  :hook (prog-mode . company-quickhelp-mode)
   :init (setq company-quickhelp-delay 0.5))
 
 
@@ -96,7 +95,6 @@
         enable-recursive-minibuffers t
         ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   (use-package ivy-posframe
-    :diminish "ivy-p"
     :init
     (setq ivy-posframe-display-functions-alist
           '((swiper            . ivy-posframe-display-at-frame-center)
@@ -154,7 +152,6 @@
 
 ;; Settings for projectile
 (use-package projectile
-  :diminish "Proj"
   :hook (after-init . projectile-mode)
   :config (setq-default projectile-mode-line-prefix " Proj")
   :bind-keymap ("C-c p" . projectile-command-map))
