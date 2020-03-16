@@ -27,10 +27,10 @@
   ;; Font settings
   (if *is-windows*
       (progn
-        (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
+        (set-face-attribute 'default nil :font "Ubuntu Mono 10")
         (dolist (charset '(kana han symbol cjk-misc bopomofo))
           (set-fontset-font (frame-parameter nil 'font)
-                            charset (font-spec :family "Microsoft Yahei Mono" :size 12))))
+                            charset (font-spec :family "华文楷体" :size 10.5))))
     (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11"))
   ;; (setq default-frame-alist '((width . 150) (height . 35))
   (set-frame-parameter nil 'fullscreen 'maximized))
