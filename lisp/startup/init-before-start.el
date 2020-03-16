@@ -21,8 +21,8 @@
   (tool-bar-mode -1))
 
 ;; Only display menu bar on macOS with GUI mode (Global Menu)
-(unless (and *is-mac* (display-graphic-p))
-  (menu-bar-mode -1))
+;; (unless (and *is-mac* (display-graphic-p))
+  ;; (menu-bar-mode -1))
 
 ;; Inhibit startup message
 (setq inhibit-startup-screen t

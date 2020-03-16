@@ -24,6 +24,8 @@
 (use-package emacs
   :if (display-graphic-p)
   :config
+  ;; Mouse cursor setings
+  (setq cursor-type 'bar)
   ;; Font settings
   (if *is-windows*
       (progn
