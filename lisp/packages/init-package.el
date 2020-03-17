@@ -139,7 +139,7 @@
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode)
   :config
-  (add-to-list 'yas-snippet-dirs (cons user-emacs-directory "snippets"))
+  (add-to-list 'yas-snippet-dirs (concat (file-name-directory user-emacs-directory) "snippets"))
   (use-package yasnippet-snippets))
 
 (use-package auto-yasnippet
