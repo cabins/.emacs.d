@@ -192,5 +192,10 @@
   :bind (("C-c t" . google-translate-at-point)
          ("C-c T" . google-translate-query-translate)))
 
+;; Dashboard on startup
+(use-package dashboard
+  :defer nil
+  :config (dashboard-setup-startup-hook))
+
 (provide 'init-package)
 ;;; init-package.el ends here

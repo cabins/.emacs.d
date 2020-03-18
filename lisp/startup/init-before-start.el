@@ -25,8 +25,8 @@
   ;; (menu-bar-mode -1))
 
 ;; Inhibit startup message
-(setq inhibit-startup-screen t
-      initial-buffer-choice nil)
+;; (setq inhibit-startup-screen t
+      ;; initial-buffer-choice nil)
 
 (provide 'init-before-start)
 ;;; init-before-start.el ends here
