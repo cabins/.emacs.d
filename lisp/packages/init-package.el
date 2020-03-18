@@ -138,9 +138,12 @@
   :unless *is-windows*
   :bind ("C-x g" . magit-status))
 
-;; Settings for yasnippet - not sure if works fine
+;; Settings for yasnippet
 (use-package yasnippet
-  :hook (prog-mode . yas-minor-mode)
+  :diminish yas-minor-mode
+  :commands (yas-global-mode yas-minor-mode)
+  ;; :hook (prog-mode . yas-minor-mode)
+  :init (yas-global-mode)
   :config
   (add-to-list 'yas-snippet-dirs (concat (file-name-directory user-emacs-directory) "snippets")))
 (use-package yasnippet-snippets)
