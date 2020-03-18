@@ -19,17 +19,15 @@
 (use-package org
   :config
   (setq org-startup-indented t)
-  (when (display-graphic-p)
-    (use-package org-bullets
-      :hook (org-mode . (lambda() (org-bullets-mode 1))))))
-;; (org-babel-load-file (expand-file-name "~/.emacs.d/emacs-init.org"))
+  (use-package org-bullets
+    :when (display-graphic-p)
+    :hook (org-mode . (lambda() (org-bullets-mode 1)))))
 
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
   :defer nil
   :if (memq window-system '(mac ns x))
-  :init
-  (exec-path-from-shell-initialize))
+  :init (exec-path-from-shell-initialize))
 
 
 
@@ -54,23 +52,24 @@
 
 ;; Settings for company
 (use-package company
-  :config
-  (setq company-dabbrev-code-everywhere t
-	company-dabbrev-code-modes t
-	company-dabbrev-code-other-buffers 'all
-	company-dabbrev-downcase nil
-	company-dabbrev-ignore-case t
-	company-dabbrev-other-buffers 'all
-	company-require-match nil
-	company-minimum-prefix-length 2
-	company-show-numbers t
-	company-tooltip-limit 20
-	company-idle-delay 0
-	company-echo-delay 0
-	company-tooltip-offset-display 'scrollbar
-	company-begin-commands '(self-insert-command))
+  ;; The next line cause lsp-mode bugs when complete functions
   ;; (push '(company-semantic :with company-yasnippet) company-backends)
-  :hook ((after-init . global-company-mode)))
+  :hook (after-init . global-company-mode)
+  :config (setq company-dabbrev-code-everywhere t
+		company-dabbrev-code-modes t
+		company-dabbrev-code-other-buffers 'all
+		company-dabbrev-downcase nil
+		company-dabbrev-ignore-case t
+		company-dabbrev-other-buffers 'all
+		company-require-match nil
+		company-minimum-prefix-length 2
+		company-show-numbers t
+		company-tooltip-limit 20
+		company-idle-delay 0
+		company-echo-delay 0
+		company-tooltip-offset-display 'scrollbar
+		company-begin-commands '(self-insert-command)))
+
 
 ;; (use-package company-box
 ;; :config (setq company-box-enable-icon nil)
@@ -78,7 +77,7 @@
 
 (use-package company-quickhelp
   :hook (prog-mode . company-quickhelp-mode)
-  :init (setq company-quickhelp-delay 0.5))
+  :init (setq company-quickhelp-delay 0.3))
 
 
 ;; ******************** PART4 searching ********************
@@ -141,16 +140,16 @@
 ;; Settings for yasnippet
 (use-package yasnippet
   :diminish yas-minor-mode
-  :commands (yas-global-mode yas-minor-mode)
-  ;; :hook (prog-mode . yas-minor-mode)
   :init (yas-global-mode)
   :config
-  (add-to-list 'yas-snippet-dirs (concat (file-name-directory user-emacs-directory) "snippets")))
-(use-package yasnippet-snippets)
-(use-package auto-yasnippet
-  :bind (("C-o" . aya-open-line)
-         ("H-w" . aya-create)
-         ("H-y" . aya-expand)))
+  (add-to-list 'yas-snippet-dirs (concat
+				  (file-name-directory user-emacs-directory)
+				  "snippets"))
+  (use-package yasnippet-snippets)
+  (use-package auto-yasnippet
+    :bind (("C-o" . aya-open-line)
+	   ("H-w" . aya-create)
+	   ("H-y" . aya-expand))))
 
 ;; Settings for projectile
 (use-package projectile
