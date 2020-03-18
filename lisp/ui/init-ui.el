@@ -29,7 +29,7 @@
   ;; Font settings
   (if *is-windows*
       (progn
-        (set-face-attribute 'default nil :font "Ubuntu Mono 10")
+        (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
         (dolist (charset '(kana han symbol cjk-misc bopomofo))
           (set-fontset-font (frame-parameter nil 'font)
                             charset (font-spec :family "华文楷体" :size 10.5))))
