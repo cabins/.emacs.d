@@ -108,6 +108,9 @@
 (use-package counsel
   :after (ivy)
   :bind (("M-x" . counsel-M-x)
+	 ("C-h b" . counsel-descbinds)
+	 ("C-h f" . counsel-describe-function)
+	 ("C-h v" . counsel-describe-variable)
          ("C-x C-f" . counsel-find-file)
          ("C-c f" . counsel-recentf)
          ("C-c g" . counsel-git)))
@@ -139,9 +142,8 @@
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode)
   :config
-  (add-to-list 'yas-snippet-dirs (concat (file-name-directory user-emacs-directory) "snippets"))
-  (use-package yasnippet-snippets))
-
+  (add-to-list 'yas-snippet-dirs (concat (file-name-directory user-emacs-directory) "snippets")))
+(use-package yasnippet-snippets)
 (use-package auto-yasnippet
   :bind (("C-o" . aya-open-line)
          ("H-w" . aya-create)
