@@ -25,7 +25,7 @@
   :if (display-graphic-p)
   :config
   ;; Mouse cursor setings
-  (setq cursor-type 'bar)
+  (set-default 'cursor-type 'bar)
   ;; Font settings
   (if *is-windows*
       (progn
