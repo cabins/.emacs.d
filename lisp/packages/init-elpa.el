@@ -28,13 +28,13 @@
   (package-install 'use-package))
 
 ;; Configure use-package prior to loading it
-(eval-when-compile
-  (require 'use-package)
-  (setq use-package-always-ensure t
-	use-package-always-defer t
-	use-package-always-demand nil
-	use-package-expand-minimally t
-	use-package-verbose t))
+(setq use-package-always-ensure t
+      use-package-always-defer t
+      use-package-always-demand nil
+      use-package-expand-minimally t
+      use-package-verbose t)
+(setq load-prefer-newer t)
+(require 'use-package)
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
