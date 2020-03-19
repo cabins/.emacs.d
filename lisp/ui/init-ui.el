@@ -9,34 +9,31 @@
 ;; Settings for UI theme
 (use-package gruvbox-theme
   :unless *is-windows*
+  :when (display-graphic-p)
   :init (load-theme 'gruvbox-dark-soft t))
 ;; (use-package smart-mode-line-powerline-theme)
 
 (use-package smart-mode-line
   :init
-  (setq sml/no-confirm-load-theme t)
-  (setq sml/theme 'respectful)
+  (setq sml/no-confirm-load-theme t
+	sml/theme 'respectful)
   ;; (if *is-windows*
-  ;; (setq sml/theme 'powerline)
-  ;; (setq sml/theme 'powerline))
+  ;; (setq sml/theme 'powerline
+  ;; sml/theme 'powerline))
   (sml/setup))
 
+;; Font settings
 (use-package emacs
-  :if (display-graphic-p)
   :config
-  ;; Mouse cursor setings
   (set-default 'cursor-type 'bar)
-  ;; Font settings
+  ;; (setq default-frame-alist '((width . 150) (height . 35))
+  (set-frame-parameter nil 'fullscreen 'maximized)
   (if *is-windows*
       (progn
         (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
         (dolist (charset '(kana han symbol cjk-misc bopomofo))
-          (set-fontset-font (frame-parameter nil 'font)
-                            charset (font-spec :family "华文楷体" :size 10.5))))
-    (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11"))
-  ;; (setq default-frame-alist '((width . 150) (height . 35))
-  (set-frame-parameter nil 'fullscreen 'maximized))
-
+          (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文楷体" :size 10.5))))
+    (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here

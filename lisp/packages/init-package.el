@@ -153,7 +153,6 @@
 ;; Settings for projectile
 (use-package projectile
   :hook (after-init . projectile-mode)
-  :config (setq-default projectile-mode-line-prefix " Proj")
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
