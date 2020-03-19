@@ -7,16 +7,17 @@
 
 (use-package lsp-mode
   ;; add prog-mode to lsp instead of adding one by one
-  :hook ((prog-mode . (lsp-deferred))
-	 (lsp-mode . lsp-enable-which-key-integration))
-  ;; :hook ((python-mode . lsp-deferred)
-         ;; (c-mode . lsp-deferred)
-         ;; (go-mode . lsp-deferred)
-         ;; (java-mode . lsp-deferred)
-         ;; (js-mode . lsp-deferred)
-         ;; (web-mode . lsp-deferred)
-         ;; (vue-mode . lsp-deferred)
-         ;; (html-mode . lsp-deferred))
+  ;; :hook ((prog-mode . (lsp-deferred))
+	 ;; (lsp-mode . lsp-enable-which-key-integration))
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+	 (python-mode . lsp-deferred)
+         (c-mode . lsp-deferred)
+         (go-mode . lsp-deferred)
+         (java-mode . lsp-deferred)
+         (js-mode . lsp-deferred)
+         (web-mode . lsp-deferred)
+         (vue-mode . lsp-deferred)
+         (html-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :init (setq lsp-prefer-flymake nil ;; Prefer not use flymake(instead flycheck)
               lsp-keep-workspace-alive nil ;; Auto kill LSP server
@@ -53,17 +54,16 @@
   :init (push 'company-lsp company-backends))
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-;; (use-package dap-mode
-  ;; :diminish
-  ;; :hook ((after-init . dap-mode)
-         ;; (dap-mode . dap-ui-mode)
-	 ;; (dap-mode . dap-tooltip-mode)
-         ;; (python-mode . (lambda() (require 'dap-python)))
-         ;; (go-mode . (lambda() (require 'dap-go)))
-         ;; (java-mode . (lambda() (require 'dap-java)))))
+(use-package dap-mode
+  :diminish
+  :hook ((lsp-mode . dap-mode)
+         (dap-mode . dap-ui-mode)
+	 (dap-mode . dap-tooltip-mode)
+         (python-mode . (lambda() (require 'dap-python)))
+         (go-mode . (lambda() (require 'dap-go)))
+         (java-mode . (lambda() (require 'dap-java)))))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
