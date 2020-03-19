@@ -199,7 +199,7 @@
   :defer nil
   :config
   (setq dashboard-center-content t
-	dashboard-show-shortcuts nil
+	dashboard-show-shortcuts t
 	dashboard-startup-banner 'logo
 	dashboard-items '((recents . 10)
 			  (bookmarks . 5)
