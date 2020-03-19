@@ -198,7 +198,14 @@
 ;; Dashboard on startup
 (use-package dashboard
   :defer nil
-  :config (dashboard-setup-startup-hook))
+  :config
+  (setq dashboard-center-content t
+	dashboard-show-shortcuts t
+	dashboard-items '((recents . 10)
+			  (bookmarks . 5)
+			  (projects . 5)
+			  (agenda . 5)))
+  (dashboard-setup-startup-hook))
 
 (provide 'init-package)
 ;;; init-package.el ends here
