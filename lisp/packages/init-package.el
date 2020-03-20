@@ -17,10 +17,14 @@
 ;; ******************** PART2 shell & environments ********************
 ;; Settings for org mode and load config from org file
 (use-package org
-  :init (setq org-startup-indented t)
-  :config (use-package org-bullets
-	    :when (display-graphic-p)
-	    :hook (org-mode . (lambda() (org-bullets-mode 1)))))
+  ;; :init (setq org-startup-indented t)
+  :config
+  (setq org-startup-indented t
+	org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
+	org-todo-keyword-faces '(("DOING" . "blue")))
+  (use-package org-bullets
+    :when (display-graphic-p)
+    :hook (org-mode . (lambda() (org-bullets-mode 1)))))
 
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
