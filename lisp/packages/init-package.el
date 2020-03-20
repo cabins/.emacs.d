@@ -152,7 +152,9 @@
 
 ;; Settings for projectile
 (use-package projectile
+  "Using after-init hook makes emacs starts up faster than config projectile-mode"
   :hook (after-init . projectile-mode)
+  ;; :config (projectile-mode +1)
   :bind-keymap ("C-c p" . projectile-command-map))
 
 (use-package flycheck
