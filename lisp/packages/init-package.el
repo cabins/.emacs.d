@@ -57,7 +57,7 @@
 (use-package company
   ;; The next line cause lsp-mode bugs when complete functions
   ;; (push '(company-semantic :with company-yasnippet) company-backends)
-  :hook (after-init . global-company-mode)
+  :hook (prog-mode . company-mode)
   :config (setq company-dabbrev-code-everywhere t
 		company-dabbrev-code-modes t
 		company-dabbrev-code-other-buffers 'all
