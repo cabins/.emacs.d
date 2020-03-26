@@ -21,7 +21,8 @@
     (global-display-line-numbers-mode t))
 
   ;; Display time at the right bottom corner
-  (setq display-time-24hr-format t)
+  (setq display-time-24hr-format t
+	display-time-day-and-date t)
   (display-time-mode 1)
 
   ;; Display 'lambda' as 'λ' (just for fun)

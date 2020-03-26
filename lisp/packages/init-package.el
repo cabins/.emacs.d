@@ -206,8 +206,7 @@
 	dashboard-show-shortcuts t
 	dashboard-startup-banner 'logo
 	dashboard-items '((recents . 10)
-			  (bookmarks . 5)
-			  (projects . 5)))
+			  (bookmarks . 5)))
   (dashboard-setup-startup-hook))
 
 (provide 'init-package)
