@@ -26,8 +26,8 @@
 (use-package emacs
   :config
   (set-default 'cursor-type 'bar)
-  ;; (setq default-frame-alist '((width . 150) (height . 35))
-  (set-frame-parameter nil 'fullscreen 'maximized)
+  (setq default-frame-alist '((width . 150) (height . 35)))
+  ;; (set-frame-parameter nil 'fullscreen 'maximized)
   (if *is-windows*
       (progn
         (set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
