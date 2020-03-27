@@ -24,8 +24,8 @@
       auto-save-default nil)
 
 ;; Adjust garbage collection thresholds during startup
-(setq gc-cons-threshold most-positive-fixnum)
-(setq gc-cons-percentage 0.5)
+(setq gc-cons-threshold most-positive-fixnum
+      gc-cons-percentage 0.5)
 (run-with-idle-timer 5 t #'garbage-collect)
 
 (provide 'init-startup)
