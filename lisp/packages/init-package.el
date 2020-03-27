@@ -57,6 +57,7 @@
 (use-package company
   ;; The next line cause lsp-mode bugs when complete functions
   ;; (push '(company-semantic :with company-yasnippet) company-backends)
+  :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :hook (prog-mode . company-mode)
   :config (setq company-dabbrev-code-everywhere t
 		company-dabbrev-code-modes t
@@ -148,7 +149,8 @@
   (add-to-list 'yas-snippet-dirs (concat
 				  (file-name-directory user-emacs-directory)
 				  "snippets"))
-  (use-package yasnippet-snippets)
+  (use-package yasnippet-snippets
+    :after yasnippet)
   (use-package auto-yasnippet
     :bind (("C-o" . aya-open-line)
 	   ("H-w" . aya-create)
