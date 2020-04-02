@@ -35,5 +35,10 @@
           (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文楷体" :size 10.5))))
     (set-face-attribute 'default nil :font "Source Code Pro for Powerline 11")))
 
+;; Hide scroll bar and tool bar in GUI mode
+(when (display-graphic-p)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1))
+
 (provide 'init-ui)
 ;;; init-ui.el ends here

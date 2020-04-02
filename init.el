@@ -6,10 +6,13 @@
 
 ;;; Code:
 
-(load-file (concat (file-name-directory user-emacs-directory)
-                   "lisp/core/core-load-paths.el"))
+;; (load-file (concat (file-name-directory user-emacs-directory)
+;;                    "lisp/core/core-load-paths.el"))
 
-(require 'init-before-start)
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp/")))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+(require 'init-consts)
 (require 'init-startup)
 (require 'init-elpa)
 (require 'init-package)
@@ -18,5 +21,8 @@
 (require 'init-program)
 
 (require 'init-ui)
+
+(when (file-exists-p custom-file)
+  (load-file custom-file))
 
 ;;; init.el ends here
