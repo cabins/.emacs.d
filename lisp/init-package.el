@@ -185,10 +185,19 @@
   :bind (("M-o" . 'ace-window)))
 
 ;; Settings for smooth scrolling
-(use-package smooth-scrolling
-  :defer nil
-  :init (setq smooth-scrolling-margin 2)
-  :config (smooth-scrolling-mode t))
+;;(use-package smooth-scrolling
+;;  :defer nil
+;;  :init (setq smooth-scrolling-margin 2)
+;;  :config (smooth-scrolling-mode t))
+;;
+
+;; Settings for sublimity, https://github.com/zk-phi/sublimity
+(use-package sublimity
+  :config
+  (require 'sublimity)
+  (require 'sublimity-scroll)
+  ;; (require 'sublimity-map)
+  (sublimity-mode 1))
 
 ;; Restart emacs
 (use-package restart-emacs)
