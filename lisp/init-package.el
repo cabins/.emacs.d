@@ -192,13 +192,15 @@
 ;;
 
 ;; Settings for sublimity, https://github.com/zk-phi/sublimity
-(use-package sublimity
-  :config
-  (require 'sublimity)
-  (require 'sublimity-scroll)
-  ;; (require 'sublimity-map)
-  (sublimity-mode 1))
-
+;;(use-package sublimity
+;;  :init (setq sublimity-scroll-weight 10
+;;              sublimity-scroll-drift-length 5)
+;;  :config
+;;  (require 'sublimity)
+;;  (require 'sublimity-scroll)
+;;  ;; (require 'sublimity-map)
+;;  (sublimity-mode 1))
+;;
 ;; Restart emacs
 (use-package restart-emacs)
 

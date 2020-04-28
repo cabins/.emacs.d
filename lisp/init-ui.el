@@ -7,11 +7,16 @@
 
 
 ;; Settings for UI theme
-(use-package gruvbox-theme
-  :unless *is-windows*
-  :when (display-graphic-p)
-  :init (load-theme 'gruvbox-dark-soft t))
+;;(use-package gruvbox-theme
+;;  :unless *is-windows*
+;;  :when (display-graphic-p)
+;;  :init (load-theme 'gruvbox-dark-soft t))
 ;; (use-package smart-mode-line-powerline-theme)
+
+;; Settings for UI theme
+(use-package solarized-theme
+  :when (display-graphic-p)
+  :init (load-theme 'solarized-light t))
 
 (use-package smart-mode-line
   :init
