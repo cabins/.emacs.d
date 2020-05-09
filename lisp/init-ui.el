@@ -16,7 +16,7 @@
 ;; Settings for UI theme
 (use-package solarized-theme
   :when (display-graphic-p)
-  :init (load-theme 'solarized-light t))
+  :init (load-theme 'solarized-dark t))
 
 (use-package smart-mode-line
   :init
