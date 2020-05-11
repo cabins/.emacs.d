@@ -223,5 +223,8 @@
 			  (bookmarks . 5)))
   (dashboard-setup-startup-hook))
 
+(use-package keycast
+  :commands keycast-mode)
+
 (provide 'init-package)
 ;;; init-package.el ends here
