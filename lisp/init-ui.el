@@ -29,15 +29,20 @@
 
 ;; Font settings
 (use-package emacs
+  :when (display-graphic-p)
   :config
   (set-default 'cursor-type 'bar)
-  (setq default-frame-alist '((width . 150) (height . 35)))
-  ;; (set-frame-parameter nil 'fullscreen 'maximized)
+  ;; (setq default-frame-alist '((width . 150) (height . 35)))
+  (set-frame-parameter nil 'fullscreen 'maximized)
 
-  (when (display-graphic-p)
+  (when *is-windows*
     (set-face-attribute 'default nil :font "Ubuntu Mono 10")
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 10.5)))))
+      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 10.5))))
+  (when *is-mac*
+    (set-face-attribute 'default nil :font "Ubuntu Mono 14")
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 14.5)))))
 
 ;; Hide scroll bar and tool bar in GUI mode
 (when (display-graphic-p)
