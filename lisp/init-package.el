@@ -40,8 +40,8 @@
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c ^" . crux-top-join-line)
-	 ("C-x ," . crux-find-user-init-file)
-         ("C-c k" . crux-smart-kill-line)))
+	     ("C-x ," . crux-find-user-init-file)
+         ("C-S-k" . crux-smart-kill-line)))
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
@@ -192,14 +192,16 @@
 ;;
 
 ;; Settings for sublimity, https://github.com/zk-phi/sublimity
-;;(use-package sublimity
+;; (use-package sublimity
 ;;  :init (setq sublimity-scroll-weight 10
 ;;              sublimity-scroll-drift-length 5)
+;;  (sublimity-mode 1)
 ;;  :config
 ;;  (require 'sublimity)
 ;;  (require 'sublimity-scroll)
 ;;  ;; (require 'sublimity-map)
-;;  (sublimity-mode 1))
+;;  ;; (sublimity-mode 1)
+;;  )
 ;;
 ;; Restart emacs
 (use-package restart-emacs)
