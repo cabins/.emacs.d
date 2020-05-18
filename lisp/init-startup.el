@@ -27,6 +27,8 @@
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.5)
 (run-with-idle-timer 5 t #'garbage-collect)
+(setq-default frame-title-format '("%f"))
+
 
 (provide 'init-startup)
 ;;; init-startup.el ends here
