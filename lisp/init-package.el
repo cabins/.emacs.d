@@ -76,9 +76,9 @@
 		company-begin-commands '(self-insert-command)))
 
 
-;; (use-package company-box
+(use-package company-box
 ;; :config (setq company-box-enable-icon nil)
-;; :hook (company-mode . company-box-mode))
+  :hook (company-mode . company-box-mode))
 
 (use-package company-quickhelp
   :hook (prog-mode . company-quickhelp-mode)
