@@ -15,6 +15,7 @@
 
 ;; Settings for UI theme
 (use-package solarized-theme
+  :unless *is-windows*
   :when (display-graphic-p)
   :init (load-theme 'solarized-dark t))
 
