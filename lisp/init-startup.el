@@ -19,6 +19,12 @@
 (set-terminal-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 
+(when (eq system-type 'windows-nt)
+  (set-next-selection-coding-system 'utf-16-le)
+  (set-selection-coding-system 'utf-16-le)
+  (set-clipboard-coding-system 'utf-16-le))
+
+
 ;; Settings for backup files
 (setq make-backup-files nil
       auto-save-default nil)
