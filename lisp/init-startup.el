@@ -36,6 +36,7 @@
 (setq-default frame-title-format '("%f"))
 
 (setq inhibit-startup-screen t)
+(setq initial-scratch-message "\n;; Configuration by Cabins <github.com/cabins>.\n;; Enjoy!\n\n")
 
 (provide 'init-startup)
 ;;; init-startup.el ends here

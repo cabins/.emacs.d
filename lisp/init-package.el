@@ -94,6 +94,7 @@
         enable-recursive-minibuffers t
         ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   (use-package ivy-posframe
+    :unless *is-windows*
     :when (display-grayscale-p)
     :init
     (setq ivy-posframe-display-functions-alist
