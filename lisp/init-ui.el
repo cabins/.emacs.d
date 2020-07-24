@@ -37,9 +37,9 @@
   (set-frame-parameter nil 'fullscreen 'maximized)
 
   (when *is-windows*
-    (set-face-attribute 'default nil :font "Ubuntu Mono 10")
+    (set-face-attribute 'default nil :font "Microsoft Yahei Mono 10")
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 10.5))))
+      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "Microsoft Yahei Mono" :size 10.5))))
   (when *is-mac*
     (set-face-attribute 'default nil :font "Ubuntu Mono 14")
     (dolist (charset '(kana han symbol cjk-misc bopomofo))

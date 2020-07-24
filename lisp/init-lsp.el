@@ -19,8 +19,7 @@
          (vue-mode . lsp-deferred)
          (html-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
-  :init (setq lsp-prefer-flymake nil ;; Prefer not use flymake(instead flycheck)
-              lsp-keep-workspace-alive nil ;; Auto kill LSP server
+  :init (setq lsp-keep-workspace-alive nil ;; Auto kill LSP server
               lsp-enable-indentation nil
               lsp-enable-on-type-formatting nil
               lsp-auto-guess-root nil

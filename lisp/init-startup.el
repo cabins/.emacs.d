@@ -35,6 +35,7 @@
 (run-with-idle-timer 5 t #'garbage-collect)
 (setq-default frame-title-format '("%f"))
 
+(setq inhibit-startup-screen t)
 
 (provide 'init-startup)
 ;;; init-startup.el ends here

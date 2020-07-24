@@ -75,11 +75,6 @@
 		company-tooltip-offset-display 'scrollbar
 		company-begin-commands '(self-insert-command)))
 
-
-(use-package company-box
-;; :config (setq company-box-enable-icon nil)
-  :hook (company-mode . company-box-mode))
-
 (use-package company-quickhelp
   :hook (prog-mode . company-quickhelp-mode)
   :init (setq company-quickhelp-delay 0.3))
@@ -155,8 +150,8 @@
     :after yasnippet)
   (use-package auto-yasnippet
     :bind (("C-o" . aya-open-line)
-	   ("H-w" . aya-create)
-	   ("H-y" . aya-expand))))
+           ("H-w" . aya-create)
+           ("H-y" . aya-expand))))
 
 ;; Settings for projectile
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
@@ -165,16 +160,17 @@
   ;; :config (projectile-mode +1)
   :bind-keymap ("C-c p" . projectile-command-map))
 
-(use-package flycheck
-  :hook (prog-mode . flycheck-mode))
+;; Enable flymake on default
+(use-package flymake
+  :ensure nil
+  :hook (prog-mode . flymake-mode)
+  :bind (("M-n" . flymake-goto-next-error)
+         ("M-p" . flymake-goto-prev-error)))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses
   :hook (prog-mode . highlight-parentheses-mode))
 
-;; Settings for rainbow mode
-;; (use-package rainbow-mode
-;; :hook (prog-mode . rainbow-mode))
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -185,25 +181,6 @@
 (use-package ace-window
   :bind (("M-o" . 'ace-window)))
 
-;; Settings for smooth scrolling
-;;(use-package smooth-scrolling
-;;  :defer nil
-;;  :init (setq smooth-scrolling-margin 2)
-;;  :config (smooth-scrolling-mode t))
-;;
-
-;; Settings for sublimity, https://github.com/zk-phi/sublimity
-;; (use-package sublimity
-;;  :init (setq sublimity-scroll-weight 10
-;;              sublimity-scroll-drift-length 5)
-;;  (sublimity-mode 1)
-;;  :config
-;;  (require 'sublimity)
-;;  (require 'sublimity-scroll)
-;;  ;; (require 'sublimity-map)
-;;  ;; (sublimity-mode 1)
-;;  )
-;;
 ;; Restart emacs
 (use-package restart-emacs)
 
@@ -214,17 +191,6 @@
               google-translate-default-target-language "zh-CN")
   :bind (("C-c t" . google-translate-at-point)
          ("C-c T" . google-translate-query-translate)))
-
-;; Dashboard on startup
-(use-package dashboard
-  :defer nil
-  :config
-  (setq dashboard-center-content t
-	dashboard-show-shortcuts t
-	dashboard-startup-banner 'logo
-	dashboard-items '((recents . 10)
-			  (bookmarks . 5)))
-  (dashboard-setup-startup-hook))
 
 (use-package keycast
   :commands keycast-mode)
