@@ -42,7 +42,7 @@
          ("C-c ^" . crux-top-join-line)
 	     ("C-x ," . crux-find-user-init-file)
          ("C-S-d" . crux-duplicate-current-line-or-region)
-         ("C-S-k" . crux-smart-kill-line)))
+         ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
@@ -184,6 +184,10 @@
 
 ;; Restart emacs
 (use-package restart-emacs)
+
+;; Beacon mode
+(use-package beacon
+  :hook (after-init . beacon-mode))
 
 ;; Google translate
 (use-package google-translate
