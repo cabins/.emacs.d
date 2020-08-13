@@ -47,10 +47,6 @@
   :config (setq lsp-ui-flycheck-enable t)
   :commands lsp-ui-mode)
 
-(use-package company-lsp
-  :after company lsp-mode
-  :config (setq company-lsp-enable-snippet t)
-  :init (push 'company-lsp company-backends))
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)

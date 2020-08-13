@@ -23,7 +23,7 @@
   (setq default-frame-alist '((width . 180) (height . 40)))
   ;; (set-frame-parameter nil 'fullscreen 'maximized)
   ;; Set fonts global
-  (set-face-attribute 'default nil :font "Microsoft Yahei Mono 10")
+  (set-face-attribute 'default nil :font "Consolas 10")
 
   (when *is-windows*
     (setq face-font-rescale-alist '(("Microsoft Yahei Mono" . 1)))
