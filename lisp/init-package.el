@@ -22,9 +22,7 @@
   (setq org-startup-indented t
 	org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
 	org-todo-keyword-faces '(("DOING" . "blue")))
-  (use-package org-bullets
-    :when (display-graphic-p)
-    :hook (org-mode . (lambda() (org-bullets-mode 1)))))
+  )
 
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
@@ -46,8 +44,8 @@
 
 ;; Hungry Delete - delete multi spaces with one <delete> key
 (use-package hungry-delete
-  :bind (("C-c DEL" . hungry-delete-backward))
-  :bind (("C-c d" . hungry-delete-forward)))
+  :bind (("C-c DEL" . hungry-delete-backward)
+         ("C-c d" . hungry-delete-forward)))
 
 ;; drag-stuff - move lines up/down
 (use-package drag-stuff
@@ -56,28 +54,31 @@
 
 ;; Settings for company
 (use-package company
-  ;; The next line cause lsp-mode bugs when complete functions
-  ;; (push '(company-semantic :with company-yasnippet) company-backends)
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
-  :hook (prog-mode . company-mode)
+  :hook (after-init . global-company-mode)
   :config (setq company-dabbrev-code-everywhere t
-		company-dabbrev-code-modes t
-		company-dabbrev-code-other-buffers 'all
-		company-dabbrev-downcase nil
-		company-dabbrev-ignore-case t
-		company-dabbrev-other-buffers 'all
-		company-require-match nil
-		company-minimum-prefix-length 2
-		company-show-numbers t
-		company-tooltip-limit 20
-		company-idle-delay 0
-		company-echo-delay 0
-		company-tooltip-offset-display 'scrollbar
-		company-begin-commands '(self-insert-command)))
+		        company-dabbrev-code-modes t
+		        company-dabbrev-code-other-buffers 'all
+		        company-dabbrev-downcase nil
+		        company-dabbrev-ignore-case t
+		        company-dabbrev-other-buffers 'all
+		        company-require-match nil
+		        company-minimum-prefix-length 2
+		        company-show-numbers t
+		        company-tooltip-limit 20
+		        company-idle-delay 0
+		        company-echo-delay 0
+		        company-tooltip-offset-display 'scrollbar
+		        company-begin-commands '(self-insert-command)))
 
 (use-package company-quickhelp
   :hook (prog-mode . company-quickhelp-mode)
   :init (setq company-quickhelp-delay 0.3))
+
+;; Better sorting and filtering
+(use-package company-prescient
+  :init (company-prescient-mode 1))
+
 
 
 ;; ******************** PART4 searching ********************
@@ -86,8 +87,7 @@
   :defer 1
   :demand
   :hook (after-init . ivy-mode)
-  :config
-  (ivy-mode 1)
+  :config (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
         ivy-initial-inputs-alist nil
         ivy-count-format "%d/%d "
@@ -158,7 +158,6 @@
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
 (use-package projectile
   :hook (after-init . projectile-mode)
-  ;; :config (projectile-mode +1)
   :bind-keymap ("C-c p" . projectile-command-map))
 
 ;; Enable flymake on default
@@ -188,14 +187,6 @@
 ;; Beacon mode
 (use-package beacon
   :hook (after-init . beacon-mode))
-
-;; Google translate
-(use-package google-translate
-  :init (setq google-translate--tkk-url "https://translate.google.cn"
-              google-translate-default-source-language "en"
-              google-translate-default-target-language "zh-CN")
-  :bind (("C-c t" . google-translate-at-point)
-         ("C-c T" . google-translate-query-translate)))
 
 (use-package keycast
   :commands keycast-mode)

@@ -6,11 +6,11 @@
 ;;; Code:
 
 ;;; Settings for package archives
-(setq package-archives '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                         ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(setq package-archives '(("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+                         ("gnu" . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+                         ("org" . "http://mirrors.cloud.tencent.com/elpa/org/")))
 
-(setq package-check-signature nil)
+;; (setq package-check-signature nil)
 
 (require 'package)
 
@@ -37,8 +37,11 @@
         use-package-verbose t))
 (setq load-prefer-newer t)
 
-(eval-and-compile
+(eval-when-compile
   (require 'use-package))
+
+(use-package gnu-elpa-keyring-update)
+(use-package diminish)
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
