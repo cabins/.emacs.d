@@ -54,6 +54,7 @@
 
 ;; Settings for company
 (use-package company
+  :diminish (company-mode " Com.")
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :hook (after-init . global-company-mode)
   :config (setq company-dabbrev-code-everywhere t
@@ -86,6 +87,7 @@
 (use-package ivy
   :defer 1
   :demand
+  :diminish
   :hook (after-init . ivy-mode)
   :config (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
@@ -157,21 +159,25 @@
 ;; Settings for projectile
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
 (use-package projectile
+  :diminish (projectile-mode " Proj.")
   :hook (after-init . projectile-mode)
   :bind-keymap ("C-c p" . projectile-command-map))
 
 ;; Enable flymake on default
 (use-package flymake
   :ensure nil
+  :diminish (flymake " Flym")
   :hook (prog-mode . flymake-mode)
   :bind (("M-n" . flymake-goto-next-error)
          ("M-p" . flymake-goto-prev-error)))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses
+  :diminish
   :hook (prog-mode . highlight-parentheses-mode))
 
 (use-package rainbow-delimiters
+  :diminish
   :hook (prog-mode . rainbow-delimiters-mode))
 
 
@@ -183,6 +189,13 @@
 
 ;; Restart emacs
 (use-package restart-emacs)
+
+;; auto update packages
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-version t
+        auto-package-update-hide-results t)
+  (auto-package-update-maybe))
 
 ;; Beacon mode
 (use-package beacon
