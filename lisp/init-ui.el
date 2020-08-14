@@ -23,14 +23,13 @@
   (setq default-frame-alist '((width . 180) (height . 40)))
   ;; (set-frame-parameter nil 'fullscreen 'maximized)
   ;; Set fonts global
-  (set-face-attribute 'default nil :font "Consolas 10")
 
   (when *is-windows*
     (setq face-font-rescale-alist '(("Microsoft Yahei Mono" . 1)))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "Microsoft Yahei Mono" :size 10.5))))
   (when *is-mac*
-    (set-face-attribute 'default nil :font "Monaco 10")
+    (set-face-attribute 'default nil :font "Monaco 11")
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 14.5)))))
 
