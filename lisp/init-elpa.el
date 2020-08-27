@@ -10,7 +10,7 @@
                          ("gnu" . "http://mirrors.cloud.tencent.com/elpa/gnu/")
                          ("org" . "http://mirrors.cloud.tencent.com/elpa/org/")))
 
-;; (setq package-check-signature nil)
+(setq package-check-signature nil)
 
 (require 'package)
 

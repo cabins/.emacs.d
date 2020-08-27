@@ -20,8 +20,8 @@
   ;; :init (setq org-startup-indented t)
   :config
   (setq org-startup-indented t
-	org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
-	org-todo-keyword-faces '(("DOING" . "blue")))
+	    org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
+	    org-todo-keyword-faces '(("DOING" . "blue")))
   )
 
 ;; Settings for exec-path-from-shell
@@ -111,9 +111,9 @@
 (use-package counsel
   :after (ivy)
   :bind (("M-x" . counsel-M-x)
-	 ("C-h b" . counsel-descbinds)
-	 ("C-h f" . counsel-describe-function)
-	 ("C-h v" . counsel-describe-variable)
+	     ("C-h b" . counsel-descbinds)
+	     ("C-h f" . counsel-describe-function)
+	     ("C-h v" . counsel-describe-variable)
          ("C-x C-f" . counsel-find-file)
          ("C-c f" . counsel-recentf)
          ("C-c g" . counsel-git)))
@@ -147,8 +147,8 @@
   :init (yas-global-mode)
   :config
   (add-to-list 'yas-snippet-dirs (concat
-				  (file-name-directory user-emacs-directory)
-				  "snippets"))
+				                  (file-name-directory user-emacs-directory)
+				                  "snippets"))
   (use-package yasnippet-snippets
     :after yasnippet)
   (use-package auto-yasnippet
@@ -166,7 +166,7 @@
 ;; Enable flymake on default
 (use-package flymake
   :ensure nil
-  :diminish (flymake " Flym")
+  :diminish (flymake " Fly.")
   :hook (prog-mode . flymake-mode)
   :bind (("M-n" . flymake-goto-next-error)
          ("M-p" . flymake-goto-prev-error)))

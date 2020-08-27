@@ -24,14 +24,20 @@
   ;; (set-frame-parameter nil 'fullscreen 'maximized)
   ;; Set fonts global
 
-  (when *is-windows*
-    (setq face-font-rescale-alist '(("Microsoft Yahei Mono" . 1)))
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "Microsoft Yahei Mono" :size 10.5))))
-  (when *is-mac*
-    (set-face-attribute 'default nil :font "Monaco 11")
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 14.5)))))
+  ;; (when *is-windows*
+  ;;   (setq face-font-rescale-alist '(("Microsoft Yahei Mono" . 1)))
+  ;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;;     (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "Microsoft Yahei Mono" :size 10.5))))
+  ;; (when *is-mac*
+  ;;   (set-face-attribute 'default nil :font "Monaco 11")
+  ;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;;     (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "华文细黑" :size 14.5)))))
+
+  )
+
+(use-package cnfonts
+  :init (cnfonts-enable)
+  )
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
