@@ -94,19 +94,7 @@
         ivy-initial-inputs-alist nil
         ivy-count-format "%d/%d "
         enable-recursive-minibuffers t
-        ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
-  (use-package ivy-posframe
-    :unless *is-windows*
-    :when (display-grayscale-p)
-    :init
-    (setq ivy-posframe-display-functions-alist
-          '((swiper            . ivy-posframe-display-at-frame-center)
-            (complete-symbol   . ivy-posframe-display-at-point)
-            (counsel-M-x       . ivy-posframe-display-at-frame-center)
-            (counsel-find-file . ivy-posframe-display-at-frame-center)
-            (ivy-switch-buffer . ivy-posframe-display-at-frame-center)
-            (t                 . ivy-posframe-display-at-frame-center)))
-    (ivy-posframe-mode 1)))
+        ivy-re-builders-alist '((t . ivy--regex-ignore-order))))
 
 (use-package counsel
   :after (ivy)
