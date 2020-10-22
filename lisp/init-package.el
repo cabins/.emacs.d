@@ -38,7 +38,7 @@
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c ^" . crux-top-join-line)
-	     ("C-x ," . crux-find-user-init-file)
+	     ("C-," . crux-find-user-init-file)
          ("C-S-d" . crux-duplicate-current-line-or-region)
          ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
 
@@ -147,6 +147,7 @@
 ;; Settings for projectile
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
 (use-package projectile
+  :unless *is-windows*
   :diminish (projectile-mode " Proj.")
   :hook (after-init . projectile-mode)
   :bind-keymap ("C-c p" . projectile-command-map))
@@ -187,6 +188,7 @@
 
 ;; Beacon mode
 (use-package beacon
+  :unless *is-windows*
   :hook (after-init . beacon-mode))
 
 (use-package keycast
