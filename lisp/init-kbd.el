@@ -14,7 +14,8 @@
 (use-package emacs
   :bind (("M-/" . comment-line)
          ("M-?" . comment-or-uncomment-region)
-	     ("<f11>" . toggle-frame-fullscreen)))
+	     ("M-S-<return>" . toggle-frame-fullscreen)
+         ("M-<return>" . toggle-frame-maximized)))
 
 (provide 'init-kbd)
 ;;; init-kbd.el ends here
