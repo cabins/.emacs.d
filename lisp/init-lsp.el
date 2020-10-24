@@ -3,14 +3,14 @@
 ;;; Commentary:
 ;;; (c)Cabins, github.com/cabins/.emacs.d
 
-;;; CODE:
+;;; Code:
 
 (use-package lsp-mode
   ;; add prog-mode to lsp instead of adding one by one
   ;; :hook ((prog-mode . (lsp-deferred))
-	 ;; (lsp-mode . lsp-enable-which-key-integration))
+  :commands (lsp lsp-deferred)
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-	 (python-mode . lsp-deferred)
+	     (python-mode . lsp-deferred)
          (c-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (java-mode . lsp-deferred)
@@ -18,7 +18,6 @@
          (web-mode . lsp-deferred)
          (vue-mode . lsp-deferred)
          (html-mode . lsp-deferred))
-  :commands (lsp lsp-deferred)
   :init (setq lsp-keep-workspace-alive nil ;; Auto kill LSP server
               lsp-enable-indentation nil
               lsp-enable-on-type-formatting nil
@@ -33,6 +32,7 @@
 ;;; Optionally: lsp-ui, company-lsp
 (use-package lsp-ui
   :after lsp-mode
+  :commands lsp-ui-mode
   :hook (lsp-mode . lsp-ui-mode)
   :init (setq lsp-ui-doc-enable t
               lsp-ui-doc-use-webkit nil
@@ -44,8 +44,7 @@
               lsp-ui-sideline-show-hover nil
               lsp-ui-sideline-show-diagnostics nil
               lsp-ui-sideline-ignore-duplicate t)
-  :config (setq lsp-ui-flycheck-enable t)
-  :commands lsp-ui-mode)
+  :config (setq lsp-ui-flycheck-enable nil))
 
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
@@ -55,7 +54,7 @@
   :diminish
   :hook ((lsp-mode . dap-mode)
          (dap-mode . dap-ui-mode)
-	 (dap-mode . dap-tooltip-mode)
+	     (dap-mode . dap-tooltip-mode)
          (python-mode . (lambda() (require 'dap-python)))
          (go-mode . (lambda() (require 'dap-go)))
          (java-mode . (lambda() (require 'dap-java)))))

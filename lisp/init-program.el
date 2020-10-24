@@ -8,6 +8,7 @@
 (require 'init-go)
 (require 'init-json)
 (require 'init-markdown)
+(require 'init-python)
 (require 'init-restclient)
 (require 'init-vue)
 (require 'init-web)
