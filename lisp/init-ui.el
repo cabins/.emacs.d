@@ -45,6 +45,8 @@
   :when (display-graphic-p)
   :config
   (set-default 'cursor-type 'bar)
+  ;; I prefer the cursor be red color, 'cause it's more obvious.
+  (set-face-background 'cursor "#FF0000")
   (setq-default scroll-up-aggressively 0.01
                 scroll-down-aggressively 0.01)
   (setq default-frame-alist '((width . 180) (height . 40)))

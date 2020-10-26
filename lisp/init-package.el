@@ -64,7 +64,7 @@
 		        company-dabbrev-ignore-case t
 		        company-dabbrev-other-buffers 'all
 		        company-require-match nil
-		        company-minimum-prefix-length 2
+		        company-minimum-prefix-length 1
 		        company-show-numbers t
 		        company-tooltip-limit 20
 		        company-idle-delay 0
@@ -72,9 +72,9 @@
 		        company-tooltip-offset-display 'scrollbar
 		        company-begin-commands '(self-insert-command)))
 
-(use-package company-quickhelp
-  :hook (prog-mode . company-quickhelp-mode)
-  :init (setq company-quickhelp-delay 0.3))
+;; (use-package company-quickhelp
+;;   :hook (prog-mode . company-quickhelp-mode)
+;;   :init (setq company-quickhelp-delay 0.3))
 
 ;; Better sorting and filtering
 (use-package company-prescient
@@ -155,7 +155,7 @@
 ;; Enable flymake on default
 (use-package flymake
   :ensure nil
-  :diminish (flymake " Fly.")
+  :diminish (flymake " Flym.")
   :hook (prog-mode . flymake-mode)
   :bind (("M-n" . flymake-goto-next-error)
          ("M-p" . flymake-goto-prev-error)))

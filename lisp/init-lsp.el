@@ -19,10 +19,13 @@
          (vue-mode . lsp-deferred)
          (html-mode . lsp-deferred))
   :init (setq lsp-keep-workspace-alive nil ;; Auto kill LSP server
-              lsp-enable-indentation nil
-              lsp-enable-on-type-formatting nil
+              lsp-enable-indentation t
+              lsp-enable-on-type-formatting t
               lsp-auto-guess-root nil
-              lsp-enable-snippet t)
+              lsp-enable-snippet t
+              lsp-modeline-diagnostics-enable t
+              lsp-idle-delay 0.500
+              lsp-completion-provider :capf)
   :config
   ;; Configure LSP Clients
   (use-package lsp-clients
@@ -35,20 +38,24 @@
   :commands lsp-ui-mode
   :hook (lsp-mode . lsp-ui-mode)
   :init (setq lsp-ui-doc-enable t
-              lsp-ui-doc-use-webkit nil
+              lsp-ui-doc-use-webkit t
               lsp-ui-doc-delay 0
               lsp-ui-doc-include-signature t
-              lsp-ui-doc-position 'at-point
+              lsp-ui-doc-position 'at-point ;; top/bottom/at-point
               lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
               lsp-ui-sideline-enable t
-              lsp-ui-sideline-show-hover nil
-              lsp-ui-sideline-show-diagnostics nil
-              lsp-ui-sideline-ignore-duplicate t)
+              lsp-ui-sideline-show-hover t
+              lsp-ui-sideline-show-code-actions t
+              lsp-ui-sideline-show-diagnostics t
+              lsp-ui-sideline-ignore-duplicate t
+              lsp-headerline-breadcrumb-enable t)
   :config (setq lsp-ui-flycheck-enable nil))
 
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list
+  :init (treemacs-resize-icons 14))
 
 (use-package dap-mode
   :diminish
