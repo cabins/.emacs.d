@@ -49,7 +49,9 @@
               lsp-ui-sideline-show-diagnostics t
               lsp-ui-sideline-ignore-duplicate t
               lsp-headerline-breadcrumb-enable t)
-  :config (setq lsp-ui-flycheck-enable nil))
+  :config
+  (setq lsp-ui-flycheck-enable nil)
+  (treemacs-resize-icons 14))
 
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)

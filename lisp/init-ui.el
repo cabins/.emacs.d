@@ -30,7 +30,7 @@
 (when (display-graphic-p)
   (if *is-windows*
       ;; font setting for Windows platform
-      (cabins/set-monospaced-font "Courier New" "Micro Yahei Mono" 13 13))
+      (cabins/set-monospaced-font "Courier New" "Microsoft Yahei Mono" 13 13))
   (if *is-mac*
       ;; font setting for macOS platform
       (cabins/set-monospaced-font "Monaco" "Helvetica" 13 13))
