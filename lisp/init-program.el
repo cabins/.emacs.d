@@ -7,6 +7,7 @@
 
 (require 'init-go)
 (require 'init-json)
+(require 'init-lisp)
 (require 'init-markdown)
 (require 'init-python)
 (require 'init-restclient)

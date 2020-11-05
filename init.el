@@ -16,6 +16,7 @@
 (require 'init-misc)
 (require 'init-program)
 (require 'init-ui)
+(require 'interactive-funcs)
 
 (when (file-exists-p custom-file)
   (load-file custom-file))

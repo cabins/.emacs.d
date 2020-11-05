@@ -167,7 +167,26 @@
 
 (use-package rainbow-delimiters
   :diminish
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode)
+  :config
+  (set-face-foreground 'rainbow-delimiters-depth-1-face "red")
+  (set-face-foreground 'rainbow-delimiters-depth-2-face "orange")
+  (set-face-foreground 'rainbow-delimiters-depth-3-face "gold")
+  (set-face-foreground 'rainbow-delimiters-depth-4-face "green")
+  (set-face-foreground 'rainbow-delimiters-depth-5-face "steelblue")
+  (set-face-foreground 'rainbow-delimiters-depth-6-face "blue")
+  (set-face-foreground 'rainbow-delimiters-depth-7-face "purple")
+  (set-face-foreground 'rainbow-delimiters-depth-8-face "pink")
+  (set-face-foreground 'rainbow-delimiters-depth-9-face "black")
+  (set-face-bold 'rainbow-delimiters-depth-1-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-2-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-3-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-4-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-5-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-6-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-7-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-8-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-9-face "t"))
 
 
 
@@ -193,6 +212,12 @@
 
 (use-package keycast
   :commands keycast-mode)
+
+(use-package info-colors
+  :hook (Info-selection . info-colors-fontify-node))
+
+(use-package indent-guide
+  :hook (after-init-hook . indent-guide-global-mode))
 
 (provide 'init-package)
 ;;; init-package.el ends here
