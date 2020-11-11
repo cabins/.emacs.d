@@ -38,5 +38,16 @@
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "\n;; Configuration by Cabins <github.com/cabins>.\n;; Enjoy!\n\n")
 
+;; I don't like the bell ring
+(setq ring-bell-function #'ignore
+      visible-bell nil)
+
+;; blink the cursor
+(blink-cursor-mode 1)
+(global-hl-line-mode 1)
+
+(if *is-mac*
+    (setq delete-by-moving-to-trash t))
+
 (provide 'init-startup)
 ;;; init-startup.el ends here

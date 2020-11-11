@@ -214,10 +214,14 @@
   :commands keycast-mode)
 
 (use-package info-colors
+  :unless *is-windows*
   :hook (Info-selection . info-colors-fontify-node))
 
 (use-package indent-guide
   :hook (after-init-hook . indent-guide-global-mode))
+
+(use-package paren
+  :config (show-paren-mode 1))
 
 (provide 'init-package)
 ;;; init-package.el ends here
