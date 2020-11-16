@@ -14,6 +14,7 @@
 (use-package emacs
   :bind (("M-/" . comment-line)
          ("M-?" . comment-or-uncomment-region)
+         ("C-," . crux-find-user-init-file)
 	     ("M-S-<return>" . toggle-frame-fullscreen)
          ("M-<return>" . toggle-frame-maximized)))
 

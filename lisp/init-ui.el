@@ -6,8 +6,8 @@
     ;;; Code:
 
 ;; ;; Settings for UI theme
-;; (use-package doom-themes
-;;   :init (load-theme 'doom-one t))
+(use-package base16-theme
+  :init (load-theme 'base16-github t))
 
 ;; Function to set monofonts
 (defun cabins/set-monospaced-font (english chinese e-size c-size)
@@ -26,6 +26,9 @@
                        :weight 'normal
                        :slant 'normal
                        :size c-size))))
+
+;; 尝试解决字体卡顿问题
+(setq inhibit-compacting-font-caches t)
 
 (when (display-graphic-p)
   (if *is-windows*
