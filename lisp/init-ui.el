@@ -6,8 +6,8 @@
     ;;; Code:
 
 ;; ;; Settings for UI theme
-(use-package base16-theme
-  :init (load-theme 'base16-github t))
+(use-package almost-mono-themes
+  :init (load-theme 'almost-mono-white t))
 
 ;; Function to set monofonts
 (defun cabins/set-monospaced-font (english chinese e-size c-size)
