@@ -38,10 +38,10 @@
   :commands lsp-ui-mode
   :hook (lsp-mode . lsp-ui-mode)
   :init (setq lsp-ui-doc-enable t
-              lsp-ui-doc-use-webkit t
-              lsp-ui-doc-delay 0
+              lsp-ui-doc-use-webkit nil
+              lsp-ui-doc-delay .3
               lsp-ui-doc-include-signature t
-              lsp-ui-doc-position 'at-point ;; top/bottom/at-point
+              lsp-ui-doc-position 'bottom ;; top/bottom/at-point
               lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
               lsp-ui-sideline-enable t
               lsp-ui-sideline-show-hover t

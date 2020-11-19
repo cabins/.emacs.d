@@ -7,7 +7,9 @@
 
 (require 'init-go)
 (require 'init-json)
-(require 'init-lisp)
+
+;; Lispy keybinding tastes bad for me, so I disable it.
+;; (require 'init-lisp)
 (require 'init-markdown)
 (require 'init-python)
 (require 'init-restclient)
