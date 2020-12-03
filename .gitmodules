@@ -1,0 +1,3 @@
+[submodule "themes/nano-emacs"]
+	path = themes/nano-emacs
+	url = https://github.com/rougier/nano-emacs.git

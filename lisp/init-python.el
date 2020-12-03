@@ -5,9 +5,9 @@
 
 ;;; Code:
 
-(use-package python-mode
-  :init (setq-default python-indent-offset 4
-                      python-indent-guess-indent-offset-verbose nil))
+;; (use-package python-mode
+;; :init (setq-default python-indent-offset 4
+;; python-indent-guess-indent-offset-verbose nil))
 
 (use-package py-isort
   :init (setq python-sort-imports-on-save t))

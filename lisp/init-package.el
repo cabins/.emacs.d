@@ -96,6 +96,9 @@
         enable-recursive-minibuffers t
         ivy-re-builders-alist '((t . ivy--regex-ignore-order))))
 
+(use-package ivy-rich
+  :hook (after-init . ivy-rich-mode))
+
 (use-package counsel
   :after (ivy)
   :bind (("M-x" . counsel-M-x)
@@ -168,25 +171,25 @@
 (use-package rainbow-delimiters
   :diminish
   :hook (prog-mode . rainbow-delimiters-mode)
-  :config
-  (set-face-foreground 'rainbow-delimiters-depth-1-face "red")
-  (set-face-foreground 'rainbow-delimiters-depth-2-face "pink")
-  (set-face-foreground 'rainbow-delimiters-depth-3-face "orange")
-  (set-face-foreground 'rainbow-delimiters-depth-4-face "yellow")
-  (set-face-foreground 'rainbow-delimiters-depth-5-face "purple")
-  (set-face-foreground 'rainbow-delimiters-depth-6-face "green")
-  (set-face-foreground 'rainbow-delimiters-depth-7-face "blue")
-  (set-face-foreground 'rainbow-delimiters-depth-8-face "brown")
-  (set-face-foreground 'rainbow-delimiters-depth-9-face "gray")
-  (set-face-bold 'rainbow-delimiters-depth-1-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-2-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-3-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-4-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-5-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-6-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-7-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-8-face nil)
-  (set-face-bold 'rainbow-delimiters-depth-9-face nil)
+  ;; :config
+  ;; (set-face-foreground 'rainbow-delimiters-depth-1-face "red")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-2-face "pink")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-3-face "orange")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-4-face "yellow")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-5-face "purple")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-6-face "green")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-7-face "blue")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-8-face "brown")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-9-face "gray")
+  ;; (set-face-bold 'rainbow-delimiters-depth-1-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-2-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-3-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-4-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-5-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-6-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-7-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-8-face nil)
+  ;; (set-face-bold 'rainbow-delimiters-depth-9-face nil)
 )
 
 
