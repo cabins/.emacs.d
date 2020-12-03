@@ -12,7 +12,7 @@ This project belongs to Cabins, an SDET(Software Developer Engineer in Test) fro
 I mainly use Python & Go in my work.  So I set up the programming environments for this two languages with LSP - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
 
 ## About the default FONT
-I use `[Ubuntu Mono](https://design.ubuntu.com/font/)` as the default Latin Character font, and `华文细黑` as the default Chinese Character font.
+I use [Ubuntu Mono](https://design.ubuntu.com/font/) as the default Latin Character font, and `华文细黑` as the default Chinese Character font.
 Download and install the fonts if you like them too, otherwise, change the `lisp/init-ui.el` to your preference.
 
 ## Installation
