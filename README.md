@@ -31,6 +31,9 @@ git clone https://github.com/cabins/.emacs.d ~/.emacs.d
 
 > Note: If you use Windows 10,  you should set an environment variable named `HOME`,  and set its value to your user directory,  like `C:/Users/<your_name>`.
 
+## About the themes
+[nano-emacs](https://github.com/rougier/nano-emacs), great work!
+
 ## Testing
 
 This project is tested on
