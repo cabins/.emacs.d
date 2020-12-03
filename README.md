@@ -37,6 +37,7 @@ git clone https://github.com/cabins/.emacs.d ~/.emacs.d
 I clone the theme with git submodule, so after you clone my configs, you should also run the next command:
 ```bash
     cd ~/.emacs.d
+    git submodule init
     git submodule update
 ```
 
