@@ -26,5 +26,10 @@
               configs))
     (pop-to-buffer buf t)))
 
+(defun reload-init-file ()
+  "Reload the user init file."
+  (interactive)
+  (load-file user-init-file))
+
 (provide 'interactive-funcs)
 ;;; interactive-funcs.el ends here

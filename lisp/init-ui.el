@@ -6,13 +6,13 @@
     ;;; Code:
 
 ;; To use the nano-emacs theme
-(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "themes/nano-emacs/")))
+;; (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "themes/nano-emacs/")))
 
-(require 'nano-layout)
-(require 'nano-theme-light)
-(require 'nano-modeline)
-(require 'nano-help)
-(require 'nano-splash)
+;; (require 'nano-layout)
+;; (require 'nano-theme-light)
+;; (require 'nano-modeline)
+;; (require 'nano-help)
+;; (require 'nano-splash)
 
 ;; ;; Settings for UI theme
 ;; (use-package almost-mono-themes
@@ -67,7 +67,7 @@
   :config
   (set-default 'cursor-type 'bar)
   ;; I prefer the cursor be red color, 'cause it's more obvious.
-  (set-face-background 'cursor "#FF0000")
+  ;; (set-face-background 'cursor "#FF0000")
   (setq-default scroll-up-aggressively 0.01
                 scroll-down-aggressively 0.01)
   (setq default-frame-alist '((width . 180) (height . 40)))

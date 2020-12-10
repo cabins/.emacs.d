@@ -44,6 +44,11 @@
 
 ;; blink the cursor
 (blink-cursor-mode 1)
+
+;; 高亮当前行，使用浅灰色背景条
+(set-face-background hl-line-face "#F2F2F2")
+;; 高亮当前行，使用下划线
+;; (set-face-underline-p 'highlight t)
 (global-hl-line-mode 1)
 
 (if *is-mac*

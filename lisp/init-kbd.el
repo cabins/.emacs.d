@@ -5,10 +5,14 @@
 
 ;;; Code:
 
-;; Settings for macOS key: Use command as the Meta key
+;; 在macOS上，将Command键映射为Meta，Option映射为Super
 (when *is-mac*
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super))
+
+;; 在Windows上，将App/Menu键映射为Hyper
+(when *is-windows*
+  (setq w32-apps-modifier 'hyper))
 
 ;; Global key bind
 (use-package emacs
