@@ -36,7 +36,7 @@
 (setq-default frame-title-format '("%f"))
 
 (setq inhibit-startup-screen t)
-(setq initial-scratch-message "\n;; Configuration by Cabins <github.com/cabins>.\n;; Enjoy!\n\n")
+(setq initial-scratch-message (cabins/user-login-info))
 
 ;; I don't like the bell ring
 (setq ring-bell-function #'ignore

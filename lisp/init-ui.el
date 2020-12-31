@@ -45,7 +45,7 @@
 (when (display-graphic-p)
   (if *is-windows*
       ;; font setting for Windows platform
-      (cabins/set-monospaced-font "Ubuntu Mono" "华文细黑" 13 14))
+      (cabins/set-monospaced-font "Ubuntu Mono" "华文黑体" 13 14))
   (if *is-mac*
       ;; font setting for macOS platform
       (cabins/set-monospaced-font "Ubuntu Mono" "华文细黑" 13 14))

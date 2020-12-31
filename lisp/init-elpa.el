@@ -6,9 +6,9 @@
 ;;; Code:
 
 ;;; Settings for package archives
-(setq package-archives '(("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")
-                         ("gnu" . "http://mirrors.cloud.tencent.com/elpa/gnu/")
-                         ("org" . "http://mirrors.cloud.tencent.com/elpa/org/")))
+(setq package-archives '(("melpa" . "http://mirrors.bfsu.edu.cn/elpa/melpa/")
+                         ("gnu" . "http://mirrors.bfsu.edu.cn/elpa/gnu/")
+                         ("org" . "http://mirrors.bfsu.edu.cn/elpa/org/")))
 
 (setq package-check-signature nil)
 

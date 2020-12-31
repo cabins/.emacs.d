@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-;; ******************** PART1 benchmark(Optional) ********************
+;; ******************** PART1 benchmark (Optional) ********************
 ;; Settings for benchmark package
 (use-package benchmark-init
   :init (benchmark-init/activate)
@@ -199,7 +199,8 @@
   :bind (("M-o" . 'ace-window)))
 
 ;; Restart emacs
-(use-package restart-emacs)
+;; Use custom interactive func "cabins/reload-init-file" instead.
+;; (use-package restart-emacs)
 
 ;; auto update packages
 (use-package auto-package-update

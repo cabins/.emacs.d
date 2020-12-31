@@ -9,6 +9,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (require 'init-consts)
+(require 'interactive-funcs)
 (require 'init-startup)
 (require 'init-elpa)
 (require 'init-package)
@@ -16,7 +17,6 @@
 (require 'init-misc)
 (require 'init-program)
 (require 'init-ui)
-(require 'interactive-funcs)
 
 (when (file-exists-p custom-file)
   (load-file custom-file))
