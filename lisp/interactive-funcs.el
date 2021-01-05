@@ -18,7 +18,10 @@
   (message "Refresh the package index...")
   (package-refresh-contents)
   (message "Upgrade all the packages...")
-  (auto-package-update-now))
+  (auto-package-update-now)
+  (let ((buffer (get-buffer "*Compile-Log*")))
+    (if buffer
+        (kill-buffer buffer))))
 
 (defun cabins/user-login-info ()
   "Print the login user info as init message"
