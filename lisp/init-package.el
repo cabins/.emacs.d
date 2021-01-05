@@ -5,16 +5,12 @@
 
 ;;; Code:
 
-;; ******************** PART1 benchmark (Optional) ********************
+;; ******************** benchmark (Optional) ********************
 ;; Settings for benchmark package
 (use-package benchmark-init
   :init (benchmark-init/activate)
   :hook (after-init . benchmark-init/deactivate))
 
-
-
-
-;; ******************** PART2 shell & environments ********************
 ;; Settings for org mode and load config from org file
 (use-package org
   ;; :init (setq org-startup-indented t)
@@ -29,10 +25,6 @@
   :if (memq window-system '(mac ns x))
   :init (exec-path-from-shell-initialize))
 
-
-
-
-;; ******************** PART3 editing ********************
 ;; Settings for C-a behavior
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
@@ -71,10 +63,6 @@
 		        company-tooltip-offset-display 'scrollbar
 		        company-begin-commands '(self-insert-command)))
 
-;; (use-package company-quickhelp
-;;   :hook (prog-mode . company-quickhelp-mode)
-;;   :init (setq company-quickhelp-delay 0.3))
-
 ;; Better sorting and filtering
 (use-package company-prescient
   :init (company-prescient-mode 1))
@@ -82,11 +70,16 @@
 ;; Use ido instead of ivy & counsel & swiper
 ;; They are great! But I want cleaner.
 (use-package ido
-  :config (setq ido-enable-flex-matching t
-                ido-everywhere t
-                ido-use-filename-at-point t)
+  :config
+  (setq ido-enable-flex-matching t
+        ido-everywhere t
+        ido-use-filename-at-point t)
   (ido-mode 1))
 
+;; Use smex to enhance the M-x
+(use-package smex
+  :init (smex-initialize)
+  :bind (("M-x" . smex)))
 
 ;; Settings for which-key - suggest next key
 (use-package which-key
@@ -110,6 +103,7 @@
 				                  "snippets"))
   (use-package yasnippet-snippets
     :after yasnippet)
+
   (use-package auto-yasnippet
     :bind (("C-o" . aya-open-line)
            ("H-w" . aya-create)
@@ -138,30 +132,8 @@
 
 (use-package rainbow-delimiters
   :diminish
-  :hook (prog-mode . rainbow-delimiters-mode)
-  ;; :config
-  ;; (set-face-foreground 'rainbow-delimiters-depth-1-face "red")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-2-face "pink")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-3-face "orange")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-4-face "yellow")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-5-face "purple")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-6-face "green")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-7-face "blue")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-8-face "brown")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-9-face "gray")
-  ;; (set-face-bold 'rainbow-delimiters-depth-1-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-2-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-3-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-4-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-5-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-6-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-7-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-8-face nil)
-  ;; (set-face-bold 'rainbow-delimiters-depth-9-face nil)
-  )
+  :hook (prog-mode . rainbow-delimiters-mode))
 
-
-;; ******************** PART6 Emacs Optimize ********************
 ;; Settings for jump windows, use M-NUM to switch
 (use-package ace-window
   :bind (("M-o" . 'ace-window)))
@@ -177,7 +149,7 @@
         auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-;; Beacon mode
+;; Beacon mode - highlight the line where your cursor is
 (use-package beacon
   :unless *is-windows*
   :hook (after-init . beacon-mode))
@@ -185,10 +157,12 @@
 (use-package keycast
   :commands keycast-mode)
 
+;; Make info docs colorful, not good at displaying some fonts
 (use-package info-colors
   :unless *is-windows*
   :hook (Info-selection . info-colors-fontify-node))
 
+;; Indent grade guide line
 (use-package indent-guide
   :hook (after-init-hook . indent-guide-global-mode))
 
