@@ -9,7 +9,7 @@ This project belongs to Cabins, an SDET(Software Developer Engineer in Test) fro
 
 ## About Programming language
 
-I mainly use Python & Go in my work.  So I set up the programming environments for this two languages with [LSP](https://emacs-lsp.github.io/lsp-mode/) - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
+I mainly use [Python](https://www.python.org/) & [Go](https://golang.org/) in my work.  So I set up the programming environments for this two languages with [LSP](https://emacs-lsp.github.io/lsp-mode/) - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
 
 ## About the default FONT
 I use [Ubuntu Mono](https://design.ubuntu.com/font/) as the default Latin Character font, and `华文细黑` as the default Chinese Character font.
@@ -29,6 +29,12 @@ Run the code below, and then launch your Emacs, enjoy it.
 git clone https://github.com/cabins/.emacs.d ~/.emacs.d
 ```
 
+If you has already upgrade your emacs to 27.1, you also can clone this repo like this:
+
+```bash
+git clone https://github.com/cabins/.emacs.d ~/.config/emacs
+```
+
 > Note: If you use Windows 10,  you should set an environment variable named `HOME`,  and set its value to your user directory,  like `C:/Users/<your_name>`.
 
 ## Testing
@@ -37,7 +43,7 @@ This project is tested on
 
 - macOS,  11.1,  GUI mode
 - Fedora Linux 31/32/33, both Workstation & Server Edition
-- Windows 10,  1909(18363)(Native GUI & msys2)
+- Windows 10,  1909(18363) (Native GUI & msys2)
 - Ubuntu 20.04.1 on WSL2
 
 it should run on other platforms, please note that.
