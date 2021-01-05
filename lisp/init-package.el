@@ -21,8 +21,7 @@
   :config
   (setq org-startup-indented t
 	    org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
-	    org-todo-keyword-faces '(("DOING" . "blue")))
-  )
+	    org-todo-keyword-faces '(("DOING" . "blue"))))
 
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
@@ -159,7 +158,7 @@
   ;; (set-face-bold 'rainbow-delimiters-depth-7-face nil)
   ;; (set-face-bold 'rainbow-delimiters-depth-8-face nil)
   ;; (set-face-bold 'rainbow-delimiters-depth-9-face nil)
-)
+  )
 
 
 ;; ******************** PART6 Emacs Optimize ********************
