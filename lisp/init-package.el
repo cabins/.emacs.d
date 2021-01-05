@@ -80,46 +80,15 @@
 (use-package company-prescient
   :init (company-prescient-mode 1))
 
+;; Use ido instead of ivy & counsel & swiper
+;; They are great! But I want cleaner.
+(use-package ido
+  :config (setq ido-enable-flex-matching t
+                ido-everywhere t
+                ido-use-filename-at-point t)
+  (ido-mode 1))
 
 
-;; ******************** PART4 searching ********************
-;; Settings for ivy & counsel & swiper
-(use-package ivy
-  :defer 1
-  :demand
-  :diminish
-  :hook (after-init . ivy-mode)
-  :config (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t
-        ivy-initial-inputs-alist nil
-        ivy-count-format "%d/%d "
-        enable-recursive-minibuffers t
-        ivy-re-builders-alist '((t . ivy--regex-ignore-order))))
-
-(use-package ivy-rich
-  :hook (after-init . ivy-rich-mode))
-
-(use-package counsel
-  :after (ivy)
-  :bind (("M-x" . counsel-M-x)
-	     ("C-h b" . counsel-descbinds)
-	     ("C-h f" . counsel-describe-function)
-	     ("C-h v" . counsel-describe-variable)
-         ("C-x C-f" . counsel-find-file)
-         ("C-c f" . counsel-recentf)
-         ("C-c g" . counsel-git)))
-
-(use-package swiper
-  :after ivy
-  :bind (("C-s" . swiper)
-         ("C-r" . swiper-isearch-backward))
-  :config (setq swiper-action-recenter t
-                swiper-include-line-number-in-search t))
-
-
-
-
-;; ******************** PART5 basic development ********************
 ;; Settings for which-key - suggest next key
 (use-package which-key
   :defer nil
@@ -155,7 +124,7 @@
   :hook (after-init . projectile-mode)
   :bind-keymap ("C-c p" . projectile-command-map))
 
-;; Enable flymake on default
+;; Enable flymake on default, which is built in emacs
 (use-package flymake
   :ensure nil
   :diminish (flymake " Flym.")
