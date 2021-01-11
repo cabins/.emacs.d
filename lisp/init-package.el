@@ -70,16 +70,20 @@
 ;; Use ido instead of ivy & counsel & swiper
 ;; They are great! But I want cleaner.
 (use-package ido
-  :config
+  :defer nil
+  :init
   (setq ido-enable-flex-matching t
         ido-everywhere t
         ido-use-filename-at-point t)
-  (ido-mode 1))
+  (ido-mode t)
+  (fido-mode t))
 
 ;; Use smex to enhance the M-x
-(use-package smex
-  :init (smex-initialize)
-  :bind (("M-x" . smex)))
+;; (use-package smex
+;;   :init (smex-initialize)
+;;   :bind (("M-x" . smex)))
+;; Actually fido-mode or icomplete-mode (which are all builtin)
+;; are good alternatives to smex
 
 ;; Settings for which-key - suggest next key
 (use-package which-key

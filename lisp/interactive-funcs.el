@@ -15,10 +15,9 @@
 (defun cabins/packages-upgrade()
   "Upgrade all the packages."
   (interactive)
-  (message "Refresh the package index...")
-  (package-refresh-contents)
-  (message "Upgrade all the packages...")
+  (message "Upgrading all the packages...")
   (auto-package-update-now)
+  (message "All the packages are up to date.")
   (let ((buffer (get-buffer "*Compile-Log*")))
     (if buffer
         (kill-buffer buffer))))

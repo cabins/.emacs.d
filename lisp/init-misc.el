@@ -17,7 +17,9 @@
 ;; Settings for the TAB behavior
 (use-package emacs
   :init (setq-default tab-width 4
-                      indent-tabs-mode nil))
+                      indent-tabs-mode nil
+                      isearch-lazy-count t
+                      lazy-count-prefix-format "%s/%s "))
 
 ;; Display time at the right bottom corner
 (use-package emacs
