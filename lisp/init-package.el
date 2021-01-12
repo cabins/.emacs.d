@@ -173,5 +173,10 @@
 (use-package paren
   :config (show-paren-mode 1))
 
+;; Settings for electric-pair
+(use-package electric
+  :hook ((after-init . electric-indent-mode)
+	     (prog-mode . electric-pair-mode)))
+
 (provide 'init-package)
 ;;; init-package.el ends here

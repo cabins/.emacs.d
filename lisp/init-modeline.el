@@ -1,0 +1,37 @@
+;;; init-modeline.el --- Summary
+
+;;; Commentary:
+;;; (c) Cabins, github.com/cabins/.emacs.d
+
+;;; Code:
+
+;; settings for modeline when active
+(set-face-attribute 'mode-line nil
+                    :background "#e6e6fa"
+                    :foreground "black"
+                    :box '(:color "#e6e6fa" :line-width 0)
+                    :overline nil
+                    :underline nil)
+
+;; settings for modeline when inactive
+;; make the modeline not annoying as possible
+(set-face-attribute 'mode-line-inactive nil
+                    :background "#f2f3f4"
+                    :foreground "black"
+                    :box '(:color "#f2f3f4" :line-width 0)
+                    :overline nil
+                    :underline nil)
+
+;; settings for modeline display format
+(setq-default mode-line-format '("<"  mode-name ">"
+                                 " %e " mode-line-modified
+                                 mode-line-buffer-identification
+                                 (:eval (if vc-mode (concat "  " vc-mode)))
+                                 " " mode-line-mule-info
+                                 " " mode-line-position
+                                 " " minor-mode-alist
+                                 "%-"
+                                 ))
+
+(provide 'init-modeline)
+;;; init-modeline.el end here

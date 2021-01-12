@@ -17,9 +17,9 @@
 (require 'init-misc)
 (require 'init-program)
 (require 'init-ui)
+(require 'init-modeline)
 
 (when (file-exists-p custom-file)
   (load-file custom-file))
 
 ;;; init.el ends here
-(put 'narrow-to-region 'disabled nil)

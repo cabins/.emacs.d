@@ -5,43 +5,32 @@
 
 ;;; Code:
 
-;; Settings for delete multi line spaces
-(use-package emacs
-  :config
-  (defalias 'yes-or-no-p 'y-or-n-p)
-  ;; Display 'lambda' as 'λ' (just for fun)
-  (global-prettify-symbols-mode 1)
-  :hook ((before-save . delete-trailing-whitespace)
-	     (after-init . delete-selection-mode)))
+;; alias yes/no to y/p
+(defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Settings for the TAB behavior
-(use-package emacs
-  :init (setq-default tab-width 4
-                      indent-tabs-mode nil
-                      isearch-lazy-count t
-                      lazy-count-prefix-format "%s/%s "))
+;; display 'lambda' as 'λ' (just for fun)
+(global-prettify-symbols-mode 1)
 
-;; Display time at the right bottom corner
-(use-package emacs
-  :init
-  (setq display-time-24hr-format t
-	    display-time-day-and-date t)
-  (display-time-mode 1))
+;; <TAB> show settings
+(setq-default tab-width 4
+              indent-tabs-mode nil)
 
+;; C-s/C-r settings
+(setq-default isearch-lazy-count t
+              lazy-count-prefix-format "%s/%s ")
 
-;; Settings for line number
-;; Drop the global-display-line-numbers-mode on Windows platform, 'cause it make the window splash on Windows
-(use-package emacs
-  :unless *is-windows*
-  :init
-  (setq display-line-numbers-type 'relative) ;relative, visual
+;; some delete hooks settings
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'after-init-hook 'delete-selection-mode)
+
+;; settings for line number
+;; drop the global-display-line-numbers-mode on Windows platform,
+;; 'cause it make the window splash on Windows
+(unless *is-windows*
+  (setq display-line-numbers-type 'visual) ; relative, visual
   (global-display-line-numbers-mode t))
 
 
-;; Settings for electric-pair
-(use-package electric
-  :hook ((after-init . electric-indent-mode)
-	     (prog-mode . electric-pair-mode)))
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
