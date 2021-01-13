@@ -25,7 +25,7 @@
                                  mode-line-buffer-identification
                                  (:eval (if vc-mode (concat "  " vc-mode)))
                                  " " mode-line-mule-info
-                                 " " mode-line-position
+                                 " (Line %l, Col %c)"
                                  " " minor-mode-alist
                                  "%-"
                                  ))

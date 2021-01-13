@@ -33,7 +33,7 @@
       auto-save-default nil)
 
 ;; Adjust garbage collection thresholds during startup
-(setq-default frame-title-format '("%f"))
+(setq-default frame-title-format '("%b"))
 
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message (cabins/user-login-info))
@@ -55,4 +55,5 @@
     (setq delete-by-moving-to-trash t))
 
 (provide 'init-startup)
+
 ;;; init-startup.el ends here
