@@ -1,32 +1,19 @@
 ;;; init-ui.el --- settings for the Emacs UI
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
+;;; Code:
 
-;;; Commentary:
-;;; (c) Cabins, github.com/cabins/.emacs.d
 
-    ;;; Code:
-
-;; To use the nano-emacs theme
-;; (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "themes/nano-emacs/")))
-
-;; (require 'nano-layout)
-;; (require 'nano-theme-light)
-;; (require 'nano-modeline)
-;; (require 'nano-help)
-;; (require 'nano-splash)
-
-;; ;; Settings for UI theme
-;; (use-package almost-mono-themes
-  ;; :init (load-theme 'almost-mono-white t))
-
-;; Function to set monofonts
+;; function to set monofonts
 (defun cabins/set-monospaced-font (english chinese e-size c-size)
-  "cabins/set-monospaced-font is used for setting monospaced font of ENGLISH and CHINESE"
+  ;; first, set the default latin charset
   (set-face-attribute 'default nil
                       :font (font-spec
                              :name english
                              :weight 'normal
                              :slant 'normal
                              :size e-size))
+
+  ;; then, the cjk-charset
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
                       charset
@@ -35,6 +22,21 @@
                        :weight 'normal
                        :slant 'normal
                        :size c-size))))
+
+;; a little bit optimize the screen display when in graphic mode
+(defun cabins/optimize-screen ()
+  (when (display-graphic-p)
+    (setq-default cursor-type 'bar
+                  scroll-up-aggressively 0.01
+                  scroll-down-aggressively 0.01)
+    (setq default-frame-alist '((width . 180) (height . 40))
+          redisplay-dont-pause t
+          scroll-conservatively most-positive-fixnum
+          scroll-margin 1
+          scroll-step 1
+          scroll-preserve-screen-position 'always)))
+
+(cabins/optimize-screen)
 
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
@@ -58,25 +60,12 @@
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)
-            (if (window-system frame)
-                (cabins/set-monospaced-font "Ubuntu Mono" "华文细黑" 13 14))))
+            (when (window-system frame)
+              (cabins/set-monospaced-font "Ubuntu Mono" "华文细黑" 13 14)
+              (cabins/optimize-screen))))
 
-;; Font settings
-(use-package emacs
-  :when (display-graphic-p)
-  :config
-  (set-default 'cursor-type 'bar)
-  ;; I prefer the cursor be red color, 'cause it's more obvious.
-  ;; (set-face-background 'cursor "#FF0000")
-  (setq-default scroll-up-aggressively 0.01
-                scroll-down-aggressively 0.01)
-  (setq default-frame-alist '((width . 180) (height . 40)))
-  (setq redisplay-dont-pause t
-        scroll-conservatively most-positive-fixnum
-        scroll-margin 1
-        scroll-step 1
-        scroll-preserve-screen-position 'always)
-)
+(require 'init-modeline)
 
 (provide 'init-ui)
-;;; init-ui.el ends here.
+
+;;; init-ui.el ends here

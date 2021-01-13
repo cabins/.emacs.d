@@ -1,8 +1,11 @@
 ;;; init.el --- Initialization file
 
 ;;; Commentary:
-;;  This is NOT part of GNU Emacs.  It's a personal project of Emacs configuration.
-;;  Written by (c) Cabins Kong.  2019-2020.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; This is NOT part of GNU Emacs.  It's a personal project of Emacs configuration  ;;
+;; Written by (c) Cabins Kong.  2019-2021.                                         ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Code:
 (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp/")))
@@ -17,7 +20,6 @@
 (require 'init-misc)
 (require 'init-program)
 (require 'init-ui)
-(require 'init-modeline)
 
 (when (file-exists-p custom-file)
   (load-file custom-file))

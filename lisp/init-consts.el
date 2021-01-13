@@ -1,8 +1,5 @@
 ;;; init-consts.el --- basic settings before Emacs startup
-
-;;; Commentary:
-;;; (c) Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; Consts to check operating system

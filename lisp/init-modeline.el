@@ -1,15 +1,12 @@
 ;;; init-modeline.el --- Summary
-
-;;; Commentary:
-;;; (c) Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; settings for modeline when active
 (set-face-attribute 'mode-line nil
-                    :background "#e6e6fa"
+                    :background "#e4e5e7"
                     :foreground "black"
-                    :box '(:color "#e6e6fa" :line-width 0)
+                    :box '(:color "#e4e5e7" :line-width 0)
                     :overline nil
                     :underline nil)
 
@@ -34,4 +31,5 @@
                                  ))
 
 (provide 'init-modeline)
-;;; init-modeline.el end here
+
+;;; init-modeline.el ends here
