@@ -29,12 +29,13 @@
     (setq-default cursor-type 'bar
                   scroll-up-aggressively 0.01
                   scroll-down-aggressively 0.01)
-    (setq default-frame-alist '((width . 180) (height . 40))
-          redisplay-dont-pause t
+    (setq redisplay-dont-pause t
           scroll-conservatively 100000
           scroll-margin 0
           scroll-step 1
-          scroll-preserve-screen-position 'always)))
+          scroll-preserve-screen-position 'always)
+    (set-frame-width (selected-frame) 90)
+    (set-frame-height (selected-frame) 50)))
 
 (cabins/optimize-screen)
 
@@ -47,13 +48,13 @@
 (when (display-graphic-p)
   (if *is-windows*
       ;; font setting for Windows platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 16))
+      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
   (if *is-mac*
       ;; font setting for macOS platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 16))
+      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
   (if *is-linux*
       ;; font setting for GNU/Linux platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 16))
+      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
   )
 
 ;; 解决Deamon启动的时候，字体不能加载的问题
@@ -61,7 +62,7 @@
           (lambda (frame)
             (select-frame frame)
             (when (window-system frame)
-              (cabins/set-monospaced-font "Courier New" "楷体" 13 16)
+              (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5)
               (cabins/optimize-screen))))
 
 (require 'init-modeline)
