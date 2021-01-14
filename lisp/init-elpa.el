@@ -1,22 +1,17 @@
 ;;; init-elpa --- initialize elpa repository
-
-;;; Commentary:
-;;; (c)Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c)Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;;; Settings for package archives
 (setq package-archives '(("melpa" . "http://mirrors.bfsu.edu.cn/elpa/melpa/")
                          ("gnu" . "http://mirrors.bfsu.edu.cn/elpa/gnu/")
                          ("org" . "http://mirrors.bfsu.edu.cn/elpa/org/")))
-
 (setq package-check-signature nil)
 
 (require 'package)
 
 ;;; Initialize the packages, avoiding a re-initialization
 (unless (bound-and-true-p package--initialized) ;; To avoid warnings on 27
-  ;; (when (version< emacs-version "27.0")
   (setq package-enable-at-startup nil)
   (package-initialize))
 

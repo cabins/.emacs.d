@@ -48,13 +48,13 @@
 (when (display-graphic-p)
   (if *is-windows*
       ;; font setting for Windows platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
+      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
   (if *is-mac*
       ;; font setting for macOS platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
+      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
   (if *is-linux*
       ;; font setting for GNU/Linux platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
+      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
   )
 
 ;; 解决Daemon启动的时候，字体不能加载的问题
@@ -62,7 +62,7 @@
           (lambda (frame)
             (select-frame frame)
             (when (window-system frame)
-              (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5)
+              (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0)
               (cabins/optimize-screen))))
 
 (require 'init-modeline)

@@ -16,12 +16,11 @@
 (setq frame-inhibit-implied-resize t)
 
 ;; Faster to disable these here (before they've been initialized)
-;; 保留在macOS的GUI模式下的菜单栏
-(unless (and (display-mm-height) (eq system-type 'darwin))
-  (push '(menu-bar-lines . 0) default-frame-alist))
+(unless (and (display-graphic-p) (eq system-type 'darwin))
+  (push '(menu-bar-lines . 0) default-frame-alist)) ;keep the menubar when in GUI on macOS
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars) default-frame-alist)
 (when (featurep 'ns)
-  (push '(ns-transparent-titlebar . t) default-frame-alist))
+  (push '(ns-transparent-titlebar . t) default-frame-alist)) ;make the title bar color same as emacs
 
 ;;; early-init.el ends here

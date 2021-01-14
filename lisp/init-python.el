@@ -1,8 +1,5 @@
 ;;; init-python.el --- Python settings
-
-;;; Commentary:
-;;; (c) Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; (use-package python-mode
