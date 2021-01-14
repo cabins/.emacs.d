@@ -42,7 +42,7 @@
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
 
-;; 添加图形界面这个是为了防止Deamon加载的时候中文字体设置失败
+;; 添加图形界面这个是为了防止Daemon加载的时候中文字体设置失败
 ;; 其实可以不用判断系统，因为配置改成了一样的
 ;; 但是为了他人做系统的定制化，保留了系统的判断
 (when (display-graphic-p)
@@ -57,7 +57,7 @@
       (cabins/set-monospaced-font "Courier New" "楷体" 13 11.5))
   )
 
-;; 解决Deamon启动的时候，字体不能加载的问题
+;; 解决Daemon启动的时候，字体不能加载的问题
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)

@@ -24,6 +24,7 @@
               lsp-auto-guess-root nil
               lsp-enable-snippet t
               lsp-modeline-diagnostics-enable t
+              lsp-modeline-diagnostics-scope :workspace ;; workspace/global/file
               lsp-idle-delay 0.500
               lsp-completion-provider :capf)
   :config
@@ -36,21 +37,26 @@
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
-  :hook (lsp-mode . lsp-ui-mode)
+  :hook ((lsp-mode . lsp-ui-mode)
+         (lsp-ui-mode . lsp-modeline-code-actions-mode)
+         (lsp-ui-mode . lsp-ui-peek-mode))
   :init (setq lsp-ui-doc-enable t
               lsp-ui-doc-use-webkit nil
               lsp-ui-doc-delay .3
               lsp-ui-doc-include-signature t
-              lsp-ui-doc-position 'bottom ;; top/bottom/at-point
-              lsp-eldoc-enable-hover nil ;; Disable eldoc displays in minibuffer
-              lsp-ui-sideline-enable t
-              lsp-ui-sideline-show-hover t
+              lsp-ui-doc-position 'at-point ;; top/bottom/at-point
+              lsp-eldoc-enable-hover t ;; eldoc displays in minibuffer
+              lsp-ui-sideline-enable nil
+              lsp-ui-sideline-show-hover nil
               lsp-ui-sideline-show-code-actions t
               lsp-ui-sideline-show-diagnostics t
               lsp-ui-sideline-ignore-duplicate t
+              lsp-modeline-code-actions-segments '(count name)
               lsp-headerline-breadcrumb-enable t)
   :config
   (setq lsp-ui-flycheck-enable nil)
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (treemacs-resize-icons 14))
 
 

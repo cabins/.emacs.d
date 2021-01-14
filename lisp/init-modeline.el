@@ -19,17 +19,6 @@
                     :overline nil
                     :underline nil)
 
-;; settings for modeline display format
-(setq-default mode-line-format '("<"  mode-name ">"
-                                 " %e " mode-line-modified
-                                 mode-line-buffer-identification
-                                 (:eval (if vc-mode (concat "  " vc-mode)))
-                                 " " mode-line-mule-info
-                                 " (Line %l, Col %c)"
-                                 " " minor-mode-alist
-                                 "%-"
-                                 ))
-
 (provide 'init-modeline)
 
 ;;; init-modeline.el ends here
