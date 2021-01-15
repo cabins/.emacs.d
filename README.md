@@ -1,19 +1,16 @@
 # About this project
 
 
-This is NOT a part of [GNU Emacs](https://www.gnu.org/software/emacs/).
+This is `NOT` a part of [GNU Emacs](https://www.gnu.org/software/emacs/) but a personal configuration project to make it more convenient to me.
 
-This is just a personal configuration project to make Emacs, the most powerful text editor, more convenient to me.
-
-This project belongs to Cabins, an SDET(Software Developer Engineer in Test) from China.
+This project belongs to © Cabins from China.
 
 ## About Programming language
 
 I mainly use [Python](https://www.python.org/) & [Go](https://golang.org/) in my work.  So I set up the programming environments for this two languages with [LSP](https://emacs-lsp.github.io/lsp-mode/) - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
 
 ## About the default FONT
-I use [Ubuntu Mono](https://design.ubuntu.com/font/) as the default Latin Character font, and `华文细黑` as the default Chinese Character font.
-Download and install the fonts if you like them too, otherwise, change the `lisp/init-ui.el` to your preferences.
+I use Courier & 楷体, 'cause they are the only fonts not make my Windows version slow, change the `lisp/init-ui.el` to your preferences.
 
 ## Installation
 
@@ -21,7 +18,7 @@ Launch a terminal, such as:
 
 - `Terminal` App or `iTerm2` on macOS
 - `GNOME Terminal` or `Konsole` on GNU/Linux
-- `CMD` or `PowerShell` on Windows 10
+- `CMD` or `PowerShell` or `Windows Terminal` on Windows 10
 
 Run the code below, and then launch your Emacs, enjoy it.
 
