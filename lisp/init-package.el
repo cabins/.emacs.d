@@ -40,7 +40,10 @@
 		        company-idle-delay 0
 		        company-echo-delay 0
 		        company-tooltip-offset-display 'scrollbar
-		        company-begin-commands '(self-insert-command)))
+		        company-begin-commands '(self-insert-command))
+  (eval-after-load 'company
+    '(add-to-list 'company-backends
+                  '(company-abbrev company-yasnippet company-capf))))
 
 ;; Better sorting and filtering
 (use-package company-prescient

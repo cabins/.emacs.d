@@ -15,6 +15,9 @@
 (global-set-key (kbd "C-/") 'comment-line)
 (global-set-key (kbd "C-?") 'comment-or-uncomment-region)
 
+;; alias yes/no to y/p
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; settings for crux
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)

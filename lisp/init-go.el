@@ -1,8 +1,5 @@
 ;;; init-go.el --- Golang settings
-
-;;; Commentary:
-;;; (c) Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 (defun lsp-go-install-save-hooks ()
