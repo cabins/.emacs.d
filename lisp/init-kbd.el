@@ -1,8 +1,5 @@
 ;;; init-kbd.el --- Summary
-
-;;; Commentary:
-;;; (c)Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c)Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; 在macOS上，将Command键映射为Meta，Option映射为Super
@@ -14,13 +11,32 @@
 (when *is-windows*
   (setq w32-apps-modifier 'hyper))
 
-;; Global key bind
-(use-package emacs
-  :bind (("M-/" . comment-line)
-         ("M-?" . comment-or-uncomment-region)
-         ("C-," . crux-find-user-init-file)
-	     ("M-S-<return>" . toggle-frame-fullscreen)
-         ("M-<return>" . toggle-frame-maximized)))
+;; global key-binding settings for comment (jetbrains style)
+(global-set-key (kbd "C-/") 'comment-line)
+(global-set-key (kbd "C-?") 'comment-or-uncomment-region)
+
+;; settings for crux
+(use-package crux
+  :bind (("C-a" . crux-move-beginning-of-line)
+         ("C-c ^" . crux-top-join-line)
+	     ("C-," . crux-find-user-init-file)
+         ("C-S-d" . crux-duplicate-current-line-or-region)
+         ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
+
+;; hungry-delete - works exactly like c-hungry-delete-mode
+(use-package hungry-delete
+  :bind (("C-c <backspace>" . hungry-delete-backward)
+         ("C-c <delete>" . hungry-delete-forward)
+         ("C-c d" . hungry-delete-forward)))
+
+;; drag-stuff - move lines up/down
+(use-package drag-stuff
+  :bind (("<M-up>". drag-stuff-up)
+         ("<M-down>" . drag-stuff-down)))
+
+;; Settings for jump windows, use M-NUM to switch
+(use-package ace-window
+  :bind (("M-o" . 'ace-window)))
 
 (provide 'init-kbd)
 ;;; init-kbd.el ends here

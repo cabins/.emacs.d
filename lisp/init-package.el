@@ -1,8 +1,5 @@
 ;;; init-package --- initialize the plugins
-
-;;; Commentary:
-;;; (c)Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary: (c)Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; ******************** benchmark (Optional) ********************
@@ -25,27 +22,9 @@
   :if (memq window-system '(mac ns x))
   :init (exec-path-from-shell-initialize))
 
-;; Settings for C-a behavior
-(use-package crux
-  :bind (("C-a" . crux-move-beginning-of-line)
-         ("C-c ^" . crux-top-join-line)
-	     ("C-," . crux-find-user-init-file)
-         ("C-S-d" . crux-duplicate-current-line-or-region)
-         ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
-
-;; Hungry Delete - delete multi spaces with one <delete> key
-(use-package hungry-delete
-  :bind (("C-c DEL" . hungry-delete-backward)
-         ("C-c d" . hungry-delete-forward)))
-
-;; drag-stuff - move lines up/down
-(use-package drag-stuff
-  :bind (("<M-up>". drag-stuff-up)
-         ("<M-down>" . drag-stuff-down)))
-
 ;; Settings for company
 (use-package company
-  :diminish (company-mode " Com.")
+  :diminish (company-mode " Cmp.")
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :hook (after-init . global-company-mode)
   :config (setq company-dabbrev-code-everywhere t
@@ -77,13 +56,6 @@
         ido-use-filename-at-point t)
   (ido-mode t)
   (fido-mode t))
-
-;; Use smex to enhance the M-x
-;; (use-package smex
-;;   :init (smex-initialize)
-;;   :bind (("M-x" . smex)))
-;; Actually fido-mode or icomplete-mode (which are all builtin)
-;; are good alternatives to smex
 
 ;; Settings for which-key - suggest next key
 (use-package which-key
@@ -138,14 +110,6 @@
   :diminish
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Settings for jump windows, use M-NUM to switch
-(use-package ace-window
-  :bind (("M-o" . 'ace-window)))
-
-;; Restart emacs
-;; Use custom interactive func "cabins/reload-init-file" instead.
-;; (use-package restart-emacs)
-
 ;; auto update packages
 (use-package auto-package-update
   :config
@@ -168,7 +132,7 @@
 
 ;; Indent grade guide line
 (use-package indent-guide
-  :hook (after-init-hook . indent-guide-global-mode))
+  :hook (after-init . indent-guide-global-mode))
 
 (use-package paren
   :config (show-paren-mode 1))
