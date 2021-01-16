@@ -44,9 +44,9 @@
 ;; customize the fonts on different os
 (defun load-fonts ()
    "load fonts for different os."
-   (cond ((eq system-type 'windows-nt) (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
-         ((eq system-type 'gnu/linux) (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
-         ((eq system-type 'darwin) (cabins/set-monospaced-font "Courier New" "STHeiti" 13 16))))
+   (cond ((eq system-type 'windows-nt) (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0)) ;tested on Windows 10
+         ((eq system-type 'gnu/linux) (cabins/set-monospaced-font "Source Code Pro" "Noto Sans Mono CJK SC" 12 10.5)) ;tested on Fedora 33
+         ((eq system-type 'darwin) (cabins/set-monospaced-font "Courier New" "STHeiti" 13 16)))) ;tested on macOS 11.1
 
 ;; load the customized fonts only when in GUI mode
 (when (display-graphic-p)
