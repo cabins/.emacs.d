@@ -2,6 +2,21 @@
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
+;; a little bit optimize the screen display when in graphic mode
+(defun cabins/optimize-screen ()
+  (when (display-graphic-p)
+    (setq-default cursor-type 'bar
+                  scroll-up-aggressively 0.01
+                  scroll-down-aggressively 0.01)
+    (setq redisplay-dont-pause t
+          scroll-conservatively 100000
+          scroll-margin 0
+          scroll-step 1
+          scroll-preserve-screen-position 'always)
+    (set-frame-width (selected-frame) 90)
+    (set-frame-height (selected-frame) 50)))
+
+(cabins/optimize-screen)
 
 ;; function to set monofonts
 (defun cabins/set-monospaced-font (english chinese e-size c-size)
@@ -23,48 +38,29 @@
                        :slant 'normal
                        :size c-size))))
 
-;; a little bit optimize the screen display when in graphic mode
-(defun cabins/optimize-screen ()
-  (when (display-graphic-p)
-    (setq-default cursor-type 'bar
-                  scroll-up-aggressively 0.01
-                  scroll-down-aggressively 0.01)
-    (setq redisplay-dont-pause t
-          scroll-conservatively 100000
-          scroll-margin 0
-          scroll-step 1
-          scroll-preserve-screen-position 'always)
-    (set-frame-width (selected-frame) 90)
-    (set-frame-height (selected-frame) 50)))
-
-(cabins/optimize-screen)
-
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
 
-;; 添加图形界面这个是为了防止Daemon加载的时候中文字体设置失败
-;; 其实可以不用判断系统，因为配置改成了一样的
-;; 但是为了他人做系统的定制化，保留了系统的判断
-(when (display-graphic-p)
-  (if *is-windows*
-      ;; font setting for Windows platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
-  (if *is-mac*
-      ;; font setting for macOS platform
-      (cabins/set-monospaced-font "Courier New" "STHeiti" 13 16.0))
-  (if *is-linux*
-      ;; font setting for GNU/Linux platform
-      (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
-  )
+;; customize the fonts on different os
+(defun load-fonts ()
+   "load fonts for different os."
+   (cond ((eq system-type 'windows-nt) (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
+         ((eq system-type 'gnu/linux) (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0))
+         ((eq system-type 'darwin) (cabins/set-monospaced-font "Courier New" "STHeiti" 13 16))))
 
-;; 解决Daemon启动的时候，字体不能加载的问题
+;; load the customized fonts only when in GUI mode
+(when (display-graphic-p)
+  (load-fonts))
+
+;; reload the fonts & screen layout when in Daemon mode
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)
             (when (window-system frame)
-              (cabins/set-monospaced-font "Courier New" "STHeiti" 13 16)
+              (load-fonts)
               (cabins/optimize-screen))))
 
+;; customize the modeline
 (require 'init-modeline)
 
 (provide 'init-ui)

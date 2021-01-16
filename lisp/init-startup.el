@@ -55,5 +55,4 @@
     (setq delete-by-moving-to-trash t))
 
 (provide 'init-startup)
-
 ;;; init-startup.el ends here
