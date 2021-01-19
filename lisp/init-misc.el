@@ -18,7 +18,7 @@
 (add-hook 'after-init-hook 'delete-selection-mode)
 
 ;; settings for line number
-(setq display-line-numbers-type 'visual) ; relative, visual
+(setq display-line-numbers-type 't) ; relative, visual
 (global-display-line-numbers-mode t)
 
 (provide 'init-misc)
