@@ -58,7 +58,9 @@
         ido-everywhere t
         ido-use-filename-at-point t)
   (ido-mode t)
-  (fido-mode t))
+  (if (< emacs-major-version 27)
+      (icomplete-mode t)
+    (fido-mode t)))
 
 ;; Settings for which-key - suggest next key
 (use-package which-key

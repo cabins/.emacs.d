@@ -8,9 +8,11 @@
 (require 'init-markdown)
 (require 'init-python)
 (require 'init-restclient)
+(require 'init-rust)
 (require 'init-vue)
 (require 'init-web)
 (require 'init-yaml)
+
 (require 'init-lsp)
 
 (provide 'init-program)

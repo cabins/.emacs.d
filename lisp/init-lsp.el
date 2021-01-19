@@ -15,6 +15,7 @@
          (go-mode . lsp-deferred)
          (java-mode . lsp-deferred)
          (js-mode . lsp-deferred)
+         (rust-mode . lsp-deferred)
          (web-mode . lsp-deferred)
          (vue-mode . lsp-deferred)
          (html-mode . lsp-deferred))

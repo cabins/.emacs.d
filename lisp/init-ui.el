@@ -60,6 +60,11 @@
               (load-fonts)
               (cabins/optimize-screen))))
 
+;; disable the bars for emacs 26
+(when (< emacs-major-version 27)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1))
+
 ;; customize the modeline
 (require 'init-modeline)
 
