@@ -67,13 +67,6 @@
   :defer nil
   :config (which-key-mode))
 
-;; Settings for magit
-;; I quit using magit on windows, 'cause its performance sucks
-;; I use emacs builtin vc & cli-git on windows instead
-(use-package magit
-  :unless *is-windows*
-  :bind ("C-x g" . magit-status))
-
 ;; Settings for yasnippet
 (use-package yasnippet
   :diminish yas-minor-mode
