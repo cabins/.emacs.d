@@ -18,46 +18,48 @@
 
 (cabins/optimize-screen)
 
-;; function to set monofonts
-(defun cabins/set-monospaced-font (english chinese e-size c-size)
-  ;; first, set the default latin charset
-  (set-face-attribute 'default nil
-                      :font (font-spec
-                             :name english
-                             :weight 'normal
-                             :slant 'normal
-                             :size e-size))
+(defun cabins/1st-available-font (font-list)
+  "Get the first available font of FONT-LIST."
+  (catch 'return
+    (dolist (font font-list)
+      (when (find-font (font-spec :name font))
+        (throw 'return font)))))
 
-  ;; then, the cjk-charset
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font)
-                      charset
-                      (font-spec
-                       :name chinese
-                       :weight 'normal
-                       :slant 'normal
-                       :size c-size))))
+;; function to set monofonts
+(defun cabins/set-fonts ()
+  "Set the fonts."
+  (let ((default-fonts '("Courier New" "Ubuntu Mono" "Monaco" "Source Code Pro" "Menlo" "Consolas"))
+        (emoji-fonts '("Apple Color Emoji" "Symbola" "Symbol"))
+        (chinese-fonts '("楷体" "Microsoft Yahei" "Heiti SC" "WenQuanYi Micro Hei")))
+    ;; set the default font
+    (set-face-attribute 'default nil
+                        :font (font-spec :name (cabins/1st-available-font default-fonts)
+                                         :size (cond (*is-windows* 13)
+                                                     (*is-mac* 13)
+                                                     (t 12))))
+    ;; set the emoji font
+    (set-fontset-font t 'unicode (cabins/1st-available-font emoji-fonts) nil 'prepend)
+    ;; set Chinese font
+    (set-fontset-font t '(#x4e00 . #x9fff)
+                      (font-spec :name (cabins/1st-available-font chinese-fonts)
+                                 :size (cond
+                                        (*is-windows* 11.0)
+                                        (*is-mac* 16)
+                                        (t 10.5))))))
 
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
 
-;; customize the fonts on different os
-(defun load-fonts ()
-   "load fonts for different os."
-   (cond ((eq system-type 'windows-nt) (cabins/set-monospaced-font "Courier New" "楷体" 13 11.0)) ;tested on Windows 10
-         ((eq system-type 'gnu/linux) (cabins/set-monospaced-font "Source Code Pro" "Noto Sans Mono CJK SC" 12 10.5)) ;tested on Fedora 33
-         ((eq system-type 'darwin) (cabins/set-monospaced-font "Courier New" "STHeiti" 13 16)))) ;tested on macOS 11.1
-
 ;; load the customized fonts only when in GUI mode
 (when (display-graphic-p)
-  (load-fonts))
+  (cabins/set-fonts))
 
 ;; reload the fonts & screen layout when in Daemon mode
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)
             (when (window-system frame)
-              (load-fonts)
+              (cabins/set-fonts)
               (cabins/optimize-screen))))
 
 ;; disable the bars for emacs 26
