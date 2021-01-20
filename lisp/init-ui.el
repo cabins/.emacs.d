@@ -27,7 +27,7 @@
 
 ;; function to set monofonts
 (defun cabins/set-fonts ()
-  "Set the fonts."
+  "Set the fonts, inspired by URL `http://ergoemacs.org/emacs/emacs_list_and_set_font.html'"
   (let ((default-fonts '("Courier New" "Ubuntu Mono" "Monaco" "Source Code Pro" "Menlo" "Consolas"))
         (emoji-fonts '("Apple Color Emoji" "Symbola" "Symbol"))
         (chinese-fonts '("楷体" "Microsoft Yahei" "Heiti SC" "WenQuanYi Micro Hei")))
