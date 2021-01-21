@@ -39,7 +39,7 @@
 
 ;; Settings for jump windows, use M-NUM to switch
 (use-package ace-window
-  :bind (("M-o" . 'ace-window)))
+  :bind (("C-x o" . 'ace-window)))
 
 (provide 'init-kbd)
 ;;; init-kbd.el ends here
