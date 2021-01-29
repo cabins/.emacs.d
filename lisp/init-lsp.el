@@ -27,6 +27,7 @@
               lsp-modeline-diagnostics-enable t
               lsp-modeline-diagnostics-scope :workspace ;; workspace/global/file
               lsp-idle-delay 0.500
+              read-process-output-max (* 1024 1024) ;; 1MB
               lsp-completion-provider :capf)
   :config
   ;; Configure LSP Clients
@@ -53,7 +54,7 @@
               lsp-ui-sideline-show-diagnostics t
               lsp-ui-sideline-ignore-duplicate t
               lsp-modeline-code-actions-segments '(count name)
-              lsp-headerline-breadcrumb-enable t)
+              lsp-headerline-breadcrumb-enable nil)
   :config
   (setq lsp-ui-flycheck-enable nil)
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
