@@ -2,19 +2,16 @@
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;; (use-package python-mode
-;; :init (setq-default python-indent-offset 4
-;; python-indent-guess-indent-offset-verbose nil))
+(setq-default python-indent-offset 4
+              python-indent-guess-indent-offset-verbose nil)
 
+;; Use black to format the Python code
+(use-package blacken
+  :hook ((python-mode . blacken-mode)))
+
+;; Sort the pytho imports
 (use-package py-isort
   :init (setq python-sort-imports-on-save t))
-
-(use-package lsp-python-ms
-  :init (setq lsp-python-ms-auto-install-server t)
-  :after lsp-mode python-mode
-  :hook (python-mode . (lambda()
-                         (require 'lsp-python-ms)
-                         (lsp-deferred))))
 
 (provide 'init-python)
 ;;; init-python.el ends here
