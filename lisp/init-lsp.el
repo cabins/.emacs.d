@@ -27,6 +27,7 @@
               lsp-modeline-diagnostics-enable t
               lsp-modeline-diagnostics-scope :workspace ;; workspace/global/file
               lsp-idle-delay 0.500
+              read-process-output-max (* 1024 1024) ;; 1MB
               lsp-completion-provider :capf)
   :config
   ;; Configure LSP Clients
