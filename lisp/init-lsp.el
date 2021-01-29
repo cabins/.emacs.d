@@ -10,15 +10,8 @@
   ;; :hook ((prog-mode . (lsp-deferred))
   :commands (lsp lsp-deferred)
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-	     (python-mode . lsp-deferred)
-         (c-mode . lsp-deferred)
-         (go-mode . lsp-deferred)
-         (java-mode . lsp-deferred)
-         (js-mode . lsp-deferred)
-         (rust-mode . lsp-deferred)
-         (web-mode . lsp-deferred)
-         (vue-mode . lsp-deferred)
-         (html-mode . lsp-deferred))
+         (prog-mode . (lambda() (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)(lsp-deferred))))
+         )
   :init (setq lsp-keep-workspace-alive nil ;; Auto kill LSP server
               lsp-enable-indentation t
               lsp-enable-on-type-formatting t
@@ -41,7 +34,8 @@
   :commands lsp-ui-mode
   :hook ((lsp-mode . lsp-ui-mode)
          (lsp-ui-mode . lsp-modeline-code-actions-mode)
-         (lsp-ui-mode . lsp-ui-peek-mode))
+         ;; (lsp-ui-mode . lsp-ui-peek-mode) ;; drop it 'cause it has BUGs
+         )
   :init (setq lsp-ui-doc-enable t
               lsp-ui-doc-use-webkit nil
               lsp-ui-doc-delay .3
@@ -59,13 +53,17 @@
   (setq lsp-ui-flycheck-enable nil)
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (treemacs-resize-icons 14))
+  (when (display-graphic-p)
+    (treemacs-resize-icons 14))
+  )
 
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list
-  :init (treemacs-resize-icons 14))
+  :init
+  (when (display-graphic-p)
+    (treemacs-resize-icons 14)))
 
 (use-package dap-mode
   :diminish
