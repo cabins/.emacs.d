@@ -5,7 +5,7 @@
 ;;; Code:
 
 (use-package vue-mode
-  ;; disable the ungly background color
+  ;; disable the ugly background color
   ;; https://github.com/AdamNiederer/vue-mode#how-do-i-disable-that-ugly-background-color
   :config (set-face-background 'mmm-default-submode-face nil))
 
