@@ -21,5 +21,11 @@
 (setq display-line-numbers-type 't) ; relative, visual
 (global-display-line-numbers-mode t)
 
+;; recent files
+(recentf-mode 1)
+(setq recentf-max-menu-items 25
+      recentf-max-saved-items 25)
+(global-set-key (kbd "C-c f") 'recentf-open-files)
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
