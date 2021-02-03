@@ -27,5 +27,8 @@
       recentf-max-saved-items 25)
 (global-set-key (kbd "C-c f") 'recentf-open-files)
 
+;; Toggle hideshow minor mode on
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
