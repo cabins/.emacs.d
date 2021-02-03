@@ -24,7 +24,7 @@
 
 (defun cabins/user-login-info ()
   "Print the login user info as init message"
-  (let ((prefix ";; Configuration by Cabins <github.com/cabins>.\n")
+  (let ((prefix ";; Configured by Cabins <github.com/cabins>.\n")
         (os-version (format ";; %20s: %S\n" "Operating System" system-type))
         (user-names (format ";; %20s: %s\n" "Login User" (user-login-name)))
         (machine-name (format ";; %20s: %s\n" "Machine Name" (system-name)))
