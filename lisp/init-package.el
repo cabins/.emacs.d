@@ -8,15 +8,7 @@
   :init (benchmark-init/activate)
   :hook (after-init . benchmark-init/deactivate))
 
-;; Settings for org mode and load config from org file
-(use-package org
-  ;; :init (setq org-startup-indented t)
-  :config
-  (setq org-startup-indented t
-	    org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
-	    org-todo-keyword-faces '(("DOING" . "blue"))))
-
-;; Settings for exec-path-from-shell
+;; for exec-path-from-shell
 (use-package exec-path-from-shell
   :defer nil
   :if (memq window-system '(mac ns x))
@@ -49,7 +41,7 @@
 (use-package company-prescient
   :init (company-prescient-mode 1))
 
-;; Use ido instead of ivy & counsel & swiper
+;; [built-in] Use ido instead of ivy & counsel & swiper
 ;; They are great! But I want cleaner.
 (use-package ido
   :defer nil
@@ -91,7 +83,7 @@
   :hook (after-init . projectile-mode)
   :bind-keymap ("C-c p" . projectile-command-map))
 
-;; Enable flymake on default, which is built in emacs
+;; [built-in] Enable flymake on default, which is built in emacs
 (use-package flymake
   :ensure nil
   :diminish (flymake " Flym.")
@@ -108,35 +100,23 @@
   :diminish
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; auto update packages
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-version t
-        auto-package-update-hide-results t)
-  (auto-package-update-maybe))
-
 ;; Beacon mode - highlight the line where your cursor is
 (use-package beacon
   :unless *is-windows*
   :hook (after-init . beacon-mode))
 
-(use-package keycast
-  :commands keycast-mode)
-
-;; Make info docs colorful, not good at displaying some fonts
-(use-package info-colors
-  :unless *is-windows*
-  :hook (Info-selection . info-colors-fontify-node))
-
 ;; Indent grade guide line
 (use-package indent-guide
   :hook (after-init . indent-guide-global-mode))
 
+;; [built-in] paren mode
 (use-package paren
+  :ensure nil
   :config (show-paren-mode 1))
 
-;; Settings for electric-pair
+;; [built-in] electric-pair
 (use-package electric
+  :ensure nil
   :hook ((after-init . electric-indent-mode)
 	     (prog-mode . electric-pair-mode)))
 

@@ -68,7 +68,10 @@
   (tool-bar-mode -1))
 
 ;; customize the modeline
-(require 'init-modeline)
+(if (display-graphic-p)
+    (require 'init-modeline)
+  )
+
 
 (provide 'init-ui)
 

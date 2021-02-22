@@ -2,7 +2,7 @@
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;; display 'lambda' as 'λ' (just for fun)
+;; [built-in] display 'lambda' as 'λ' (just for fun)
 (global-prettify-symbols-mode 1)
 
 ;; <TAB> show settings
@@ -21,13 +21,13 @@
 (setq display-line-numbers-type 't) ; relative, visual
 (global-display-line-numbers-mode t)
 
-;; recent files
+;; [built-in] recent files
 (recentf-mode 1)
 (setq recentf-max-menu-items 25
       recentf-max-saved-items 25)
 (global-set-key (kbd "C-c f") 'recentf-open-files)
 
-;; Toggle hideshow minor mode on
+;; [built-in] Toggle hideshow minor mode on
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (provide 'init-misc)
