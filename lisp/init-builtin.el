@@ -42,7 +42,7 @@
 ;; Abbrev mode
 (use-package abbrev-mode
   :ensure nil
-  :init (abbrev-mode 1))
+  :init (setq-default abbrev-mode t))
 
 ;; display 'lambda' as 'λ' (just for fun)
 (use-package prettify-symbols-mode

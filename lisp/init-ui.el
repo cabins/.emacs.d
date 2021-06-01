@@ -73,7 +73,6 @@
     (require 'init-modeline)
   )
 
-
 (provide 'init-ui)
 
 ;;; init-ui.el ends here
