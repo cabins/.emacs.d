@@ -2,30 +2,56 @@
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;; display 'lambda' as 'λ' (just for fun)
-(global-prettify-symbols-mode 1)
+;; NOTE:
+;; The style of use-package is NOT necessary
+;; I write code with this style for unification
 
 ;; <TAB> show settings
-(setq-default tab-width 4
-              indent-tabs-mode nil)
+(use-package tab-settings
+  :ensure nil
+  :init(setq-default tab-width 4
+                     indent-tabs-mode nil))
 
 ;; C-s/C-r settings
-(setq-default isearch-lazy-count t
-              lazy-count-prefix-format "%s/%s ")
+(use-package search-settings
+  :ensure nil
+  :init (setq-default isearch-lazy-count t
+                      lazy-count-prefix-format "%s/%s "))
 
 ;; some delete hooks settings
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'after-init-hook 'delete-selection-mode)
+(use-package delete-settings
+  :ensure nil
+  :hook ((before-save-hook . delete-trailing-whitespace)
+         (after-init . delete-selection-mode)))
 
 ;; settings for line number
-(setq display-line-numbers-type 't) ; relative, visual
-(global-display-line-numbers-mode t)
+(use-package line-number-settings
+  :ensure nil
+  :init
+  (setq display-line-numbers-type 't) ; relative, visual
+  (global-display-line-numbers-mode t))
 
 ;; recent files
-(recentf-mode 1)
-(setq recentf-max-menu-items 25
-      recentf-max-saved-items 25)
-(global-set-key (kbd "C-c f") 'recentf-open-files)
+(use-package recentf-settings
+  :ensure nil
+  :init
+  (setq recentf-max-menu-items 25
+        recentf-max-saved-items 25)
+  (global-set-key (kbd "C-c f") 'recentf-open-files)
+  (recentf-mode 1))
+
+;; Cursor & Current Line
+(use-package cursor-line-settings
+  :ensure nil
+  :init
+  ;; blink the cursor
+  (blink-cursor-mode 1)
+  (global-hl-line-mode 1)
+  ;; 高亮当前行，使用浅灰色背景条
+  (set-face-background hl-line-face "#F2F2F2")
+  ;; 高亮当前行，使用下划线
+  ;; (set-face-underline-p 'highlight t)
+  )
 
 (provide 'init-misc)
 ;;; init-misc.el ends here

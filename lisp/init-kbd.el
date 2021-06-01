@@ -13,7 +13,8 @@
 
 ;; global key-binding settings for comment (jetbrains style)
 (global-set-key (kbd "C-/") 'comment-line)
-(global-set-key (kbd "C-?") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-?") 'comment-or-uncomment-region) ; Acturally this is conflict with emacs quirks
+;; Emacs quirks refs: http://ergoemacs.org/emacs/keyboard_shortcuts.html
 
 ;; alias yes/no to y/p
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -22,7 +23,7 @@
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c ^" . crux-top-join-line)
-	     ("C-," . crux-find-user-init-file)
+         ("C-," . crux-find-user-init-file)
          ("C-S-d" . crux-duplicate-current-line-or-region)
          ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
 
@@ -37,7 +38,7 @@
   :bind (("<M-up>". drag-stuff-up)
          ("<M-down>" . drag-stuff-down)))
 
-;; Settings for jump windows, use M-NUM to switch
+;; Settings for jump windows
 (use-package ace-window
   :bind (("C-x o" . 'ace-window)))
 

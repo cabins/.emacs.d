@@ -8,14 +8,6 @@
   :init (benchmark-init/activate)
   :hook (after-init . benchmark-init/deactivate))
 
-;; Settings for org mode and load config from org file
-(use-package org
-  ;; :init (setq org-startup-indented t)
-  :config
-  (setq org-startup-indented t
-	    org-todo-keywords '((sequence "TODO" "DOING" "DONE"))
-	    org-todo-keyword-faces '(("DOING" . "blue"))))
-
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
   :defer nil
@@ -49,19 +41,6 @@
 (use-package company-prescient
   :init (company-prescient-mode 1))
 
-;; Use ido instead of ivy & counsel & swiper
-;; They are great! But I want cleaner.
-(use-package ido
-  :defer nil
-  :init
-  (setq ido-enable-flex-matching t
-        ido-everywhere t
-        ido-use-filename-at-point t)
-  (ido-mode t)
-  (if (< emacs-major-version 27)
-      (icomplete-mode t)
-    (fido-mode t)))
-
 ;; Settings for which-key - suggest next key
 (use-package which-key
   :defer nil
@@ -90,14 +69,6 @@
   :diminish (projectile-mode " Proj.")
   :hook (after-init . projectile-mode)
   :bind-keymap ("C-c p" . projectile-command-map))
-
-;; Enable flymake on default, which is built in emacs
-(use-package flymake
-  :ensure nil
-  :diminish (flymake " Flym.")
-  :hook (prog-mode . flymake-mode)
-  :bind (("M-n" . flymake-goto-next-error)
-         ("M-p" . flymake-goto-prev-error)))
 
 ;; Settings for highlight parentheses
 (use-package highlight-parentheses
@@ -131,14 +102,6 @@
 ;; Indent grade guide line
 (use-package indent-guide
   :hook (after-init . indent-guide-global-mode))
-
-(use-package paren
-  :config (show-paren-mode 1))
-
-;; Settings for electric-pair
-(use-package electric
-  :hook ((after-init . electric-indent-mode)
-	     (prog-mode . electric-pair-mode)))
 
 (provide 'init-package)
 ;;; init-package.el ends here
