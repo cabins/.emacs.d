@@ -79,25 +79,10 @@
   :diminish
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; auto update packages
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-version t
-        auto-package-update-hide-results t)
-  (auto-package-update-maybe))
-
 ;; Beacon mode - highlight the line where your cursor is
 (use-package beacon
   :unless *is-windows*
   :hook (after-init . beacon-mode))
-
-(use-package keycast
-  :commands keycast-mode)
-
-;; Make info docs colorful, not good at displaying some fonts
-(use-package info-colors
-  :unless *is-windows*
-  :hook (Info-selection . info-colors-fontify-node))
 
 ;; Indent grade guide line
 (use-package indent-guide

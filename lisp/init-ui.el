@@ -69,7 +69,10 @@
 
 ;; (load-theme 'leuven t)
 ;; customize the modeline
-(require 'init-modeline)
+(if (display-graphic-p)
+    (require 'init-modeline)
+  )
+
 
 (provide 'init-ui)
 

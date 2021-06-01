@@ -53,5 +53,10 @@
   ;; (set-face-underline-p 'highlight t)
   )
 
+;; [built-in] Toggle hideshow minor mode on
+(use-package hideshow-settings
+  :ensure nil
+  :hook (prog-mode . hs-minor-mode))
+
 (provide 'init-misc)
 ;;; init-misc.el ends here

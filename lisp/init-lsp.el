@@ -15,8 +15,10 @@
   :init (setq lsp-keep-workspace-alive nil ;; Auto kill LSP server
               lsp-enable-indentation t
               lsp-enable-on-type-formatting t
-              lsp-auto-guess-root nil
+              lsp-auto-guess-root t
               lsp-enable-snippet t
+              lsp-prefer-flymake t
+              lsp-prefer-capf t
               lsp-modeline-diagnostics-enable t
               lsp-modeline-diagnostics-scope :workspace ;; workspace/global/file
               lsp-idle-delay 0.500
