@@ -13,8 +13,8 @@
           scroll-margin 0
           scroll-step 1
           scroll-preserve-screen-position 'always)
-    (set-frame-width (selected-frame) 90)
-    (set-frame-height (selected-frame) 50)))
+    (set-frame-width (selected-frame) 130)
+    (set-frame-height (selected-frame) 40)))
 
 (cabins/optimize-screen)
 
