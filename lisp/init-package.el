@@ -2,12 +2,6 @@
 ;;; Commentary: (c)Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;; ******************** benchmark (Optional) ********************
-;; Settings for benchmark package
-(use-package benchmark-init
-  :init (benchmark-init/activate)
-  :hook (after-init . benchmark-init/deactivate))
-
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
   :defer nil
