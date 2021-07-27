@@ -1,50 +1,46 @@
-# About this project
+[English Version](./README.en-US.md)
 
+# 关于项目
+本项目非GNU Emacs官方配置，亦非GNU Emacs的插件，仅作为个人配置项目使用。配置由 ©Cabins进行维护。
 
-This is `NOT` a part of [GNU Emacs](https://www.gnu.org/software/emacs/) but a personal configuration project to make it more convenient to me.
+# 编程语言配置
+笔者日常使用Python和Golang作为主力语言，所以这两种语言的配置是相对比较完善的（使用的是LSP来完成配置）。如果你使用的是其他的编程语言，你也可以通过安装Language Server的方式来自动完成配置，而不需要额外编写默认配置代码（个性化配置的话还需要特殊写代码）。
 
-This project belongs to © Cabins from China.
+# 字体配置
+这一块非常的个性化，而且我在不同的机器上测试发现，即便同样是Windows，在不同的机器上配置也不通用。所以你在使用我的这个配置的时候，建议自行调整显示效果。配置文件位于`list/init-ui.el`中。
 
-## About Programming language
+另外，由于不确定使用者的机器上安装了哪些字体，默认会在一个列表中进行查找。先找到哪个就用哪个。你可以把你喜欢的字体，放在列表的最开始。
 
-I mainly use [Python](https://www.python.org/) & [Go](https://golang.org/) in my work.  So I set up the programming environments for this two languages with [LSP](https://emacs-lsp.github.io/lsp-mode/) - the protocol from Microsoft.  If you use other languages, such as JavaScript, C++, and so on, you can easily set up for them with LSP - sometimes you just install the language servers, Emacs config code does NOT need to change.
+字号，一定要调。不同的分辨率的机器上，完全不通用。
 
-## About the default FONT
-I use Courier & 楷体, 'cause they are the only fonts not make my Windows version slow, change the `lisp/init-ui.el` to your preferences.
+# 配置安装
+通过命令行进行安装，常见的命令终端有：
 
-## Installation
+- macOS平台：Terminal或者iTerm2
+- Windows平台：CMD, Powershell, Windows Terminal
+- GNU/Linux平台：Gnome Terminal 或者 Konsole
 
-Launch a terminal, such as:
-
-- `Terminal` App or `iTerm2` on macOS
-- `GNOME Terminal` or `Konsole` on GNU/Linux
-- `CMD` or `PowerShell` or `Windows Terminal` on Windows 10
-
-Run the code below, and then launch your Emacs, enjoy it.
+把以下代码粘贴到终端中运行即可：
 
 ```bash
 git clone https://github.com/cabins/.emacs.d ~/.emacs.d
 ```
 
-If you has already upgrade your emacs to 27.1, you also can clone this repo like this:
+如果你使用的是27+版本，你也可以运行以下代码来安装：
 
 ```bash
 git clone https://github.com/cabins/.emacs.d ~/.config/emacs
 ```
 
-> Note: If you use Windows 10,  you should set an environment variable named `HOME`,  and set its value to your user directory,  like `C:/Users/<your_name>`.
+> 注意: 如果你使用的是Windows平台的话，你需要自行设置一个HOME环境变量，否则默认安装到`%AppData%下。
 
-## Testing
+## 代码测试
 
-This project is tested on
+本项目已在以下平台测试通过：
 
-- macOS,  11.1,  GUI mode
-- Fedora Linux 31/32/33, both Workstation & Server Edition
+- macOS,  11.1,  GUI模式
+- Fedora Linux 31/32/33/34, Workstation & Server Edition
 - Windows 10,  1909(18363) (Native GUI & msys2)
 - Ubuntu 20.04.1 on WSL2
 
-it should run on other platforms, please note that.
-
-## About bugs
-
-Any issue will be welcomed, just send me an issue if you find something not friendly to you.
+理论上说，应该也通行于其他的平台，如果有问题，可以随时提Issue。
