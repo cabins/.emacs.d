@@ -34,6 +34,12 @@
             (when (window-system frame)
               (cabins/optimize-screen))))
 
+(defun cabins/dark-theme ()
+  (interactive)
+  (if custom-enabled-themes
+      (disable-theme (car custom-enabled-themes))
+    (load-theme 'deeper-blue t)))
+
 (provide 'init-ui)
 
 ;;; init-ui.el ends here

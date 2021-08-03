@@ -1,8 +1,5 @@
 ;;; init-startup.el --- Works when startup Emacs
-
-;;; Commentary:
-;;; (c) Cabins, github.com/cabins/.emacs.d
-
+;;; Commentary:(c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
 ;; Settings for system encoding
@@ -27,9 +24,7 @@
 (setq make-backup-files nil
       auto-save-default nil)
 
-;; Adjust garbage collection thresholds during startup
 (setq-default frame-title-format '("%b"))
-
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message (cabins/user-login-info))
 

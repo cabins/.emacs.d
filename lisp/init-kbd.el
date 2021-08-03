@@ -22,10 +22,10 @@
 ;; settings for crux
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
-         ("C-c ^" . crux-top-join-line)
          ("C-," . crux-find-user-init-file)
          ("C-S-d" . crux-duplicate-current-line-or-region)
          ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
+
 
 ;; hungry-delete - works exactly like c-hungry-delete-mode
 (use-package hungry-delete
@@ -34,13 +34,7 @@
          ("C-c d" . hungry-delete-forward)))
 
 ;; drag-stuff - move lines up/down
-(use-package drag-stuff
-  :bind (("<M-up>". drag-stuff-up)
-         ("<M-down>" . drag-stuff-down)))
-
-;; Settings for jump windows
-(use-package ace-window
-  :bind (("C-x o" . 'ace-window)))
+(use-package drag-stuff)
 
 (provide 'init-kbd)
 ;;; init-kbd.el ends here

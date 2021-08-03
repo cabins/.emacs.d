@@ -58,6 +58,7 @@
 
 ;; Settings for projectile
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
+;; Disable it on Windows
 (use-package projectile
   :unless *is-windows*
   :diminish (projectile-mode " Proj.")
@@ -73,7 +74,7 @@
   :diminish
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Beacon mode - highlight the line where your cursor is
+;; Beacon mode - highlight the line when the cursor jumps
 (use-package beacon
   :unless *is-windows*
   :hook (after-init . beacon-mode))

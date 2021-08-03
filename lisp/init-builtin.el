@@ -49,5 +49,13 @@
   :ensure nil
   :init (global-prettify-symbols-mode 1))
 
+;; settings for windmove, replace the ace-window plugin
+(use-package windmove
+  :ensure nil
+  :bind (("C-c <left>" . windmove-left)
+         ("C-c <right>" . windmove-right)
+         ("C-c <up>" . windmove-up)
+         ("C-c <down>" . windmove-down)))
+
 (provide 'init-builtin)
 ;;; init-builtin.el ends here

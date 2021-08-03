@@ -1,7 +1,5 @@
 ;;; init.el --- Initialization file
 
-;;; Commentary:
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; This is NOT part of GNU Emacs.  It's a personal project of Emacs configuration  ;;
 ;; Written by (c) Cabins Kong.  2019-2021.                                         ;;
