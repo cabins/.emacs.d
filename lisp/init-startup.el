@@ -2,7 +2,7 @@
 ;;; Commentary:(c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;; Settings for system encoding
+;; settings for system encoding
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 (set-buffer-file-coding-system 'utf-8-unix)
@@ -20,7 +20,7 @@
   (set-selection-coding-system 'utf-16-le)
   (set-clipboard-coding-system 'utf-16-le))
 
-;; Settings for backup files
+;; settings for backup files
 (setq make-backup-files nil
       auto-save-default nil)
 

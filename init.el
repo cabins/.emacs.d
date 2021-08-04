@@ -7,15 +7,22 @@
 
 ;;; Code:
 (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp/")))
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; flymake cannot find load-path solution
-;; https://emacs-china.org/t/flymake/8323/19
+;; [reference] https://emacs-china.org/t/flymake/8323/19
 (setq elisp-flymake-byte-compile-load-path
       (append elisp-flymake-byte-compile-load-path load-path))
 
-(require 'init-consts)
-(require 'interactive-funcs)
+;; consts defination
+(defconst *is-mac* (eq system-type 'darwin) "macOS platform.")
+(defconst *is-linux* (eq system-type 'gnu/linux) "GNU/Linux platform.")
+(defconst *is-windows*
+  (or (eq system-type 'ms-dos)
+      (eq system-type 'windows-nt))
+  "Windows / DOS.")
+
+;; settings for independent packages and etc.
+(require 'init-funcs)
 (require 'init-startup)
 (require 'init-elpa)
 (require 'init-package)
@@ -25,6 +32,8 @@
 (require 'init-program)
 (require 'init-ui)
 
+;; load custom file at last
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load-file custom-file))
 
