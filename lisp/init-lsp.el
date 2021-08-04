@@ -1,18 +1,16 @@
 ;;; init-lsp --- lsp settings
 
-;;; Commentary:
-;;; (c)Cabins, github.com/cabins/.emacs.d
+;;; Commentary: (c)Cabins, github.com/cabins/.emacs.d
+;;; lsp-mode is the Emacs client for LSP server.
+;;; Once you install the lsp-mode and the language server,
+;;; you can call `M-x lsp' to autostart the server
 
 ;;; Code:
-
 (use-package lsp-mode
-  ;; add prog-mode to lsp instead of adding one by one
-  ;; :hook ((prog-mode . (lsp-deferred))
-  :commands (lsp lsp-deferred)
+  :commands (lsp lsp-deferred lsp-format-buffer lsp-organize-imports)
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-         (prog-mode . (lambda() (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)(lsp-deferred))))
-         )
-  :init (setq lsp-keep-workspace-alive nil ;; Auto kill LSP server
+         (prog-mode . (lambda() (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)(lsp-deferred)))))
+  :init (setq lsp-keep-workspace-alive t ;; Auto kill LSP server
               lsp-enable-indentation t
               lsp-enable-on-type-formatting t
               lsp-auto-guess-root t
@@ -22,22 +20,16 @@
               lsp-modeline-diagnostics-enable t
               lsp-modeline-diagnostics-scope :workspace ;; workspace/global/file
               lsp-idle-delay 0.500
+              lsp-log-io nil
               read-process-output-max (* 1024 1024) ;; 1MB
-              lsp-completion-provider :capf)
-  :config
-  ;; Configure LSP Clients
-  (use-package lsp-clients
-    :ensure nil
-    :functions (lsp-format-buffer lsp-organize-imports)))
+              lsp-completion-provider :capf))
 
-;;; Optionally: lsp-ui, company-lsp
+;;;: lsp-ui, company-lsp
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
   :hook ((lsp-mode . lsp-ui-mode)
-         (lsp-ui-mode . lsp-modeline-code-actions-mode)
-         ;; (lsp-ui-mode . lsp-ui-peek-mode) ;; drop it 'cause it has BUGs
-         )
+         (lsp-ui-mode . lsp-modeline-code-actions-mode))
   :init (setq lsp-ui-doc-enable t
               lsp-ui-doc-use-webkit nil
               lsp-ui-doc-delay .3
@@ -54,18 +46,7 @@
   :config
   (setq lsp-ui-flycheck-enable nil)
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (when (display-graphic-p)
-    (treemacs-resize-icons 14))
-  )
-
-
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list
-  :init
-  (when (display-graphic-p)
-    (treemacs-resize-icons 14)))
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
 (use-package dap-mode
   :diminish

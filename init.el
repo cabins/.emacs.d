@@ -9,6 +9,11 @@
 (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp/")))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
+;; flymake cannot find load-path solution
+;; https://emacs-china.org/t/flymake/8323/19
+(setq elisp-flymake-byte-compile-load-path
+      (append elisp-flymake-byte-compile-load-path load-path))
+
 (require 'init-consts)
 (require 'interactive-funcs)
 (require 'init-startup)

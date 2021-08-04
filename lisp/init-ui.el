@@ -4,12 +4,12 @@
 
 ;; a little bit optimize the screen display when in graphic mode
 (defun cabins/optimize-screen ()
+  "Optimize screen function."
   (when (display-graphic-p)
     (setq-default cursor-type 'bar
                   scroll-up-aggressively 0.01
                   scroll-down-aggressively 0.01)
-    (setq redisplay-dont-pause t
-          scroll-conservatively 100000
+    (setq scroll-conservatively 100000
           scroll-margin 0
           scroll-step 1
           scroll-preserve-screen-position 'always)
@@ -34,12 +34,14 @@
             (when (window-system frame)
               (cabins/optimize-screen))))
 
-(defun cabins/dark-theme ()
+(defun cabins/toggle-dark-theme ()
+  "Toggle the theme to dark or light."
   (interactive)
   (if custom-enabled-themes
       (disable-theme (car custom-enabled-themes))
     (load-theme 'deeper-blue t)))
 
+(load-theme 'deeper-blue t)
 (provide 'init-ui)
 
 ;;; init-ui.el ends here
