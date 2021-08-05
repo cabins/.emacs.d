@@ -50,7 +50,7 @@
 (set-frame-font "Courier New")
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
-                    charset (font-spec :family "Microsoft Yahei" :size 16)))
+                    charset (font-spec :family "Microsoft Yahei" :size 20)))
 
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
