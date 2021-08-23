@@ -60,18 +60,17 @@
       (disable-theme (car custom-enabled-themes))
     (load-theme 'deeper-blue t)))
 
-(defun cabins/setup-font (font)
-  "The FONT arg is dot pair list, eg. '((\"Courier New\" . 10)(\"黑体\" . 12.0))."
+(defun cabins/setup-font (f-en s-en f-cn s-cn)
+  "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
+  
   ;; Default font
   (when (display-graphic-p)
     (set-face-attribute 'default nil
-		                :font (format "%s-%d" (caar font) (cdar font)))
+		                :font (format "%s-%d" f-en s-en))
 
     (dolist (charset '(han cjk-misc chinese-gbk))
       (set-fontset-font "fontset-default" charset
-                        (font-spec
-                         :family (car (cadr font))
-                         :size (cdr (cadr font)))))) )
+                        (font-spec :family f-cn :size s-cn)))))
 
 
 (provide 'init-funcs)
