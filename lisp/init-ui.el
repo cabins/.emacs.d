@@ -30,27 +30,15 @@
 
 ;;; Code:
 
-;; a little bit optimize the screen display when in graphic mode
-(defun cabins/optimize-screen ()
-  "Optimize screen function."
-  (when (display-graphic-p)
-    (setq-default cursor-type 'bar
-                  scroll-up-aggressively 0.01
-                  scroll-down-aggressively 0.01)
-    (setq scroll-conservatively 100000
-          scroll-margin 0
-          scroll-step 1
-          scroll-preserve-screen-position 'always)
-    (set-frame-width (selected-frame) 130)
-    (set-frame-height (selected-frame) 40)))
-
 (cabins/optimize-screen)
 
 ;; 字体设置（放弃了复杂的字体设置，直接使用特殊字体的方案）
-(set-frame-font "Courier New")
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-                    charset (font-spec :family "Microsoft Yahei" :size 20)))
+;; 如果你也是使用中文的话（什么字体都行，下面的配对都能成功），推荐的几个配对：
+;; Ubuntu Mono-11，对应中文11.0或者18
+;; Couriew New-10，对应中文11.5或12.0或者20，这个配对在Win10上面不闪屏
+;; 这两组数字在Windows 10 (13')测试通过，如果在你那里不合适，可尝试调整大小
+(setq font '(("Courier New" . 10) ("楷体" . 12.0)))
+(cabins/setup-font font)
 
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
@@ -62,7 +50,7 @@
             (when (window-system frame)
               (cabins/optimize-screen))))
 
-(load-theme 'deeper-blue t)
+;; (load-theme 'deeper-blue t)
 
 (provide 'init-ui)
 

@@ -40,7 +40,7 @@
 (set-next-selection-coding-system 'utf-8-unix)
 (set-selection-coding-system 'utf-8-unix)
 (set-terminal-coding-system 'utf-8-unix)
-(setq locale-coding-system 'utf-8)
+(setq locale-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
 
 (when (eq system-type 'windows-nt)

@@ -30,6 +30,20 @@
 
 ;;; Code:
 
+;; a little bit optimize the screen display when in graphic mode
+(defun cabins/optimize-screen ()
+  "Optimize screen function."
+  (when (display-graphic-p)
+    (setq-default cursor-type 'bar
+                  scroll-up-aggressively 0.01
+                  scroll-down-aggressively 0.01)
+    (setq scroll-conservatively 100000
+          scroll-margin 0
+          scroll-step 1
+          scroll-preserve-screen-position 'always)
+    (set-frame-width (selected-frame) 130)
+    (set-frame-height (selected-frame) 40)))
+
 (defun cabins/user-login-info ()
   "Print the login user info as init message."
   (let ((prefix ";; Configured by Cabins <github.com/cabins>.\n")
@@ -45,6 +59,19 @@
   (if custom-enabled-themes
       (disable-theme (car custom-enabled-themes))
     (load-theme 'deeper-blue t)))
+
+(defun cabins/setup-font (font)
+  "The FONT arg is dot pair list, eg. '((\"Courier New\" . 10)(\"黑体\" . 12.0))."
+  ;; Default font
+  (when (display-graphic-p)
+    (set-face-attribute 'default nil
+		                :font (format "%s-%d" (caar font) (cdar font)))
+
+    (dolist (charset '(han cjk-misc chinese-gbk))
+      (set-fontset-font "fontset-default" charset
+                        (font-spec
+                         :family (car (cadr font))
+                         :size (cdr (cadr font)))))) )
 
 
 (provide 'init-funcs)
