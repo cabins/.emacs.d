@@ -62,8 +62,7 @@
 
 (defun cabins/setup-font (f-en s-en f-cn s-cn)
   "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
-  
-  ;; Default font
+
   (when (display-graphic-p)
     (set-face-attribute 'default nil
 		                :font (format "%s-%d" f-en s-en))
