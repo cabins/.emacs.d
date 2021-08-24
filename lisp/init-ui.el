@@ -37,7 +37,12 @@
 ;; Ubuntu Mono-11，对应中文11.0或者18
 ;; Couriew New-10，对应中文11.5或12.0或者20，这个配对在Win10上面不闪屏
 ;; 这两组数字在Windows 10 (13')测试通过，如果在你那里不合适，可尝试调整大小
-(cabins/setup-font "Courier New" 10 "楷体" 11.5)
+
+(when *is-windows*
+  (cabins/setup-font "Courier New" 10 "楷体" 11.5))
+
+(when *is-mac*
+  (cabins/setup-font "Courier New" 12 "华文楷体" 14.5))
 
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
