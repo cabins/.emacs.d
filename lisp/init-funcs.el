@@ -34,13 +34,13 @@
 (defun cabins/optimize-screen ()
   "Optimize screen function."
   (when (display-graphic-p)
-    (setq-default cursor-type 'bar
+    (setq-default cursor-type 'hbar
                   scroll-up-aggressively 0.01
-                  scroll-down-aggressively 0.01)
-    (setq scroll-conservatively 100000
-          scroll-margin 0
-          scroll-step 1
-          scroll-preserve-screen-position 'always)
+                  scroll-down-aggressively 0.01
+                  scroll-conservatively 100000
+                  scroll-margin 0
+                  scroll-step 1
+                  scroll-preserve-screen-position 'always)
     (set-frame-width (selected-frame) 130)
     (set-frame-height (selected-frame) 40)))
 
