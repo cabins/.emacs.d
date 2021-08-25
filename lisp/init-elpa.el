@@ -66,7 +66,6 @@
 (use-package diminish)
 (use-package delight)
 
-
 (provide 'init-elpa)
 
 ;;; init-elpa.el ends here

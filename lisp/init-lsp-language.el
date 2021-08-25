@@ -1,26 +1,25 @@
+
 ;;; init-lsp-language.el --- settings for languages of lsp mode
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;;; the following settings sorted by the package name (alphabet order)
+;; Common Tools
+(use-package reformatter)
+(use-package format-all
+  :hook (prog-mode . format-all-mode))
 
+;;; the following settings sorted by the package name (alphabet order)
 ;; GO MODE
 ;; ==============================
 (defvar go--tools '("golang.org/x/tools/cmd/goimports"
-                   "github.com/go-delve/delve/cmd/dlv"
-                   "github.com/josharian/impl"
-                   "github.com/cweill/gotests/..."
-                   "github.com/fatih/gomodifytags"
-                   "github.com/davidrjenni/reftools/cmd/fillstruct")
+                    "github.com/go-delve/delve/cmd/dlv"
+                    "github.com/josharian/impl"
+                    "github.com/cweill/gotests/..."
+                    "github.com/fatih/gomodifytags"
+                    "github.com/davidrjenni/reftools/cmd/fillstruct")
   "Go tools may needed.")
 
-(defun lsp-go-install-save-hooks ()
-  "Add hooks before save."
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-
 (use-package go-mode
-  :hook (go-mode . lsp-go-install-save-hooks)
   :config
   (use-package go-fill-struct)
   (use-package go-impl)
@@ -42,23 +41,15 @@
 
 ;; PYTHON MODE
 ;; ==============================
-(defvar python--tools '("python-language-server[all]"
-                        "black"
-                        "isort")
-  "Modules for Python development.")
-
 (use-package python-mode
   :ensure nil
-  :config
-  (setq-default python-indent-offset 4
-                python-indent-guess-indent-offset-verbose nil)
-  ;; Use black to format the Python code
-  (use-package blacken
-    :hook ((python-mode . blacken-mode)))
-  ;; Sort the pytho imports
-  (use-package py-isort
-    :init (setq python-sort-imports-on-save t)))
+  :hook (python-mode . (lambda()(add-hook 'before-save-hook #'python-isort)))
+  :config (use-package pyimport))
 
+;;;###autoload
+(reformatter-define python-isort
+  :program "isort"
+  :args '("--stdout" "--atomic" "--profile=black" "-"))
 
 ;; RESTCLIENT - HTTP CLIENT
 ;; ==============================
@@ -87,8 +78,7 @@
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2
-        web-mode-enable-current-element-highlight t
-        web-mode-enable-css-colorization t)
+        web-mode-enable-current-element-highlight t)
   (use-package company-web
     :config
     (add-to-list 'company-backends 'company-web-html)

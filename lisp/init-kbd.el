@@ -41,8 +41,9 @@
 
 ;; global key-binding settings for comment (jetbrains style)
 (global-set-key (kbd "C-/") 'comment-line)
-(global-set-key (kbd "C-?") 'comment-or-uncomment-region) ; Acturally this is conflict with emacs quirks
+;; Acturally this is conflict with emacs quirks
 ;; Emacs quirks refs: http://ergoemacs.org/emacs/keyboard_shortcuts.html
+(global-set-key (kbd "C-?") 'comment-or-uncomment-region) 
 
 ;; alias yes/no to y/p
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -51,8 +52,7 @@
 (use-package crux
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-," . crux-find-user-init-file)
-         ("C-S-d" . crux-duplicate-current-line-or-region)
-         ("C-S-k" . crux-smart-kill-line))) ; We can use C-S-<Backspace> instead.
+         ("C-S-d" . crux-duplicate-current-line-or-region)))
 
 
 ;; hungry-delete - works exactly like c-hungry-delete-mode
@@ -62,7 +62,10 @@
          ("C-c d" . hungry-delete-forward)))
 
 ;; drag-stuff - move lines up/down
-(use-package drag-stuff)
+;; NOT work in Elisp mode (conflict with paredit)
+(use-package drag-stuff
+  :bind (("M-<up>" . drag-stuff-up)
+         ("M-<down>" . drag-stuff-down)))
 
 
 (provide 'init-kbd)

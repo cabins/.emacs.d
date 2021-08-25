@@ -1,4 +1,4 @@
-;;; init-funcs.el --- define some useful interactive functions -*- lexical-binding: t -*-
+;;; init-fn.el --- define some useful interactive functions -*- lexical-binding: t -*-
 
 ;; Author: Cabins
 ;; Maintainer: Cabins
@@ -34,8 +34,7 @@
 (defun cabins/optimize-screen ()
   "Optimize screen function."
   (when (display-graphic-p)
-    (setq-default cursor-type 'hbar
-                  scroll-up-aggressively 0.01
+    (setq-default scroll-up-aggressively 0.01
                   scroll-down-aggressively 0.01
                   scroll-conservatively 100000
                   scroll-margin 0
@@ -53,48 +52,44 @@
         (suffix ";; Enjoy!"))
     (concat prefix ";;\n" os-version user-names machine-name ";;\n" suffix)))
 
+(defun cabins/custom-modeline (name bgcolor fgcolor underline)
+  "Customize the mode line style.  
+NAME: 'mode-line or 'mode-line-inactive
+BGCOLOR: background color
+FGCOLOR: foreground color
+UNDERLINE: whether sopport underline or not.
+"
+  (set-face-attribute name nil
+                      :background bgcolor
+                      :foreground fgcolor
+                      :box nil
+                      :underline underline))
+
 (defun cabins/toggle-dark-theme ()
   "Toggle the theme to dark or light."
   (interactive)
   (if custom-enabled-themes
       (progn
         (disable-theme (car custom-enabled-themes))
-        (set-face-attribute 'mode-line nil
-                            :background "#ffffff"
-                            :foreground "dimgray"
-                            :box nil
-                            :underline t)
-        (set-face-attribute 'mode-line-inactive nil
-                            :background "#ffffff"
-                            :foreground "gray"
-                            :box nil
-                            :underline nil))
+        (cabins/custom-modeline 'mode-line "#FFFFFF" "dimgray" t)
+        (cabins/custom-modeline 'mode-line-inactive "#FFFFFF" "gray" nil))
     
     (load-theme 'deeper-blue t)
-    (set-face-attribute 'mode-line nil
-                        :background "#181a26"
-                        :foreground "silver"
-                        :box nil
-                        :underline t)
+    (cabins/custom-modeline 'mode-line "#181A26" "silver" t)
+    (cabins/custom-modeline 'mode-line-inactive "181A26" "dimgray" nil)))
 
-    (set-face-attribute 'mode-line-inactive nil
-                        :background "#181a26"
-                        :foreground "dimgray"
-                        :box nil
-                        :underline nil)))
+(defun cabins/setup-font (f-en s-en f-cn s-cn)
+  "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
 
-  (defun cabins/setup-font (f-en s-en f-cn s-cn)
-    "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
-
-    (when (display-graphic-p)
-      (set-face-attribute 'default nil
-		                  :font (format "%s-%d" f-en s-en))
-
-      (dolist (charset '(han cjk-misc chinese-gbk))
-        (set-fontset-font "fontset-default" charset
-                          (font-spec :family f-cn :size s-cn)))))
+  (when (display-graphic-p)
+    (set-face-attribute 'default nil
+		                :font (format "%s-%d" f-en s-en))
+    
+    (dolist (charset '(han cjk-misc chinese-gbk))
+      (set-fontset-font "fontset-default" charset
+                        (font-spec :family f-cn :size s-cn)))))
 
 
-  (provide 'init-funcs)
+(provide 'init-fn)
 
-;;; init-funcs.el ends here
+;;; init-fn.el ends here

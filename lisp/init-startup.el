@@ -30,37 +30,33 @@
 
 ;;; Code:
 
-;; settings for system encoding
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
+;; 系统编码设置
 (set-buffer-file-coding-system 'utf-8-unix)
 (set-clipboard-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8)
 (set-file-name-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8-unix)
+(set-language-environment "UTF-8")
 (set-next-selection-coding-system 'utf-8-unix)
 (set-selection-coding-system 'utf-8-unix)
 (set-terminal-coding-system 'utf-8-unix)
-(setq locale-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
-
+;; Windows系统特殊配置
 (when (eq system-type 'windows-nt)
   (set-next-selection-coding-system 'utf-16-le)
   (set-selection-coding-system 'utf-16-le)
   (set-clipboard-coding-system 'utf-16-le))
 
-;; settings for backup files
-(setq make-backup-files nil
-      auto-save-default nil)
-
-(setq-default frame-title-format '("%b"))
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message (cabins/user-login-info))
-
-;; I don't like the bell ring
-(setq ring-bell-function #'ignore
+(setq locale-coding-system 'chinese-gbk
+      make-backup-files nil             ; 备份文件的设置
+      auto-save-default nil
+      inhibit-startup-screen t          ; 开屏动画与提示信息的配置
+      initial-scratch-message (cabins/user-login-info)
+      ring-bell-function #'ignore       ; 是否响铃的设置
       visible-bell nil)
 
-(if *is-mac*
+;; macOS删除文件的时候删除到垃圾桶
+(when *is-mac*
     (setq delete-by-moving-to-trash t))
 
 

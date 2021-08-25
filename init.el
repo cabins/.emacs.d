@@ -45,7 +45,7 @@
   "Windows / DOS.")
 
 ;; settings for independent packages and etc.
-(require 'init-funcs)
+(require 'init-fn)
 (require 'init-startup)
 (require 'init-elpa)
 (require 'init-package)
