@@ -54,7 +54,17 @@
             (when (window-system frame)
               (cabins/optimize-screen))))
 
-;; (load-theme 'deeper-blue t)
+;; 修改Modeline的颜色，使其看起来更轻量
+(set-face-attribute 'mode-line nil
+                    :background "#ffffff"
+                    :foreground "dimgray"
+                    :box nil
+                    :underline t)
+(set-face-attribute 'mode-line-inactive nil
+                    :background "#ffffff"
+                    :foreground "gray"
+                    :box nil
+                    :underline nil)
 
 (provide 'init-ui)
 

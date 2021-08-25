@@ -57,21 +57,44 @@
   "Toggle the theme to dark or light."
   (interactive)
   (if custom-enabled-themes
-      (disable-theme (car custom-enabled-themes))
-    (load-theme 'deeper-blue t)))
+      (progn
+        (disable-theme (car custom-enabled-themes))
+        (set-face-attribute 'mode-line nil
+                            :background "#ffffff"
+                            :foreground "dimgray"
+                            :box nil
+                            :underline t)
+        (set-face-attribute 'mode-line-inactive nil
+                            :background "#ffffff"
+                            :foreground "gray"
+                            :box nil
+                            :underline nil))
+    
+    (load-theme 'deeper-blue t)
+    (set-face-attribute 'mode-line nil
+                        :background "#181a26"
+                        :foreground "silver"
+                        :box nil
+                        :underline t)
 
-(defun cabins/setup-font (f-en s-en f-cn s-cn)
-  "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
+    (set-face-attribute 'mode-line-inactive nil
+                        :background "#181a26"
+                        :foreground "dimgray"
+                        :box nil
+                        :underline nil)))
 
-  (when (display-graphic-p)
-    (set-face-attribute 'default nil
-		                :font (format "%s-%d" f-en s-en))
+  (defun cabins/setup-font (f-en s-en f-cn s-cn)
+    "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
 
-    (dolist (charset '(han cjk-misc chinese-gbk))
-      (set-fontset-font "fontset-default" charset
-                        (font-spec :family f-cn :size s-cn)))))
+    (when (display-graphic-p)
+      (set-face-attribute 'default nil
+		                  :font (format "%s-%d" f-en s-en))
+
+      (dolist (charset '(han cjk-misc chinese-gbk))
+        (set-fontset-font "fontset-default" charset
+                          (font-spec :family f-cn :size s-cn)))))
 
 
-(provide 'init-funcs)
+  (provide 'init-funcs)
 
 ;;; init-funcs.el ends here
