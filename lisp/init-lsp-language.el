@@ -4,10 +4,8 @@
 
 ;; Common Tools
 (use-package reformatter)
-(use-package format-all
-  :hook (prog-mode . format-all-mode))
+(use-package format-all :hook (prog-mode . format-all-mode))
 
-;;; the following settings sorted by the package name (alphabet order)
 ;; GO MODE
 (defvar go--tools '("golang.org/x/tools/cmd/goimports"
                     "github.com/go-delve/delve/cmd/dlv"
@@ -24,15 +22,8 @@
   (use-package go-gen-test)
   (use-package go-tag))
 
-;; JSON MODE
-(use-package json-mode)
-
 ;; LISP MODE
-(use-package paredit
-  :hook (emacs-lisp-mode . enable-paredit-mode))
-
-;; MARKDOWN MODE
-(use-package markdown-mode)
+(use-package paredit :hook (emacs-lisp-mode . enable-paredit-mode))
 
 ;; PYTHON MODE
 (use-package python-mode
@@ -44,10 +35,6 @@
 (reformatter-define python-isort
   :program "isort"
   :args '("--stdout" "--atomic" "--profile=black" "-"))
-
-;; RESTCLIENT - HTTP CLIENT
-(use-package restclient
-  :mode ("\\.http\\'" . restclient-mode))
 
 ;; RUST MODE
 (use-package rust-mode
@@ -73,11 +60,13 @@
     :config
     (add-to-list 'company-backends 'company-web-html)
     (add-to-list 'company-backends 'company-css))
-  (use-package emmet-mode
-    :hook (web-mode css-mode)))
+  (use-package emmet-mode :hook (web-mode css-mode)))
 
-;; YAML MODE
+(use-package json-mode)
 (use-package yaml-mode)
+(use-package markdown-mode)
+(use-package restclient :mode ("\\.http\\'" . restclient-mode))
+
 
 (provide 'init-lsp-language)
 ;;; init-lsp-language.el ends here
