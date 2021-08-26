@@ -16,9 +16,11 @@
 ;; They are great! But I want cleaner.
 (use-package ido
   :defer nil
-  :init (setq ido-enable-flex-matching t
-              ido-everywhere t
-              ido-use-filename-at-point t)
+  :init
+  (setq ido-auto-merge-work-directories-length -1
+	ido-enable-flex-matching t
+        ido-everywhere t
+        ido-use-filename-at-point t)
   (ido-mode t)
   (fido-mode t))
 

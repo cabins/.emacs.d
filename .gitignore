@@ -1,0 +1,15 @@
+*~
+*#
+elpa
+custom.el
+recentf
+
+auto-save*
+*cache*
+ido.*
+
+.extension
+.lsp-session*
+abbrev_defs
+emacs_backtrace.txt
+url
