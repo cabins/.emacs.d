@@ -28,8 +28,17 @@
 ;; PYTHON MODE
 (use-package python-mode
   :ensure nil
-  :hook (python-mode . (lambda()(add-hook 'before-save-hook #'python-isort)))
-  :config (use-package pyimport))
+  :hook (python-mode . (lambda()(add-hook 'before-save-hook #'python-isort))))
+
+(defun python-remove-all-unused-imports ()
+  "Remove all the unused imports.
+Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
+  (interactive)
+  (if (executable-find "autoflake")
+      (progn
+	(shell-command (format "autoflake -i --remove-all-unused-imports %s" (buffer-file-name)))
+	(revert-buffer t t t))
+    (message "Err:: autoflake not found!")))
 
 ;;;###autoload
 (reformatter-define python-isort
