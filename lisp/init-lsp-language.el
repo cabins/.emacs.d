@@ -69,4 +69,8 @@
 
 
 (provide 'init-lsp-language)
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
 ;;; init-lsp-language.el ends here

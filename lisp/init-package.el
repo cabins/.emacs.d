@@ -5,24 +5,7 @@
 ;; Version: 1.0
 ;; Package-Requires: ()
 ;; Homepage: https://github.com/cabins
-;; Keywords: 
-
-
-;; This file is not part of GNU Emacs
-
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+;; Keywords:
 
 ;;; Commentary:
 
@@ -46,16 +29,14 @@
 ;; Settings for which-key - suggest next key
 (use-package which-key
   :defer nil
-  :config (which-key-mode))
+  :init (which-key-mode))
 
 ;; Settings for yasnippet
 (use-package yasnippet
   :diminish yas-minor-mode
   :init (yas-global-mode)
   :bind (("C-o" . yas-expand))
-  :config
-  (use-package yasnippet-snippets
-    :after yasnippet))
+  :config (use-package yasnippet-snippets :after yasnippet))
 
 ;; Settings for projectile
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
@@ -67,7 +48,6 @@
 
 ;; Show the delimiters as rainbow color
 (use-package rainbow-delimiters
-  :diminish
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; Beacon mode - highlight the line when the cursor jumps
@@ -76,4 +56,7 @@
 
 (provide 'init-package)
 
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
 ;;; init-package.el ends here

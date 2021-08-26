@@ -5,7 +5,7 @@
 ;; Version: 1.0
 ;; Package-Requires: ()
 ;; Homepage: https://github.com/cabins
-;; Keywords: 
+;; Keywords:
 
 
 ;; This file is not part of GNU Emacs
@@ -23,9 +23,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 ;;; Commentary:
-
 ;; (c) Cabins Kong, 2020-2021
 
 ;;; Code:
@@ -37,7 +35,7 @@
       (append elisp-flymake-byte-compile-load-path load-path))
 
 ;; consts defination
-(defconst *is-mac* (eq system-type 'darwin) "macOS platform.")
+(defconst *is-mac* (eq system-type 'darwin) "Apple macOS platform.")
 (defconst *is-linux* (eq system-type 'gnu/linux) "GNU/Linux platform.")
 (defconst *is-windows*
   (or (eq system-type 'ms-dos)
@@ -63,4 +61,7 @@
 
 (provide 'init)
 
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
 ;;; init.el ends here

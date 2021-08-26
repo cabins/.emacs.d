@@ -41,4 +41,9 @@
          (java-mode . (lambda() (require 'dap-java)))))
 
 (provide 'init-lsp)
+
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
 ;;; init-lsp.el ends here

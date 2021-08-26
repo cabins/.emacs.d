@@ -5,27 +5,9 @@
 ;; Version: 1.0
 ;; Package-Requires: ()
 ;; Homepage: https://github.com/cabins
-;; Keywords: 
-
-
-;; This file is not part of GNU Emacs
-
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+;; Keywords:
 
 ;;; Commentary:
-
 ;; (c) Cabins Kong, 2020-2021
 
 ;;; Code:
@@ -34,36 +16,29 @@
 (defun cabins/optimize-screen ()
   "Optimize screen function."
   (when (display-graphic-p)
-    (setq-default scroll-up-aggressively 0.01
-                  scroll-down-aggressively 0.01
-                  scroll-conservatively 100000
-                  scroll-margin 0
-                  scroll-step 1
-                  scroll-preserve-screen-position 'always)
-    (set-frame-width (selected-frame) 130)
-    (set-frame-height (selected-frame) 40)))
+    ;; Keyboard scroll behavior
+    (setq-default scroll-conservatively 100000
+                  scroll-margin 3
+                  scroll-preserve-screen-position t
+		  ;; Mouse wheel scroll behavior
+		  mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
+		  mouse-wheel-progressive-speed nil)
+    ;; Initialize the frame size
+    ;; (set-frame-width (selected-frame) 130)
+    ;; (set-frame-height (selected-frame) 40)
+    ;; (toggle-frame-maximized)
+    ))
 
-(defun cabins/user-login-info ()
-  "Print the login user info as init message."
-  (let ((prefix ";; Configured by Cabins <github.com/cabins>.\n")
-        (os-version (format ";; %20s: %S\n" "Operating System" system-type))
-        (user-names (format ";; %20s: %s\n" "Login User" (user-login-name)))
-        (machine-name (format ";; %20s: %s\n" "Machine Name" (system-name)))
-        (suffix ";; Enjoy!"))
-    (concat prefix ";;\n" os-version user-names machine-name ";;\n" suffix)))
+(defun cabins/dark-modeline (dark-theme)
+  "Customize the mode line style, DARK-THEME is boolean."
 
-(defun cabins/custom-modeline (name bgcolor fgcolor underline)
-  "Customize the mode line style.  
-NAME: 'mode-line or 'mode-line-inactive
-BGCOLOR: background color
-FGCOLOR: foreground color
-UNDERLINE: whether sopport underline or not.
-"
-  (set-face-attribute name nil
-                      :background bgcolor
-                      :foreground fgcolor
-                      :box nil
-                      :underline underline))
+  (let ((colorb (if dark-theme "#2E3436" "#FFFFFF")))
+    (dolist (name '(mode-line mode-line-inactive))
+      (set-face-attribute name nil
+			  :background colorb
+			  :foreground "dimgray"
+			  :box nil
+			  :underline nil))))
 
 (defun cabins/toggle-dark-theme ()
   "Toggle the theme to dark or light."
@@ -71,25 +46,29 @@ UNDERLINE: whether sopport underline or not.
   (if custom-enabled-themes
       (progn
         (disable-theme (car custom-enabled-themes))
-        (cabins/custom-modeline 'mode-line "#FFFFFF" "dimgray" t)
-        (cabins/custom-modeline 'mode-line-inactive "#FFFFFF" "gray" nil))
-    
-    (load-theme 'deeper-blue t)
-    (cabins/custom-modeline 'mode-line "#181A26" "silver" t)
-    (cabins/custom-modeline 'mode-line-inactive "181A26" "dimgray" nil)))
+        (cabins/dark-modeline nil))
+
+    (load-theme 'tango-dark t)
+    (cabins/dark-modeline t)))
 
 (defun cabins/setup-font (f-en s-en f-cn s-cn)
-  "The args mean: F-EN font of English, S-EN size of English, F-CN font of Chinese, S-CN size of Chinese."
+  "The args mean:
+F-EN font of English,
+S-EN size of English,
+F-CN font of Chinese,
+S-CN size of Chinese."
 
   (when (display-graphic-p)
     (set-face-attribute 'default nil
-		                :font (format "%s-%d" f-en s-en))
-    
+		        :font (format "%s-%d" f-en s-en))
+
     (dolist (charset '(han cjk-misc chinese-gbk))
       (set-fontset-font "fontset-default" charset
                         (font-spec :family f-cn :size s-cn)))))
 
-
 (provide 'init-fn)
 
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
 ;;; init-fn.el ends here
