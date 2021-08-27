@@ -47,7 +47,8 @@ Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
 
 ;; RUST MODE
 (use-package rust-mode
-  :bind (:map rust-mode-map ("C-c C-c" . rust-run)) ;bind the rust-run key
+  :bind (:map rust-mode-map
+	      ("C-c C-c" . rust-run))
   :config (setq indent-tabs-mode nil                ;rust use spaces instead of tab
                 rust-format-on-save t))
 
