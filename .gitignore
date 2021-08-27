@@ -8,6 +8,7 @@ auto-save*
 *cache*
 ido.*
 
+.*
 .extension
 .lsp-session*
 abbrev_defs

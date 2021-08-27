@@ -4,7 +4,7 @@
 
 ;; Common Tools
 (use-package reformatter)
-(use-package format-all :hook (prog-mode . format-all-mode))
+(use-package format-all :init (add-hook 'prog-mode-hook 'format-all-mode))
 
 ;; GO MODE
 (defvar go--tools '("golang.org/x/tools/cmd/goimports"
@@ -23,7 +23,7 @@
   (use-package go-tag))
 
 ;; LISP MODE
-(use-package paredit :hook (emacs-lisp-mode . enable-paredit-mode))
+(use-package paredit :init (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
 ;; PYTHON MODE
 (use-package python-mode
