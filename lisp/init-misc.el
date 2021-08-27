@@ -34,6 +34,7 @@
 ;; [built-in] Toggle hideshow minor mode on
 (use-package hideshow
   :ensure nil
+  :diminish
   :hook (prog-mode . hs-minor-mode))
 
 ;; [built-in] C-s/C-r settings
@@ -46,15 +47,16 @@
 (use-package line-number
   :ensure nil
   :init
-  ;; (setq display-line-numbers-type 't)   ; t(default),relative,visual
+  (setq-default display-line-numbers-widen t)
   (global-display-line-numbers-mode t))
 
 ;; [built-in] recent files
 (use-package recentf
   :ensure nil
   :init
-  (setq recentf-max-menu-items 25
-        recentf-max-saved-items 25)
+  (setq recentf-max-menu-items 10
+        recentf-max-saved-items 10)
+  (add-hook 'kill-emacs-hook #'recentf-cleanup)
   (global-set-key (kbd "C-c f") 'recentf-open-files)
   (recentf-mode 1))
 

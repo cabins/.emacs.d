@@ -27,9 +27,6 @@
 (when *is-windows* (cabins/setup-font "Courier New" 10 "楷体" 11.5))
 (when *is-mac* (cabins/setup-font "Courier New" 12 "华文楷体" 14.5))
 
-;; 尝试解决字体卡顿问题
-(setq inhibit-compacting-font-caches t)
-
 ;; 修改Modeline的颜色，使其看起来更轻量
 (cabins/dark-modeline nil)
 

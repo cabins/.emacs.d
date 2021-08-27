@@ -22,7 +22,12 @@
                   scroll-preserve-screen-position t
 		  ;; Mouse wheel scroll behavior
 		  mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
-		  mouse-wheel-progressive-speed nil)
+		  mouse-wheel-progressive-speed nil
+		  ;; Frame
+		  frame-title-format '("%b")
+		   menu-bar-mode nil
+		   tool-bar-mode nil
+		   scroll-bar-mode nil)
     ;; Initialize the frame size
     ;; (set-frame-width (selected-frame) 130)
     ;; (set-frame-height (selected-frame) 40)

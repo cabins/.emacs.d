@@ -4,7 +4,10 @@
 
 ;; Common Tools
 (use-package reformatter)
-(use-package format-all :init (add-hook 'prog-mode-hook 'format-all-mode))
+(use-package format-all
+  :init
+  (add-hook 'prog-mode-hook 'format-all-mode)
+  (global-set-key (kbd "C-c C-f") #'format-all-buffer))
 
 ;; GO MODE
 (defvar go--tools '("golang.org/x/tools/cmd/goimports"

@@ -31,7 +31,12 @@
          ("M-p" . flymake-goto-prev-error)))
 
 ;; Show parentheses
-(use-package paren :init (show-paren-mode 1))
+(use-package paren
+  :diminish
+  :init (show-paren-mode 1)
+  :config
+  (setq show-paren-when-point-inside-paren t
+	show-paren-when-point-in-periphery t))
 
 ;; Settings for electric-pair
 (use-package electric
@@ -40,6 +45,7 @@
 
 ;; Abbrev mode
 (use-package abbrev
+  :diminish
   :ensure nil
   :init (setq-default abbrev-mode t))
 

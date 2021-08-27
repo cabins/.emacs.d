@@ -12,27 +12,17 @@
 ;;; Code:
 
 ;; 系统编码设置
-(set-buffer-file-coding-system 'utf-8-unix)
-(set-clipboard-coding-system 'utf-8-unix)
-(set-default-coding-systems 'utf-8)
-(set-file-name-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8-unix)
 (set-language-environment "UTF-8")
-(set-next-selection-coding-system 'utf-8-unix)
-(set-selection-coding-system 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
-(prefer-coding-system 'utf-8)
-;; Windows系统特殊配置
-(when (eq system-type 'windows-nt)
-  (set-next-selection-coding-system 'utf-16-le)
-  (set-selection-coding-system 'utf-16-le)
-  (set-clipboard-coding-system 'utf-16-le))
+(unless *is-windows*
+  (setq selection-coding-system 'utf-8))
 
-(setq locale-coding-system 'chinese-gbk	; 中文编码的设置（Linux平台待验证效果）
-      make-backup-files nil             ; 备份文件的设置
+(setq make-backup-files nil             ; 备份文件的设置
       auto-save-default nil
       inhibit-startup-screen t          ; 开屏动画与提示信息的配置
-      visible-bell nil)
+      inhibit-default-init t
+      visible-bell nil
+      inhibit-compacting-font-caches t
+      read-process-output-max (* 64 1024))
 
 ;; macOS删除文件的时候删除到垃圾桶
 (when *is-mac* (setq delete-by-moving-to-trash t))
