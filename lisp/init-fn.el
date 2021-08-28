@@ -14,22 +14,28 @@
 
 (defun cabins/inhibit-bars ()
   "Inhibit the bars."
-  (interactive)
-  (setq-default menu-bar-mode nil
-		tool-bar-mode nil
-		scroll-bar-mode nil))
 
-;; a little bit optimize the screen display when in graphic mode
+  (interactive)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1))
+
 (defun cabins/optimize-screen ()
   "Optimize screen function."
+
   (when (display-graphic-p)
     ;; Keyboard scroll behavior
     (setq-default scroll-conservatively 100000
                   scroll-margin 3
+		  scroll-step 1
                   scroll-preserve-screen-position t
+		  scroll-up-aggressively 0.01
+		  scroll-down-aggressively 0.01
+		  auto-window-vscroll nil
 		  ;; Mouse wheel scroll behavior
-		  mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
+		  mouse-wheel-scroll-amount '(1 ((shift) . 1))
 		  mouse-wheel-progressive-speed nil
+		  mouse-wheel-follow-mouse 't
 		  ;; Frame
 		  frame-title-format '("%b"))
     ;; Initialize the frame size
@@ -51,6 +57,7 @@
 
 (defun cabins/toggle-dark-theme ()
   "Toggle the theme to dark or light."
+
   (interactive)
   (if custom-enabled-themes
       (progn
@@ -60,20 +67,16 @@
     (load-theme 'tango-dark t)
     (cabins/dark-modeline t)))
 
-(defun cabins/setup-font (f-en s-en f-cn s-cn)
-  "The args mean:
-F-EN font of English,
-S-EN size of English,
-F-CN font of Chinese,
-S-CN size of Chinese."
+(defun cabins/setup-font (fe se fc sc)
+  "FE font of English, SE size of it; FC font of Chinese, SC size of it."
 
   (when (display-graphic-p)
     (set-face-attribute 'default nil
-		        :font (format "%s-%d" f-en s-en))
+		        :font (format "%s-%d" fe se))
 
     (dolist (charset '(han cjk-misc chinese-gbk))
       (set-fontset-font "fontset-default" charset
-                        (font-spec :family f-cn :size s-cn)))))
+                        (font-spec :family fc :size sc)))))
 
 (provide 'init-fn)
 

@@ -14,12 +14,11 @@
                     "github.com/davidrjenni/reftools/cmd/fillstruct")
   "Go tools may needed.")
 
-(use-package go-mode
-  :config
-  (use-package go-fill-struct)
-  (use-package go-impl)
-  (use-package go-gen-test)
-  (use-package go-tag))
+(use-package go-mode)
+(use-package go-fill-struct)
+(use-package go-impl)
+(use-package go-gen-test)
+(use-package go-tag)
 
 ;; LISP MODE
 (use-package paredit :init (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
@@ -46,10 +45,10 @@ Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
 
 ;; RUST MODE
 (use-package rust-mode
-  :bind (:map rust-mode-map
-	      ("C-c C-c" . rust-run))
-  :config (setq indent-tabs-mode nil                ;rust use spaces instead of tab
-                rust-format-on-save t))
+  :config
+  (setq indent-tabs-mode nil
+        rust-format-on-save t)
+  (define-key rust-mode-map (kbd "C-c C-c") 'rust-run))
 
 ;; VUE.js MODE
 (use-package vue-mode
@@ -59,7 +58,7 @@ Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
 
 ;; WEB MODE
 (use-package web-mode
-  :mode ("\\.html\\'")
+  :init (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
@@ -74,7 +73,8 @@ Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
 (use-package json-mode)
 (use-package yaml-mode)
 (use-package markdown-mode)
-(use-package restclient :mode ("\\.http\\'" . restclient-mode))
+(use-package restclient
+  :init (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
 
 
 (provide 'init-lsp-language)

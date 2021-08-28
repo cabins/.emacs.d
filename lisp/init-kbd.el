@@ -12,7 +12,7 @@
 
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                    全局按键包依赖
+;;                    Global Keybinds Dependencies
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package crux)
 (use-package hungry-delete)
@@ -21,7 +21,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;                   集中设置全局快捷按键
+;;                   Global Key Bindings
 ;;
 ;; 当前版本全局按键绑定秉承以下原则：
 ;; 1. 自定义全局按键尽可能以C-c开头（或绑F5-F9），此为Emacs设计规范预期
@@ -31,39 +31,39 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;; 按键映射
-;; 在macOS上，将Command键映射为Meta，Option映射为Super
+;;; Key Remap
+;; <macOS> Command -> Meta, Option -> Super
 (when *is-mac*
   (setq mac-command-modifier 'meta
 	mac-option-modifier 'super))
 
-;;; Emacs基本配置 ------------------------------
+;;; Emacs Basic Keys ------------------------------
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(global-set-key (kbd "C-,") #'crux-find-user-init-file)	; 打开配置文件
-(global-set-key (kbd "C-c f") 'recentf-open-files)
+(global-set-key (kbd "C-,") #'crux-find-user-init-file)	; Open Settings
+(global-set-key (kbd "C-c f") 'recentf-open-files) ; Open Recent Files
 
-;; 窗口移动
+;; Window Move
 (global-set-key (kbd "C-c <left>") 'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>") 'windmove-up)
 (global-set-key (kbd "C-c <down>") 'windmove-down)
 
-;;; 代码编辑 ------------------------------
-;; 注释（由于行注释使用C-x C-;，所以块注释使用相同后缀）
+;;; Code Editing ------------------------------
+;; Comments（As C-x C-; is for comment-line, keep the postfix）
 (global-set-key (kbd "C-c C-;") #'comment-or-uncomment-region)
-;; 行操作
-(global-set-key (kbd "C-c C-<down>") #'drag-stuff-down)	; 向下移动行/块
-(global-set-key (kbd "C-c C-<up>") #'drag-stuff-up) ; 向上移动行/块
-(global-set-key (kbd "C-c C-d") #'crux-duplicate-current-line-or-region) ;行复制
-(global-set-key (kbd "C-a") #'crux-move-beginning-of-line) ; 回到行首
-;; 删除操作
-(global-set-key (kbd "C-c <backspace>") #'hungry-delete-backward) ; 前空白删除
-(global-set-key (kbd "C-c <delete>") #'hungry-delete-forward) ;后空白删除
-;; 代码展开与格式化
+;; Line Edit
+(global-set-key (kbd "C-c C-<down>") #'drag-stuff-down)
+(global-set-key (kbd "C-c C-<up>") #'drag-stuff-up)
+(global-set-key (kbd "C-c C-d") #'crux-duplicate-current-line-or-region)
+(global-set-key (kbd "C-a") #'crux-move-beginning-of-line)
+;; Delete
+(global-set-key (kbd "C-c <backspace>") #'hungry-delete-backward)
+(global-set-key (kbd "C-c <delete>") #'hungry-delete-forward)
+;; Code Beautify
 (global-set-key (kbd "C-o") #'yas-expand)
 (global-set-key (kbd "C-c C-f") #'format-all-buffer)
-;; 代码检查
+;; Syntax
 (global-set-key (kbd "M-n") #'flymake-goto-next-error)
 (global-set-key (kbd "M-p") #'flymake-goto-prev-error)
 

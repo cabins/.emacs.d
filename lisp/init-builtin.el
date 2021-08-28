@@ -16,7 +16,7 @@
 (setq-default abbrev-mode t)
 
 ;; Cursor
-(setq-default cursor-type 'bar)
+(setq-default cursor-type 'hbar)
 (blink-cursor-mode 1)
 
 ;; Delete Behavior
@@ -36,8 +36,6 @@
 ;; Ido ( instead of ivy & counsel & swiper)
 (setq-default ido-auto-merge-work-directories-length -1
 	      ido-enable-flex-matching t
-	      ido-everywhere t
-	      ido-use-filename-at-point t
 	      isearch-lazy-count t
 	      lazy-count-prefix-format "%s/%s: ")
 (ido-mode t)
@@ -53,11 +51,10 @@
 (show-paren-mode t)
 
 ;; Recent Files
-(setq-default recentf-max-menu-items 10
-	      recentf-max-saved-items 10)
+(setq-default recentf-max-menu-items 100
+	      recentf-max-saved-items 100)
 (add-hook 'kill-emacs-hook #'recentf-cleanup)
 (recentf-mode 1)
-
 
 (provide 'init-builtin)
 
