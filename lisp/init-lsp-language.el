@@ -4,10 +4,6 @@
 
 ;; Common Tools
 (use-package reformatter)
-(use-package format-all
-  :init
-  (add-hook 'prog-mode-hook 'format-all-mode)
-  (global-set-key (kbd "C-c C-f") #'format-all-buffer))
 
 ;; GO MODE
 (defvar go--tools '("golang.org/x/tools/cmd/goimports"
@@ -41,7 +37,7 @@ Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
       (progn
 	(shell-command (format "autoflake -i --remove-all-unused-imports %s" (buffer-file-name)))
 	(revert-buffer t t t))
-    (message "Err:: autoflake not found!")))
+    (message "[ERROR]: <autoflake> not found!")))
 
 ;;;###autoload
 (reformatter-define python-isort

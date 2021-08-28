@@ -37,10 +37,7 @@
 ;; consts defination
 (defconst *is-mac* (eq system-type 'darwin) "Apple macOS platform.")
 (defconst *is-linux* (eq system-type 'gnu/linux) "GNU/Linux platform.")
-(defconst *is-windows*
-  (or (eq system-type 'ms-dos)
-      (eq system-type 'windows-nt))
-  "Windows / DOS.")
+(defconst *is-windows* (memq system-type '(cygwin windows-nt ms-dos)) "Windows / DOS.")
 
 ;; settings for independent packages and etc.
 (require 'init-fn)
@@ -49,7 +46,6 @@
 (require 'init-package)
 (require 'init-builtin)
 (require 'init-kbd)
-(require 'init-misc)
 (require 'init-program)
 (require 'init-ui)
 

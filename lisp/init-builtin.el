@@ -10,57 +10,54 @@
 ;;; Commentary:
 ;; (c) Cabins Kong, 2020-2021
 
-;;; Code:
+;;; Code: Sorted by Alphbet order
 
-;; Use ido instead of ivy & counsel & swiper
-;; They are great! But I want cleaner.
-(use-package ido
-  :defer nil
-  :init
-  (setq ido-auto-merge-work-directories-length -1
-	ido-enable-flex-matching t
-        ido-everywhere t
-        ido-use-filename-at-point t)
-  (ido-mode t)
-  (fido-mode t))
+;; Abbrev
+(setq-default abbrev-mode t)
 
-;; Enable flymake on default, which is built in emacs
-(use-package flymake
-  :hook (prog-mode . flymake-mode)
-  :bind (("M-n" . flymake-goto-next-error)
-         ("M-p" . flymake-goto-prev-error)))
+;; Cursor
+(setq-default cursor-type 'bar)
+(blink-cursor-mode 1)
 
-;; Show parentheses
-(use-package paren
-  :diminish
-  :init (show-paren-mode 1)
-  :config
-  (setq show-paren-when-point-inside-paren t
-	show-paren-when-point-in-periphery t))
+;; Delete Behavior
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+(add-hook 'after-init-hook 'delete-selection-mode)
 
-;; Settings for electric-pair
-(use-package electric
-  :hook ((after-init . electric-indent-mode)
-	 (prog-mode . electric-pair-mode)))
+;; Electric-Pair
+(add-hook 'after-init-hook 'electric-indent-mode)
+(add-hook 'prog-mode-hook 'electric-pair-mode)
 
-;; Abbrev mode
-(use-package abbrev
-  :diminish
-  :ensure nil
-  :init (setq-default abbrev-mode t))
+;; Flymake
+(add-hook 'prog-mode-hook 'flymake-mode)
 
-;; display 'lambda' as 'λ' (just for fun)
-;; (use-package prettify-symbols-mode
-;;   :ensure nil
-;;   :init (global-prettify-symbols-mode 1))
+;; HideShow Minor Mode
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
-;; settings for windmove, replace the ace-window plugin
-(use-package windmove
-  :ensure nil
-  :bind (("C-c <left>" . windmove-left)
-         ("C-c <right>" . windmove-right)
-         ("C-c <up>" . windmove-up)
-         ("C-c <down>" . windmove-down)))
+;; Ido ( instead of ivy & counsel & swiper)
+(setq-default ido-auto-merge-work-directories-length -1
+	      ido-enable-flex-matching t
+	      ido-everywhere t
+	      ido-use-filename-at-point t
+	      isearch-lazy-count t
+	      lazy-count-prefix-format "%s/%s: ")
+(ido-mode t)
+(fido-mode t)
+
+;; Line Number
+(setq-default display-line-numbers-widen t)
+(global-display-line-numbers-mode t)
+
+;; Parentheses
+(setq-default show-paren-when-point-inside-paren t
+	      show-paren-when-point-in-periphery t)
+(show-paren-mode t)
+
+;; Recent Files
+(setq-default recentf-max-menu-items 10
+	      recentf-max-saved-items 10)
+(add-hook 'kill-emacs-hook #'recentf-cleanup)
+(recentf-mode 1)
+
 
 (provide 'init-builtin)
 

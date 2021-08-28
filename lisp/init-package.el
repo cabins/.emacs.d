@@ -22,7 +22,7 @@
 ;; Settings for company
 (use-package company
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
-  :hook (after-init . global-company-mode)
+  :init (add-hook 'after-init-hook 'global-company-mode)
   :config (setq company-minimum-prefix-length 1
                 company-selection-wrap-around t))
 
@@ -35,7 +35,6 @@
 (use-package yasnippet
   :diminish yas-minor-mode
   :init (yas-global-mode)
-  :bind (("C-o" . yas-expand))
   :config (use-package yasnippet-snippets :after yasnippet))
 
 ;; Settings for projectile
@@ -43,7 +42,7 @@
 ;; Disable it on Windows
 (use-package projectile
   :unless *is-windows*
-  :hook (after-init . projectile-mode)
+  :init (add-hook 'after-init-hook 'projectile-mode)
   :bind-keymap ("C-c p" . projectile-command-map))
 
 ;; Show the delimiters as rainbow color

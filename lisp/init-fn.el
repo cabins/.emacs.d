@@ -12,6 +12,13 @@
 
 ;;; Code:
 
+(defun cabins/inhibit-bars ()
+  "Inhibit the bars."
+  (interactive)
+  (setq-default menu-bar-mode nil
+		tool-bar-mode nil
+		scroll-bar-mode nil))
+
 ;; a little bit optimize the screen display when in graphic mode
 (defun cabins/optimize-screen ()
   "Optimize screen function."
@@ -24,10 +31,7 @@
 		  mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
 		  mouse-wheel-progressive-speed nil
 		  ;; Frame
-		  frame-title-format '("%b")
-		   menu-bar-mode nil
-		   tool-bar-mode nil
-		   scroll-bar-mode nil)
+		  frame-title-format '("%b"))
     ;; Initialize the frame size
     ;; (set-frame-width (selected-frame) 130)
     ;; (set-frame-height (selected-frame) 40)
