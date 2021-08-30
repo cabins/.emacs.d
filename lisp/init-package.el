@@ -43,18 +43,18 @@
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode
 ;; Disable it on Windows
 (use-package projectile
-  :unless *is-windows*
+  :diminish " Proj."
   :init (add-hook 'after-init-hook 'projectile-mode)
-  :bind-keymap ("C-c p" . projectile-command-map))
+  :config (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 ;; Show the delimiters as rainbow color
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; Beacon mode - highlight the line when the cursor jumps
 (use-package beacon
   :diminish
-  :hook (after-init . beacon-mode))
+  :init (add-hook 'after-init-hook 'beacon-mode))
 
 (provide 'init-package)
 
