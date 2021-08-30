@@ -2,9 +2,6 @@
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
-;; Common Tools
-(use-package reformatter)
-
 ;; GO MODE
 (defvar go--tools '("golang.org/x/tools/cmd/goimports"
                     "github.com/go-delve/delve/cmd/dlv"
@@ -24,24 +21,23 @@
 (use-package paredit :init (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
 ;; PYTHON MODE
-(use-package python-mode
-  :ensure nil
-  :hook (python-mode . (lambda()(add-hook 'before-save-hook #'python-isort))))
+(defun python-isort ()
+  "Sort the imports with isort."
+  (interactive)
+  (if (not (executable-find "isort"))
+      (message "[ERROR]: <isort> not found!")
+    (shell-command-on-region (point-min) (point-max) "isort --atomic --profile=black -" (current-buffer) t)))
+
+(add-hook 'python-mode-hook (lambda ()
+			      (add-hook 'before-save-hook #'python-isort nil t)))
 
 (defun python-remove-all-unused-imports ()
-  "Remove all the unused imports.
-Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
+  "Remove all the unused imports. Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
   (interactive)
-  (if (executable-find "autoflake")
-      (progn
-	(shell-command (format "autoflake -i --remove-all-unused-imports %s" (buffer-file-name)))
-	(revert-buffer t t t))
-    (message "[ERROR]: <autoflake> not found!")))
-
-;;;###autoload
-(reformatter-define python-isort
-  :program "isort"
-  :args '("--stdout" "--atomic" "--profile=black" "-"))
+  (if (not (executable-find "autoflake"))
+      (message "[ERROR]: <autoflake> not found!")
+    (shell-command (format "autoflake -i --remove-all-unused-imports %s" (buffer-file-name)))
+    (revert-buffer t t t)))
 
 ;; RUST MODE
 (use-package rust-mode
