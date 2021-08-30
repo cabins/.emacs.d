@@ -21,6 +21,7 @@
 
 ;; Settings for company
 (use-package company
+  :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config (setq company-minimum-prefix-length 1
@@ -29,6 +30,7 @@
 ;; Settings for which-key - suggest next key
 (use-package which-key
   :defer nil
+  :diminish
   :init (which-key-mode))
 
 ;; Settings for yasnippet
@@ -51,6 +53,7 @@
 
 ;; Beacon mode - highlight the line when the cursor jumps
 (use-package beacon
+  :diminish
   :hook (after-init . beacon-mode))
 
 (provide 'init-package)

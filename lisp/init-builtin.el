@@ -56,6 +56,11 @@
 (add-hook 'kill-emacs-hook #'recentf-cleanup)
 (recentf-mode 1)
 
+;; Diminish Builtins
+(dolist (elem '(abbrev-mode eldoc-mode))
+  (diminish elem))
+(add-hook 'hs-minor-mode-hook (lambda () (diminish 'hs-minor-mode)))
+
 (provide 'init-builtin)
 
 ;; Local Variables:

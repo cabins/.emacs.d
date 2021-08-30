@@ -32,7 +32,7 @@
 			      (add-hook 'before-save-hook #'python-isort nil t)))
 
 (defun python-remove-all-unused-imports ()
-  "Remove all the unused imports. Do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
+  "Remove all the unused imports, do NOT use pyimport, as it has bugs, eg. from datetime import datetime."
   (interactive)
   (if (not (executable-find "autoflake"))
       (message "[ERROR]: <autoflake> not found!")
