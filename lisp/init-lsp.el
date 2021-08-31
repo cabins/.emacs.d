@@ -16,7 +16,10 @@
 			     (add-hook 'before-save-hook #'lsp-format-buffer t t)))
   (add-hook 'prog-mode-hook (lambda()
 			      (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)(lsp-deferred))))
-  :config (setq lsp-auto-guess-root t))
+  :config
+  (setq lsp-auto-guess-root t)
+  (setq lsp-keymap-prefix "C-c l")
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
 
 (use-package lsp-ui
   :after lsp-mode

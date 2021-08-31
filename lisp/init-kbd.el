@@ -43,7 +43,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "C-,") #'crux-find-user-init-file)	; Open Settings
-(global-set-key (kbd "C-c f") 'recentf-open-files) ; Open Recent Files
+(global-set-key (kbd "C-c r") 'recentf-open-files) ; Open Recent Files
 
 ;; Window Move
 (global-set-key (kbd "C-c <left>") 'windmove-left)
@@ -64,7 +64,7 @@
 (global-set-key (kbd "C-c <delete>") #'hungry-delete-forward)
 ;; Code Beautify
 (global-set-key (kbd "C-o") #'yas-expand)
-(global-set-key (kbd "C-c C-f") #'format-all-buffer)
+(global-set-key (kbd "C-c f") #'format-all-buffer)
 ;; Syntax
 (global-set-key (kbd "M-n") #'flymake-goto-next-error)
 (global-set-key (kbd "M-p") #'flymake-goto-prev-error)
