@@ -37,7 +37,9 @@
 (use-package yasnippet
   :diminish yas-minor-mode
   :init (yas-global-mode)
-  :config (use-package yasnippet-snippets :after yasnippet))
+  :config
+  (use-package yasnippet-snippets
+    :after yasnippet))
 
 ;; Settings for projectile
 ;; Using after-init hook makes emacs starts up faster than config projectile-mode

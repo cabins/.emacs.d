@@ -38,6 +38,7 @@
 	      ido-enable-flex-matching t
 	      isearch-lazy-count t
 	      lazy-count-prefix-format "%s/%s: ")
+(setq completion-ignored-extensions '(".o" ".elc" "~" ".bin" ".bak" ".obj" ".map" ".a" ".ln" ".class"))
 (ido-mode t)
 (fido-mode t)
 
