@@ -39,7 +39,6 @@
 	      isearch-lazy-count t
 	      lazy-count-prefix-format "%s/%s: ")
 (setq completion-ignored-extensions '(".o" ".elc" "~" ".bin" ".bak" ".obj" ".map" ".a" ".ln" ".class"))
-(ido-mode t)
 (fido-mode t)
 
 ;; Line Number
@@ -47,7 +46,8 @@
 (global-display-line-numbers-mode t)
 
 ;; Parentheses
-(setq-default show-paren-when-point-inside-paren t
+(setq-default show-paren-style 'mixed
+	      show-paren-when-point-inside-paren t
 	      show-paren-when-point-in-periphery t)
 (show-paren-mode t)
 
