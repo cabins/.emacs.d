@@ -1,4 +1,4 @@
-;;; init-lsp-language.el --- settings for languages of lsp mode
+;;; init-lang.el --- settings for languages of lsp mode
 ;;; Commentary: (c) Cabins, github.com/cabins/.emacs.d
 ;;; Code:
 
@@ -73,9 +73,9 @@
   :init (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
 
 
-(provide 'init-lsp-language)
+(provide 'init-lang)
 
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
-;;; init-lsp-language.el ends here
+;;; init-lang.el ends here

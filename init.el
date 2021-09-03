@@ -46,7 +46,8 @@
 (require 'init-package)
 (require 'init-builtin)
 (require 'init-kbd)
-(require 'init-program)
+(require 'init-lsp)
+(require 'init-lang)
 (require 'init-ui)
 
 ;; load custom file at last
