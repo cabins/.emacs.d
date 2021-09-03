@@ -10,13 +10,14 @@
 ;;; Commentary:
 ;; (c) Cabins Kong, 2020-2021
 
-;;; Code: Sorted by Alphbet order
+;;; Code:
+;;; Sorted by Alphbet order
 
 ;; Abbrev
 (setq-default abbrev-mode t)
 
 ;; Cursor
-(setq-default cursor-type '(hbar . 1))
+(setq-default cursor-type 'hollow)
 (blink-cursor-mode 1)
 
 ;; Delete Behavior
@@ -55,7 +56,8 @@
 (setq-default recentf-max-menu-items 100
 	      recentf-max-saved-items 100)
 (add-hook 'kill-emacs-hook #'recentf-cleanup)
-(recentf-mode 1)
+(add-hook 'after-init-hook (lambda ()
+			     (recentf-mode 1)))
 
 ;; Diminish Builtins
 (dolist (elem '(abbrev-mode eldoc-mode))

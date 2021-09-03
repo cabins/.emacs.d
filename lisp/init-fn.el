@@ -78,6 +78,13 @@
       (set-fontset-font "fontset-default" charset
                         (font-spec :family fc :size sc)))))
 
+(defmacro cabins/timer (&rest body)
+  "Measure the time of code BODY running."
+  `(let ((time (current-time)))
+     ,@body
+     (float-time (time-since time))))
+
+
 (provide 'init-fn)
 
 ;; Local Variables:

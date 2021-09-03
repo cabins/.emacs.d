@@ -35,16 +35,12 @@
 
 ;; Settings for yasnippet
 (use-package yasnippet
-  :diminish yas-minor-mode
-  :init (yas-global-mode)
-  :config
-  (use-package yasnippet-snippets
-    :after yasnippet))
+  :hook (after-init . yas-global-mode))
+(use-package yasnippet-snippets)
 
-;; Settings for projectile
-;; Using after-init hook makes emacs starts up faster than config projectile-mode
-;; Disable it on Windows
+;; Settings for projectile (Use builtin project in Emacs 28)
 (use-package projectile
+  :when (< emacs-major-version 28)
   :diminish " Proj."
   :init (add-hook 'after-init-hook 'projectile-mode)
   :config (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
@@ -56,6 +52,7 @@
 ;; Beacon mode - highlight the line when the cursor jumps
 (use-package beacon
   :diminish
+  :unless *is-windows*
   :init (add-hook 'after-init-hook 'beacon-mode))
 
 (provide 'init-package)
