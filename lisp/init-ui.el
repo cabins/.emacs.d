@@ -28,7 +28,8 @@
 (when *is-mac* (cabins/setup-font "Courier New" 12 "华文楷体" 14.5))
 
 ;; 默认使用白色Modeline，视觉上更轻量
-(cabins/dark-modeline nil)
+(when (display-graphic-p)
+  (cabins/dark-modeline nil))
 
 (provide 'init-ui)
 

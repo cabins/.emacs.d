@@ -47,6 +47,7 @@
 
 (defun cabins/dark-modeline (dark-theme)
   "Customize the mode line style, DARK-THEME is boolean."
+
   (let ((colorb (if dark-theme "#2E3436" "#FFFFFF")))
     (dolist (name '(mode-line mode-line-inactive))
       (set-face-attribute name nil
