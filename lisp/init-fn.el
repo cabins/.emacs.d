@@ -16,9 +16,10 @@
   "Inhibit the bars."
 
   (interactive)
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1))
+  (when (display-graphic-p)
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)))
 
 (defun cabins/optimize-screen ()
   "Optimize screen function."
@@ -46,7 +47,6 @@
 
 (defun cabins/dark-modeline (dark-theme)
   "Customize the mode line style, DARK-THEME is boolean."
-
   (let ((colorb (if dark-theme "#2E3436" "#FFFFFF")))
     (dolist (name '(mode-line mode-line-inactive))
       (set-face-attribute name nil
@@ -59,13 +59,15 @@
   "Toggle the theme to dark or light."
 
   (interactive)
-  (if custom-enabled-themes
-      (progn
-        (disable-theme (car custom-enabled-themes))
-        (cabins/dark-modeline nil))
+  (if (display-graphic-p)
+      (if custom-enabled-themes
+	  (progn
+            (disable-theme (car custom-enabled-themes))
+            (cabins/dark-modeline nil))
 
-    (load-theme 'tango-dark t)
-    (cabins/dark-modeline t)))
+	(load-theme 'tango-dark t)
+	(cabins/dark-modeline t))
+    (message "Toggle dark theme only works on graphic mode.")))
 
 (defun cabins/setup-font (fe se fc sc)
   "FE font of English, SE size of it; FC font of Chinese, SC size of it."

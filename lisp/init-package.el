@@ -35,10 +35,11 @@
 
 ;; Settings for yasnippet
 (use-package yasnippet
+  :diminish
   :hook (after-init . yas-global-mode))
 (use-package yasnippet-snippets)
 
-;; Settings for projectile (Use builtin project in Emacs 28)
+;; Settings for projectile (use builtin project in Emacs 28)
 (use-package projectile
   :when (< emacs-major-version 28)
   :diminish " Proj."

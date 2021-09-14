@@ -17,7 +17,7 @@
 (setq-default abbrev-mode t)
 
 ;; Cursor
-(setq-default cursor-type 'hollow)
+(setq-default cursor-type '(bar . 1))
 (blink-cursor-mode 1)
 
 ;; Delete Behavior
