@@ -42,8 +42,7 @@
 ;; RUST MODE
 (use-package rust-mode
   :config
-  (setq indent-tabs-mode nil
-        rust-format-on-save t)
+  (setq rust-format-on-save t)
   (define-key rust-mode-map (kbd "C-c C-c") 'rust-run))
 
 ;; VUE.js MODE

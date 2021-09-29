@@ -24,7 +24,7 @@
 ;; 字体设置，以下配置中中文任意字体均可，推荐配对：
 ;; Ubuntu Mono-11 / 中文11.0或者18
 ;; Couriew New-10 / 中文11.5或12.0或者20
-(when *is-windows* (cabins/setup-font "Courier New" 11 "楷体" 13.0))
+(when *is-windows* (cabins/setup-font "Source Code Pro" 10 "华文楷体" 20))
 (when *is-mac* (cabins/setup-font "Courier New" 12 "华文楷体" 14.5))
 
 ;; 默认使用白色Modeline，视觉上更轻量

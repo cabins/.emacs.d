@@ -40,8 +40,8 @@
 		  ;; Frame
 		  frame-title-format '("%b"))
     ;; Initialize the frame size
-    ;; (set-frame-width (selected-frame) 130)
-    ;; (set-frame-height (selected-frame) 40)
+    (set-frame-width (selected-frame) 130)
+    (set-frame-height (selected-frame) 40)
     ;; (toggle-frame-maximized)
     ))
 

@@ -59,6 +59,9 @@
 (add-hook 'after-init-hook (lambda ()
 			     (recentf-mode 1)))
 
+;; Save Place
+(save-place-mode 1)
+
 ;; Diminish Builtins
 (dolist (elem '(abbrev-mode eldoc-mode))
   (diminish elem))

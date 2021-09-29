@@ -48,3 +48,11 @@ git clone https://github.com/cabins/.emacs.d ~/.config/emacs
 - Ubuntu 20.04.1 on WSL2
 
 理论上说，应该也通行于其他的平台，如果有问题，可以随时提 Issue。
+
+## 特别提醒
+如果你在Windows 10上发现界面存在闪屏的情况（比如移动光标的时候，或者键入的时候），请检查是否开启了MacType。如果是的话，将Emacs的进程添加到MacType的排除列表中即可，例如在MacType的ini文件中添加如下的代码：
+```ini
+[UnloadDll]
+emacs.exe
+runemacs.exe
+```
