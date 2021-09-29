@@ -34,6 +34,10 @@
 ;; HideShow Minor Mode
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
+;; Highlint Line Mode
+(custom-set-faces '(hl-line ((t (:underline t)))))
+(global-hl-line-mode)
+
 ;; Ido ( instead of ivy & counsel & swiper)
 (setq-default ido-auto-merge-work-directories-length -1
 	      ido-enable-flex-matching t
