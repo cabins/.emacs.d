@@ -21,30 +21,6 @@
     (tool-bar-mode -1)
     (scroll-bar-mode -1)))
 
-(defun cabins/optimize-screen ()
-  "Optimize screen function."
-
-  (when (display-graphic-p)
-    ;; Keyboard scroll behavior
-    (setq-default scroll-conservatively 100000
-                  scroll-margin 3
-		  scroll-step 1
-                  scroll-preserve-screen-position t
-		  scroll-up-aggressively 0.01
-		  scroll-down-aggressively 0.01
-		  auto-window-vscroll nil
-		  ;; Mouse wheel scroll behavior
-		  mouse-wheel-scroll-amount '(1 ((shift) . 1))
-		  mouse-wheel-progressive-speed nil
-		  mouse-wheel-follow-mouse 't
-		  ;; Frame
-		  frame-title-format '("%b"))
-    ;; Initialize the frame size
-    (set-frame-width (selected-frame) 130)
-    (set-frame-height (selected-frame) 40)
-    ;; (toggle-frame-maximized)
-    ))
-
 (defun cabins/dark-modeline (dark-theme)
   "Customize the mode line style, DARK-THEME is boolean."
 
@@ -73,13 +49,13 @@
 (defun cabins/setup-font (fe se fc sc)
   "FE font of English, SE size of it; FC font of Chinese, SC size of it."
 
-  (when (display-graphic-p)
-    (set-face-attribute 'default nil
-		        :font (format "%s-%d" fe se))
+  (set-face-attribute 'default nil
+		      :font (format "%s-%d" fe se))
 
-    (dolist (charset '(han cjk-misc chinese-gbk))
-      (set-fontset-font "fontset-default" charset
-                        (font-spec :family fc :size sc)))))
+  (dolist (charset '(han cjk-misc chinese-gbk))
+    (set-fontset-font "fontset-default" charset
+                      (font-spec :family fc :size sc))))
+
 
 (defmacro cabins/timer (&rest body)
   "Measure the time of code BODY running."

@@ -24,9 +24,12 @@
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
+  :custom-face
+  (lsp-ui-doc-background ((t nil)))
   :init
   (setq lsp-ui-doc-include-signature t
-	lsp-ui-doc-position 'bottom
+	lsp-ui-doc-position 'at-point
+	lsp-ui-doc-border "dim gray"
         lsp-ui-sideline-ignore-duplicate t
         lsp-modeline-code-actions-segments '(count name)
         lsp-headerline-breadcrumb-enable nil)
