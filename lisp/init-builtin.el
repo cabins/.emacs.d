@@ -59,7 +59,6 @@
 ;; Recent Files
 (setq-default recentf-max-menu-items 100
 	      recentf-max-saved-items 100)
-(add-hook 'kill-emacs-hook #'recentf-cleanup)
 (add-hook 'after-init-hook (lambda ()
 			     (recentf-mode 1)))
 

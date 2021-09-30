@@ -31,16 +31,43 @@
 (scroll-bar-mode -1)
 (toggle-frame-maximized)
 
-;; adjust the fonts size, pls
+;; adjust the fonts
+(defun get-font-available (font-list)
+  "Get the first available font from FONT-LIST."
+  (catch 'font
+    (dolist (font font-list)
+      (if (member font (font-family-list))
+	  (throw 'font font)))))
+
 (defun cabins/setup-font ()
   "Font setup."
 
-  (set-face-attribute 'default nil
-		      :font (format "%s-%d" "Source Code Pro" 10))
+  (setq enfonts '("Cascadia Code"	; Windows 10
+		  "Source Code Pro"	; Common
+		  "Consolas"		; Windows
+		  "Courier New"		; Windows or macOS
+		  "Ubuntu Mono"		; Ubuntu
+		  "Monaco"		; macOS
+		  ))
+  (setq cnfonts '("华文楷体"		; Windows
+		  "微软雅黑"		; Windows
+		  "苹方"		; macOS
+		  "华文黑体"		; maybe macOS
+		  "文泉驿微米黑"	; GNU/Linux
+		  ))
 
-  (dolist (charset '(han cjk-misc chinese-gbk))
-    (set-fontset-font "fontset-default" charset
-                      (font-spec :family "华文楷体" :size 12.5))))
+  (let ((cnfont (get-font-available cnfonts))
+	(enfont (get-font-available enfonts)))
+    (if enfont
+	(set-face-attribute 'default nil
+			    :font (format "%s-%d" enfont 10))
+      (message "Failed to set default font."))
+    (if cnfont
+	(dolist (charset '(kana han cjk-misc bopomofo chinese-gbk))
+	  (set-fontset-font "fontset-default" charset
+			    (font-spec :family cnfont :size 12.5)))
+      (message "Failed to set CJK font."))))
+
 (cabins/setup-font)
 
 ;; theme settings
