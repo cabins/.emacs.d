@@ -25,31 +25,34 @@
 	      mouse-wheel-follow-mouse 't
 	      fast-but-imprecise-scrolling nil)
 
-(when (display-graphic-p)
-  ;; Initialize the frame size
-  ;; (set-frame-width (selected-frame) 130)
-  ;; (set-frame-height (selected-frame) 40)
-  (toggle-frame-maximized))
+;; disable the bars
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(toggle-frame-maximized)
 
-(cabins/inhibit-bars)
+;; adjust the fonts size, pls
+(defun cabins/setup-font ()
+  "Font setup."
 
-;; 字体设置，以下配置中中文任意字体均可，推荐配对：
-;; Ubuntu Mono-11 / 中文11.0或者18
-;; Couriew New-10 / 中文11.5或12.0或者20
-(when *is-windows* (cabins/setup-font "Consolas" 10 "华文楷体" 18))
-(when *is-mac* (cabins/setup-font "Courier New" 12 "华文楷体" 14.5))
+  (set-face-attribute 'default nil
+		      :font (format "%s-%d" "Source Code Pro" 10))
 
-;; 默认使用白色Modeline，视觉上更轻量
-(when (display-graphic-p)
-  (cabins/dark-modeline nil))
+  (dolist (charset '(han cjk-misc chinese-gbk))
+    (set-fontset-font "fontset-default" charset
+                      (font-spec :family "华文楷体" :size 12.5))))
+(cabins/setup-font)
 
-;; 从Deamon模式加载窗口需要重新加载一次
+;; theme settings
+(load-theme 'dichromacy)
+
+;; settings for daemon mode
 (add-hook 'after-make-frame-functions
           (lambda (frame)
             (select-frame frame)
             (when (window-system frame)
-	      (cabins/dark-modeline nil)
-	      )))
+	      (toggle-frame-maximized)
+	      (cabins/setup-font))))
 
 (provide 'init-ui)
 
