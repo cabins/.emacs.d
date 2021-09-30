@@ -66,11 +66,11 @@
   (use-package emmet-mode :hook (web-mode css-mode)))
 
 (use-package json-mode)
-(use-package yaml-mode)
 (use-package markdown-mode)
+(use-package protobuf-mode)
 (use-package restclient
   :init (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
-
+(use-package yaml-mode)
 
 (provide 'init-lang)
 

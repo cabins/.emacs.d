@@ -57,10 +57,11 @@
 (show-paren-mode t)
 
 ;; Recent Files
-(setq-default recentf-max-menu-items 100
-	      recentf-max-saved-items 100)
 (add-hook 'after-init-hook (lambda ()
-			     (recentf-mode 1)))
+			     (recentf-mode 1)
+			     (add-to-list 'recentf-exclude '("~\/.emacs.d\/elpa\/"))))
+(setq-default recentf-max-menu-items 20
+	      recentf-max-saved-items 20)
 
 ;; Save Place
 (save-place-mode 1)
