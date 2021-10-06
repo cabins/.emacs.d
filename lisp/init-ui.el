@@ -65,13 +65,13 @@
     (if cnfont
 	(dolist (charset '(kana han cjk-misc bopomofo chinese-gbk))
 	  (set-fontset-font "fontset-default" charset
-			    (font-spec :family cnfont :size 12.5)))
+			    (font-spec :family cnfont :size 11.0)))
       (message "Failed to set CJK font."))))
 
 (cabins/setup-font)
 
 ;; theme settings
-(load-theme 'dichromacy)
+(load-theme 'leuven)
 
 ;; settings for daemon mode
 (add-hook 'after-make-frame-functions
