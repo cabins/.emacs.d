@@ -60,7 +60,7 @@
 	(enfont (get-font-available enfonts)))
     (if enfont
 	(set-face-attribute 'default nil
-			    :font (format "%s-%d" enfont 10))
+			    :font (format "%s-%d" enfont 9))
       (message "Failed to set default font."))
     (if cnfont
 	(dolist (charset '(kana han cjk-misc bopomofo chinese-gbk))

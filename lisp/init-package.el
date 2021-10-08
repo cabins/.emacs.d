@@ -13,11 +13,17 @@
 
 ;;; Code:
 
-;; Settings for exec-path-from-shell
-(use-package exec-path-from-shell
-  :defer nil
-  :if (memq window-system '(mac ns x))
-  :init (exec-path-from-shell-initialize))
+;; All the icons
+;; If the icons are not displayed correctly although all-the-icons fonts are installed correctly
+;; please install the non-free font Symbola. This issue usually occurs on Windows.
+;; [Refs] https://github.com/seagle0128/doom-modeline
+(use-package all-the-icons)
+
+;; Beacon mode - highlight the line when the cursor jumps
+(use-package beacon
+  :diminish
+  :unless *is-windows*
+  :init (add-hook 'after-init-hook 'beacon-mode))
 
 ;; Settings for company
 (use-package company
@@ -27,17 +33,11 @@
   :config (setq company-minimum-prefix-length 1
                 company-selection-wrap-around t))
 
-;; Settings for which-key - suggest next key
-(use-package which-key
+;; Settings for exec-path-from-shell
+(use-package exec-path-from-shell
   :defer nil
-  :diminish
-  :init (which-key-mode))
-
-;; Settings for yasnippet
-(use-package yasnippet
-  :diminish
-  :hook (after-init . yas-global-mode))
-(use-package yasnippet-snippets)
+  :if (memq window-system '(mac ns x))
+  :init (exec-path-from-shell-initialize))
 
 ;; Settings for projectile (use builtin project in Emacs 28)
 (use-package projectile
@@ -50,11 +50,17 @@
 (use-package rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-;; Beacon mode - highlight the line when the cursor jumps
-(use-package beacon
+;; Settings for which-key - suggest next key
+(use-package which-key
+  :defer nil
   :diminish
-  :unless *is-windows*
-  :init (add-hook 'after-init-hook 'beacon-mode))
+  :init (which-key-mode))
+
+;; Settings for yasnippet
+(use-package yasnippet
+  :diminish
+  :init (add-hook 'after-init-hook 'yas-global-mode))
+(use-package yasnippet-snippets)
 
 (provide 'init-package)
 

@@ -31,7 +31,6 @@
 	lsp-ui-doc-position 'at-point
 	lsp-ui-doc-border "dim gray"
         lsp-ui-sideline-ignore-duplicate t
-        lsp-modeline-code-actions-segments '(count name)
         lsp-headerline-breadcrumb-enable nil)
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-ui-mode-hook 'lsp-modeline-code-actions-mode)
