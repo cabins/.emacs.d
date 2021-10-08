@@ -16,10 +16,6 @@
 ;; Abbrev
 (setq-default abbrev-mode t)
 
-;; Cursor
-(setq-default cursor-type '(bar . 1))
-(blink-cursor-mode 1)
-
 ;; Delete Behavior
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'after-init-hook 'delete-selection-mode)
@@ -33,10 +29,6 @@
 
 ;; HideShow Minor Mode
 (add-hook 'prog-mode-hook 'hs-minor-mode)
-
-;; Highlint Line Mode
-;; (custom-set-faces '(hl-line ((t (:underline t)))))
-(global-hl-line-mode)
 
 ;; Ido ( instead of ivy & counsel & swiper)
 (setq-default ido-auto-merge-work-directories-length -1

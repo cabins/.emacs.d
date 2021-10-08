@@ -22,7 +22,6 @@
 ;; Beacon mode - highlight the line when the cursor jumps
 (use-package beacon
   :diminish
-  :unless *is-windows*
   :init (add-hook 'after-init-hook 'beacon-mode))
 
 ;; Settings for company

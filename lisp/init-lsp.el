@@ -1,6 +1,7 @@
 ;;; init-lsp --- lsp settings
 
-;;; Commentary: (c)Cabins, github.com/cabins/.emacs.d
+;;; Commentary:
+;; (c)Cabins, github.com/cabins/.emacs.d
 ;;; lsp-mode is the Emacs client for LSP server.
 ;;; Once you install the lsp-mode and the language server,
 ;;; you can call `M-x lsp' to autostart the server
@@ -24,12 +25,9 @@
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
-  :custom-face
-  (lsp-ui-doc-background ((t nil)))
   :init
   (setq lsp-ui-doc-include-signature t
 	lsp-ui-doc-position 'at-point
-	lsp-ui-doc-border "dim gray"
         lsp-ui-sideline-ignore-duplicate t
         lsp-headerline-breadcrumb-enable nil)
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)

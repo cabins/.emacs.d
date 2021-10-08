@@ -23,9 +23,9 @@
       (append elisp-flymake-byte-compile-load-path load-path))
 
 ;; consts defination
-(defconst *is-mac* (eq system-type 'darwin) "Apple macOS platform.")
-(defconst *is-linux* (eq system-type 'gnu/linux) "GNU/Linux platform.")
-(defconst *is-windows* (memq system-type '(cygwin windows-nt ms-dos)) "Windows / DOS.")
+;; (defconst *is-mac* (eq system-type 'darwin) "Apple macOS platform.")
+;; (defconst *is-linux* (eq system-type 'gnu/linux) "GNU/Linux platform.")
+;; (defconst *is-windows* (memq system-type '(cygwin windows-nt ms-dos)) "Windows / DOS.")
 
 ;; settings for independent packages and etc.
 (require 'init-fn)

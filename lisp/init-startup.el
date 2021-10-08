@@ -13,7 +13,8 @@
 
 ;; settings for system encoding
 (set-language-environment "UTF-8")
-(unless *is-windows*
+;; spcial settings for Windows
+(unless (memq system-type '(cygwin windows-nt ms-dos))
   (setq selection-coding-system 'utf-8))
 
 (setq make-backup-files nil             ; disable backup file
@@ -25,7 +26,8 @@
       read-process-output-max (* 64 1024))
 
 ;; macOS: move file to trash when delete
-(when *is-mac* (setq delete-by-moving-to-trash t))
+(when (eq system-type 'darwin)
+  (setq delete-by-moving-to-trash t))
 
 (provide 'init-startup)
 

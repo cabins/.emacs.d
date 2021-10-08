@@ -35,7 +35,7 @@
 
 ;;; Key Remap
 ;; <macOS> Command -> Meta, Option -> Super
-(when *is-mac*
+(when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta
 	mac-option-modifier 'super))
 
