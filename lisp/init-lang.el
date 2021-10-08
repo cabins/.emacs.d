@@ -12,7 +12,8 @@
   (use-package go-tag))
 
 ;; LISP MODE
-(use-package paredit :init (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
+;; (use-package paredit :init (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
+(use-package lispy :init (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
 
 ;; PYTHON MODE
 (defun python-isort ()

@@ -42,10 +42,11 @@
 ;;; Emacs Basic Keys ------------------------------
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(global-set-key (kbd "C-,") #'crux-find-user-init-file)	; Open Settings
+(global-set-key (kbd "C-c ,") #'crux-find-user-init-file)	; Open Settings
 (global-set-key (kbd "C-c r") 'recentf-open-files) ; Open Recent Files
 
 ;; Window Move
+(global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-c <left>") 'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>") 'windmove-up)
@@ -68,6 +69,12 @@
 ;; Syntax
 (global-set-key (kbd "M-n") #'flymake-goto-next-error)
 (global-set-key (kbd "M-p") #'flymake-goto-prev-error)
+
+;;; swiper-ivy-counsel
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 (provide 'init-kbd)
 
