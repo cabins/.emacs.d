@@ -8,7 +8,6 @@
 ;; Keywords:
 
 ;;; Commentary:
-
 ;; (c) Cabins Kong, 2020-2021
 
 ;;; Code:
@@ -19,18 +18,11 @@
 ;; [Refs] https://github.com/seagle0128/doom-modeline
 (use-package all-the-icons)
 
-;; Beacon mode - highlight the line when the cursor jumps
-(use-package beacon
-  :diminish
-  :init (add-hook 'after-init-hook 'beacon-mode))
-
 ;; Settings for company
 (use-package company
   :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
-  :init (add-hook 'after-init-hook 'global-company-mode)
-  :config (setq company-minimum-prefix-length 1
-                company-selection-wrap-around t))
+  :init (add-hook 'after-init-hook 'global-company-mode))
 
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell

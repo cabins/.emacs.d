@@ -4,19 +4,12 @@
 ;;; Code:
 
 ;; GO MODE
-(defvar go--tools '("golang.org/x/tools/cmd/goimports"
-                    "github.com/go-delve/delve/cmd/dlv"
-                    "github.com/josharian/impl"
-                    "github.com/cweill/gotests/..."
-                    "github.com/fatih/gomodifytags"
-                    "github.com/davidrjenni/reftools/cmd/fillstruct")
-  "Go tools may needed.")
-
-(use-package go-mode)
-(use-package go-fill-struct)
-(use-package go-impl)
-(use-package go-gen-test)
-(use-package go-tag)
+(use-package go-mode
+  :config
+  (use-package go-fill-struct)
+  (use-package go-impl)
+  (use-package go-gen-test)
+  (use-package go-tag))
 
 ;; LISP MODE
 (use-package paredit :init (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
@@ -56,16 +49,12 @@ eg.from datetime import datetime."
 ;; WEB MODE
 (use-package web-mode
   :init (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-  :config
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2
-        web-mode-enable-current-element-highlight t)
-  (use-package company-web
-    :config
-    (add-to-list 'company-backends 'company-web-html)
-    (add-to-list 'company-backends 'company-css))
-  (use-package emmet-mode :hook (web-mode css-mode)))
+  :config (setq web-mode-enable-current-element-highlight t))
+;; use C-j to expand emmet
+(use-package emmet-mode
+  :init
+  (add-hook 'web-mode-hook #'emmet-mode)
+  (add-hook 'css-mode-hook #'emmet-mode))
 
 (use-package json-mode)
 (use-package markdown-mode)

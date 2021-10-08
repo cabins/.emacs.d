@@ -19,7 +19,7 @@
      (float-time (time-since time))))
 
 (defun cabins/tmp-reset-elpa ()
-  "Reset Elpa temporary. Useful when emacs-china sync fails."
+  "Reset Elpa temporary.  Useful when emacs-china sync fails."
 
   (interactive)
   (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
