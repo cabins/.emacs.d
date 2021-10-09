@@ -40,6 +40,8 @@
 ;; Show the delimiters as rainbow color
 (use-package rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+(use-package highlight-parentheses
+  :init (add-hook 'prog-mode-hook 'highlight-parentheses-mode))
 
 ;; Settings for which-key - suggest next key
 (use-package which-key
