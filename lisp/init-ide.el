@@ -66,12 +66,12 @@
 ;; (use-package lispy :init (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
 
 ;; Python
-(defun check-run-execute (exec-file &rest body)
+(defmacro check-run-execute (exec-file &rest body)
   "Find the EXEC-FILE and run the BODY."
 
-  (if (not (executable-find exec-file))
-      (message "[ERROR]: <%s> not found!" exec-file)
-    body nil))
+  `(if (not (executable-find ,exec-file))
+       (message "[ERROR]: <%s> not found!" ,exec-file)
+     ,@body))
 
 ;;;###autoload
 (defun python-isort ()

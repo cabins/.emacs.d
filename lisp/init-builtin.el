@@ -43,7 +43,8 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Org Mode
-(setq org-hide-leading-stars t)
+(setq org-hide-leading-stars t
+      org-startup-indented t)
 
 ;; Parentheses
 (setq-default show-paren-style 'mixed
