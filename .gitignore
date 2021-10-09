@@ -2,8 +2,8 @@
 *
 
 # Excludes - only control these files
-!lisp
-!init.el
 !.gitignore
-!early-init.el
 !README*.md
+!init.el
+!early-init.el
+!lisp
