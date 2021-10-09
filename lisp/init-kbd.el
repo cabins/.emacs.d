@@ -32,13 +32,6 @@
 ;; 4. 为方便统一管理，全局按键不分散于use-package中，模式按键仍在use-package中
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;; Key Remap
-;; <macOS> Command -> Meta, Option -> Super
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta
-	mac-option-modifier 'super))
-
 ;;; Emacs Basic Keys ------------------------------
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -46,7 +39,6 @@
 (global-set-key (kbd "C-c r") 'recentf-open-files) ; Open Recent Files
 
 ;; Window Move
-(global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-c <left>") 'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>") 'windmove-up)
@@ -56,8 +48,8 @@
 ;; Comments（As C-x C-; is for comment-line, keep the postfix）
 (global-set-key (kbd "C-c C-;") #'comment-or-uncomment-region)
 ;; Line Edit
-(global-set-key (kbd "C-c C-<down>") #'drag-stuff-down)
-(global-set-key (kbd "C-c C-<up>") #'drag-stuff-up)
+(global-set-key (kbd "M-<down>") #'drag-stuff-down)
+(global-set-key (kbd "M-<up>") #'drag-stuff-up)
 (global-set-key (kbd "C-c C-d") #'crux-duplicate-current-line-or-region)
 (global-set-key (kbd "C-a") #'crux-move-beginning-of-line)
 ;; Delete
@@ -69,12 +61,6 @@
 ;; Syntax
 (global-set-key (kbd "M-n") #'flymake-goto-next-error)
 (global-set-key (kbd "M-p") #'flymake-goto-prev-error)
-
-;;; swiper-ivy-counsel
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 (provide 'init-kbd)
 

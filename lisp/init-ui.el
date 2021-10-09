@@ -26,7 +26,9 @@
 	      fast-but-imprecise-scrolling nil)
 
 ;; disable the bars
-(menu-bar-mode -1)
+(if (and (display-graphic-p) (eq system-type 'darwin))
+    (menu-bar-mode 1)
+  (menu-bar-mode -1))
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (toggle-frame-maximized)

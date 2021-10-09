@@ -2,13 +2,8 @@
 
 ;; Author: Cabins
 ;; Maintainer: Cabins
-;; Version: 1.0
-;; Package-Requires: ()
-;; Homepage: https://github.com/cabins
-;; Keywords:
 
 ;;; Commentary:
-
 ;; (c) Cabins Kong, 2020-2021
 
 ;;; Code:
@@ -18,7 +13,6 @@
                          ("gnu" . "http://mirrors.bfsu.edu.cn/elpa/gnu/"))
       package-check-signature nil
       load-prefer-newer t)
-
 (require 'package)
 
 ;;; initialize the packages, avoiding a re-initialization

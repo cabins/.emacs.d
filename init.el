@@ -29,19 +29,18 @@
 
 ;; settings for independent packages and etc.
 (require 'init-fn)
-(require 'init-startup)
+(require 'init-system)
 (require 'init-elpa)
 (require 'init-package)
 (require 'init-builtin)
 (require 'init-kbd)
-(require 'init-lsp)
-(require 'init-lang)
+(require 'init-ide)
 (require 'init-ui)
 
 ;; load custom file at last
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
-  (load-file custom-file))
+  (load custom-file))
 
 (provide 'init)
 

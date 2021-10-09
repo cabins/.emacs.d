@@ -23,6 +23,7 @@
 ;; Electric-Pair
 (add-hook 'after-init-hook 'electric-indent-mode)
 (add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'prog-mode-hook 'electric-layout-mode)
 
 ;; Flymake
 (add-hook 'prog-mode-hook 'flymake-mode)
@@ -39,8 +40,10 @@
 (fido-mode t)
 
 ;; Line Number
-(setq-default display-line-numbers-widen t)
-(global-display-line-numbers-mode t)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;; Org Mode
+(setq org-hide-leading-stars t)
 
 ;; Parentheses
 (setq-default show-paren-style 'mixed
