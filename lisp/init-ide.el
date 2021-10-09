@@ -21,7 +21,8 @@
   (add-hook 'prog-mode-hook (lambda()
 			      (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)(lsp-deferred))))
   :config
-  (setq lsp-auto-guess-root t)
+  (setq lsp-auto-guess-root t
+	lsp-headerline-breadcrumb-enable nil)
   (setq lsp-keymap-prefix "C-c l")
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
 
@@ -31,22 +32,24 @@
   :init
   (setq lsp-ui-doc-include-signature t
 	lsp-ui-doc-position 'at-point
-        lsp-ui-sideline-ignore-duplicate t
-        lsp-headerline-breadcrumb-enable nil)
+        lsp-ui-sideline-ignore-duplicate t)
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-ui-mode-hook 'lsp-modeline-code-actions-mode)
   :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
-(use-package dap-mode
-  :init
-  (add-hook 'lsp-mode-hook 'dap-mode)
-  (add-hook 'dap-mode-hook 'dap-ui-mode)
-  (add-hook 'dap-mode-hook 'dap-tooltip-mode)
-  (add-hook 'python-mode-hook (lambda() (require 'dap-python)))
-  (add-hook 'go-mode-hook (lambda() (require 'dap-go)))
-  (add-hook 'java-mode-hook (lambda() (require 'dap-java))))
+;; If you like debugging in Emacs, enable the next lines.
+;; I disabled it, as it imports too many dependencies.Such as:
+;; posframe,lsp-treemacs(dash, treemacs[hydra(cl-lib), ace-window(avy)])
+;; (use-package dap-mode
+;;   :init
+;;   (add-hook 'lsp-mode-hook 'dap-mode)
+;;   (add-hook 'dap-mode-hook 'dap-ui-mode)
+;;   (add-hook 'dap-mode-hook 'dap-tooltip-mode)
+;;   (add-hook 'python-mode-hook (lambda() (require 'dap-python)))
+;;   (add-hook 'go-mode-hook (lambda() (require 'dap-go)))
+;;   (add-hook 'java-mode-hook (lambda() (require 'dap-java))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings for Program Languages ;;
