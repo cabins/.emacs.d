@@ -51,9 +51,10 @@
 		  "Ubuntu Mono"		; Ubuntu
 		  "Monaco"		; macOS
 		  ))
-  (setq cnfonts '("华文楷体"		; Windows
+  (setq cnfonts '("STKaiti"		; macOS
+		  "华文楷体"		; Windows
+		  "STHeiti"		; macOS
 		  "微软雅黑"		; Windows
-		  "苹方"		; macOS
 		  "华文黑体"		; maybe macOS
 		  "文泉驿微米黑"	; GNU/Linux
 		  ))
