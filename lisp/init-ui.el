@@ -63,13 +63,15 @@
 	(enfont (get-font-available enfonts)))
     (if enfont
 	(set-face-attribute 'default nil
-			    :font (format "%s-%d" enfont 9))
+			    :font (format "%s" enfont))
       (message "Failed to set default font."))
-    (if cnfont
-	(dolist (charset '(kana han cjk-misc bopomofo chinese-gbk))
-	  (set-fontset-font "fontset-default" charset
-			    (font-spec :family cnfont :size 11.0)))
-      (message "Failed to set CJK font."))))
+    (when cnfont
+      (dolist (charset '(kana han cjk-misc bopomofo))
+	(set-fontset-font t charset cnfont))
+      (setq face-font-rescale-alist
+	    (mapcar (lambda (item)
+		      (cons item 1.2))
+		    cnfonts)))))
 
 (cabins/setup-font)
 
