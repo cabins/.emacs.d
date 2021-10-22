@@ -17,11 +17,6 @@
 	package-native-compile t)
   (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache" user-emacs-directory)))
 
-;; flymake cannot find load-path solution
-;; [reference] https://emacs-china.org/t/flymake/8323/19
-(setq elisp-flymake-byte-compile-load-path
-      (append elisp-flymake-byte-compile-load-path load-path))
-
 ;; consts defination
 ;; (defconst *is-mac* (eq system-type 'darwin) "Apple macOS platform.")
 ;; (defconst *is-linux* (eq system-type 'gnu/linux) "GNU/Linux platform.")
