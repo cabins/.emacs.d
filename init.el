@@ -9,7 +9,12 @@
 ;; (c) Cabins Kong, 2020-2021
 
 ;;; Code:
+(setq default-directory "~/")
+
+;; Update the load-path
 (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp/")))
+
+;; Settings for Emacs 28+
 (when (and (fboundp 'native-comp-available-p)
 	   (native-comp-available-p))
   (setq native-comp-async-report-warnings-errors nil
@@ -39,7 +44,7 @@
 
 (provide 'init)
 
-;; Local Variables:
-;; byte-compile-warnings: (not free-vars unresolved)
-;; End:
 ;;; init.el ends here
+;; Local Variables:
+;; byte-compile-warnings: (not obsolete free-vars unresolved)
+;; End:

@@ -10,18 +10,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings for LSP MODE ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package eglot
-  ;; :config
+  :hook ((c-mode c++-mode go-mode java-mode js-mode python-mode rust-mode web-mode) . eglot-ensure)
+  :bind (("C-c e f" . #'eglot-format)
+         ("C-c e i" . #'eglot-code-action-organize-imports)
+         ("C-c e q" . #'eglot-code-action-quickfix))
+  :config
   ;; (setq eglot-ignored-server-capabilities '(:documentHighlightProvider))
-  :init
-  (dolist (hook '(c-mode-hook
-		  c++-mode-hook
-		  go-mode-hook
-		  java-mode-hook
-		  js-mode-hook
-		  python-mode-hook
-		  rust-mode-hook))
-    (add-hook hook 'eglot-ensure)))
+  (defun eglot-actions-before-save()
+    (add-hook 'before-save-hook (lambda ()
+                                  (call-interactively #'eglot-format)
+                                  (call-interactively #'eglot-code-action-organize-imports))))
+  (add-to-list 'eglot-server-programs '(web-mode "vls"))
+  (add-hook 'eglot--managed-mode-hook #'eglot-actions-before-save))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; settings for Program Languages ;;
@@ -80,16 +82,14 @@ eg.from datetime import datetime."
   (setq rust-format-on-save t)
   (define-key rust-mode-map (kbd "C-c C-c") 'rust-run))
 
-;; Vue.js
-(use-package vue-mode
-  ;; disable the ugly background color
-  ;; [refs] https://github.com/AdamNiederer/vue-mode#how-do-i-disable-that-ugly-background-color
-  :config (set-face-background 'mmm-default-submode-face nil))
-
 ;; Web Developemnt (html, css, js)
 (use-package web-mode
-  :init (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+  :init
+  (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+  ;; use web-mode to handle vue file
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
   :config (setq web-mode-enable-current-element-highlight t))
+
 ;; use C-j to expand emmet
 (use-package emmet-mode
   :init
@@ -100,8 +100,10 @@ eg.from datetime import datetime."
 (use-package markdown-mode)
 (use-package protobuf-mode)
 (use-package restclient
-  :init (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+  :mode (("\\.http\\'" . restclient-mode)))
 (use-package yaml-mode)
+
+(use-package quickrun)
 
 (provide 'init-ide)
 ;; Local Variables:

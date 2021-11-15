@@ -13,16 +13,31 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; settings for system coding
-(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
 
-
-(setq make-backup-files nil             ; disable backup file
-      auto-save-default nil
-      inhibit-startup-screen t          ; disable the startup screen splash
+(setq auto-save-default nil	   ; disable auto save
+      auto-window-vscroll nil
+      delete-by-moving-to-trash t  ; disable delete directly
+      fast-but-imprecise-scrolling t
+      frame-title-format "%b"
+      help-window-select t
+      inhibit-startup-screen t	   ; disable the startup screen splash
       inhibit-default-init t
-      visible-bell nil
+      ;; initial-scratch-message nil
       inhibit-compacting-font-caches t
-      read-process-output-max (* 64 1024))
+      make-backup-files nil             ; disable backup file
+      ;; Mouse wheel scroll behavior
+      ;; mouse-wheel-scroll-amount '(1 ((shift) . 1))
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-follow-mouse t
+      next-line-add-newlines nil
+      read-process-output-max (* 64 1024)
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position t
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01
+      visible-bell nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ====================OS Specific==================== ;;

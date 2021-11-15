@@ -12,25 +12,6 @@
 
 ;;; Code:
 
-;; settings for scrolling
-(setq-default scroll-step 1
-	      scroll-preserve-screen-position t
-	      scroll-up-aggressively 0.01
-	      scroll-down-aggressively 0.01
-	      redisplay-dont-pause t
-	      auto-window-vscroll nil
-	      ;; Mouse wheel scroll behavior
-	      mouse-wheel-scroll-amount '(1 ((shift) . 1))
-	      mouse-wheel-progressive-speed nil
-	      mouse-wheel-follow-mouse 't
-	      fast-but-imprecise-scrolling nil)
-
-;; disable the bars
-(if (and (display-graphic-p) (eq system-type 'darwin))
-    (menu-bar-mode 1)
-  (menu-bar-mode -1))
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (toggle-frame-maximized)
 
 ;; adjust the fonts
@@ -61,10 +42,11 @@
 
   (let ((cnfont (get-font-available cnfonts))
 	(enfont (get-font-available enfonts)))
-    (if enfont
-	(set-face-attribute 'default nil
-			    :font (format "%s" enfont))
-      (message "Failed to set default font."))
+    (when enfont
+      (dolist (face '(default fixed-pitch fixed-pitch-serif variable-pitch))
+	(set-face-attribute face nil
+			    :family enfont)))
+
     (when cnfont
       (dolist (charset '(kana han cjk-misc bopomofo))
 	(set-fontset-font t charset cnfont))
@@ -73,22 +55,17 @@
 		      (cons item 1.2))
 		    cnfonts)))))
 
-(cabins/setup-font)
-
-;; theme settings
-(load-theme 'leuven)
-
 ;; settings for daemon mode
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (select-frame frame)
-            (when (window-system frame)
-	      (toggle-frame-maximized)
-	      (cabins/setup-font))))
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+	      (lambda (frame)
+		(with-selected-frame frame
+		  (cabins/setup-font))))
+  (add-hook 'after-init-hook #'cabins/setup-font))
 
 (provide 'init-ui)
 
+;;; init-ui.el ends here
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
-;;; init-ui.el ends here
