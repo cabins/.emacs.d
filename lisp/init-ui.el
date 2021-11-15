@@ -15,45 +15,30 @@
 (toggle-frame-maximized)
 
 ;; adjust the fonts
-(defun get-font-available (font-list)
+(defun available-font (font-list)
   "Get the first available font from FONT-LIST."
   (catch 'font
     (dolist (font font-list)
       (if (member font (font-family-list))
 	  (throw 'font font)))))
 
+;;;###autoload
 (defun cabins/setup-font ()
   "Font setup."
 
-  (setq enfonts '("Cascadia Code"	; Windows 10
-		  "Source Code Pro"	; Common
-		  "Consolas"		; Windows
-		  "Courier New"		; Windows or macOS
-		  "Ubuntu Mono"		; Ubuntu
-		  "Monaco"		; macOS
-		  ))
-  (setq cnfonts '("STKaiti"		; macOS
-		  "华文楷体"		; Windows
-		  "STHeiti"		; macOS
-		  "微软雅黑"		; Windows
-		  "华文黑体"		; maybe macOS
-		  "文泉驿微米黑"	; GNU/Linux
-		  ))
-
-  (let ((cnfont (get-font-available cnfonts))
-	(enfont (get-font-available enfonts)))
-    (when enfont
+  (interactive)
+  (let* ((efl '("Cascadia Code" "Source Code Pro" "JetBrains Mono" "Courier New" "Monaco" "Ubuntu Mono"))
+	 (cfl '("楷体" "黑体" "STHeiti" "STKaiti"))
+	 (cf (available-font cfl))
+	 (ef (available-font efl)))
+    (when ef
       (dolist (face '(default fixed-pitch fixed-pitch-serif variable-pitch))
-	(set-face-attribute face nil
-			    :family enfont)))
-
-    (when cnfont
+	(set-face-attribute face nil :family ef)))
+    (when cf
       (dolist (charset '(kana han cjk-misc bopomofo))
-	(set-fontset-font t charset cnfont))
+	(set-fontset-font t charset cf))
       (setq face-font-rescale-alist
-	    (mapcar (lambda (item)
-		      (cons item 1.2))
-		    cnfonts)))))
+	    (mapcar (lambda (item) (cons item 1.2)) cfl)))))
 
 ;; settings for daemon mode
 (if (daemonp)
