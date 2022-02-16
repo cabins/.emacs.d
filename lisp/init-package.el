@@ -22,7 +22,10 @@
 (use-package company
   :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
-  :init (add-hook 'after-init-hook 'global-company-mode))
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+        company-show-quick-access t))
 
 ;; Settings for exec-path-from-shell
 (use-package exec-path-from-shell
@@ -52,7 +55,7 @@
 ;; Settings for yasnippet
 (use-package yasnippet
   :diminish
-  :init (add-hook 'after-init-hook 'yas-global-mode))
+  :hook (prog-mode . yas-minor-mode))
 (use-package yasnippet-snippets)
 
 (provide 'init-package)
