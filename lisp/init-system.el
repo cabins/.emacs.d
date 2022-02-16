@@ -25,6 +25,7 @@
       inhibit-default-init t
       ;; initial-scratch-message nil
       inhibit-compacting-font-caches t
+      initial-major-mode 'fundamental-mode
       make-backup-files nil             ; disable backup file
       ;; Mouse wheel scroll behavior
       ;; mouse-wheel-scroll-amount '(1 ((shift) . 1))

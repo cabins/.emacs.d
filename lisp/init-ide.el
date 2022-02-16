@@ -30,12 +30,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Golang
-(use-package go-mode
-  :config
-  (use-package go-fill-struct)
-  (use-package go-impl)
-  (use-package go-gen-test)
-  (use-package go-tag))
+(use-package go-mode)
 
 ;; Lisp
 ;; You can choose paredit or lispy,but I use none of them,as they defined too many keybindings.

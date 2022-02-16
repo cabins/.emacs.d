@@ -14,13 +14,6 @@
      ,@body
      (float-time (time-since time))))
 
-(defun cabins/tmp-reset-elpa ()
-  "Reset Elpa temporary.  Useful when emacs-china sync fails."
-
-  (interactive)
-  (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                           ("melpa" . "http://melpa.org/packages/"))))
-
 (provide 'init-fn)
 
 ;; Local Variables:

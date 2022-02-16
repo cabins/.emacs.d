@@ -33,7 +33,6 @@
 (require 'init-elpa)
 (require 'init-package)
 (require 'init-builtin)
-(require 'init-kbd)
 (require 'init-ide)
 (require 'init-ui)
 

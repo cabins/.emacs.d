@@ -15,8 +15,6 @@
 ;;                    Global Keybinds Dependencies
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package crux)
-(use-package hungry-delete)
-(use-package drag-stuff)
 (use-package format-all
   :diminish " Fmt."
   :init (add-hook 'prog-mode-hook 'format-all-mode))

@@ -13,6 +13,8 @@
 ;;; Code:
 ;;; Sorted by Alphbet order
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Abbrev
 (setq-default abbrev-mode t)
 
@@ -98,6 +100,7 @@
 
 ;; only use spaces instead of TAB, use C-q TAB to input the TAB char
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ;; Diminish Builtins
 (dolist (elem '(abbrev-mode eldoc-mode))
