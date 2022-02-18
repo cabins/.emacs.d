@@ -1,6 +1,7 @@
 [English Version](./README.en-US.md)
 
 # 关于项目
+> 注意：该项目后续逐渐停止维护，代码的维护工作转到 [cabins/emacs.d](https://github.com/cabins/emacs.d)
 
 本项目非 GNU Emacs 官方配置，亦非 GNU Emacs 的插件，仅作为个人配置项目使用。配置由 ©Cabins 进行维护。
 
